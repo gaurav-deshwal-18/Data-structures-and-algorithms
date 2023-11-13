@@ -49,7 +49,14 @@ class LinkedList {
       return null;
     }
     const value = this.head.value;
-    this.head = this.head.next;
+
+    if (this.size === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      const value = this.head.value;
+      this.head = this.head.next;
+    }
     this.size--;
     return value;
   }

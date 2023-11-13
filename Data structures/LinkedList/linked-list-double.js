@@ -53,6 +53,7 @@ class DoublyLinkedList {
     }
     const value = this.head.value;
     this.head = this.head.next;
+    this.head.prev = null;
     this.size--;
     return value;
   }
