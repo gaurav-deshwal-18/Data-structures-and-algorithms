@@ -1,84 +1,75 @@
-class Node {
-  constructor(value) {
-    this.value = value;
-    this.left = null;
-    this.right = null;
-  }
-}
-
-class BinarySearchTree {
+class Graph {
   constructor() {
-    this.root = null;
+    this.adjacencyList = {};
   }
 
-  isEmpty() {
-    return this.root === null;
-  }
-
-  insert(value) {
-    const newNode = new Node(value);
-    if (this.isEmpty()) {
-      this.root = newNode;
-    } else {
-      this.insertNode(this.root, newNode);
+  addVertex(vertex) {
+    if (!this.adjacencyList[vertex]) {
+      this.adjacencyList[vertex] = new Set();
     }
   }
 
-  insertNode(root, newNode) {
-    if (newNode.value < root.value) {
-      if (root.left === null) {
-        root.left = newNode;
-      } else {
-        this.insertNode(root.left, newNode);
-      }
-    } else {
-      if (root.right === null) {
-        root.right = newNode;
-      } else {
-        this.insertNode(root.right, newNode);
-      }
+  addEdge(vertex1, vertex2) {
+    if (!this.adjacencyList[vertex1]) {
+      this.addVertex[vertex1];
     }
+
+    if (!this.adjacencyList[vertex2]) {
+      this.addVertex[vertex2];
+    }
+
+    this.adjacencyList[vertex1].add(vertex2);
+    this.adjacencyList[vertex2].add(vertex1);
   }
 
-  search(root, value) {
-    if (!root) {
-      return false;
-    }
-    if (value === root.value) {
-      return true;
-    } else if (value < root.value) {
-      return this.search(root.left, value);
-    } else {
-      return this.search(root.right, value);
-    }
+  removeEdge(vertex1, vertex2) {
+    this.adjacencyList[vertex1].delete(vertex2);
+    this.adjacencyList[vertex2].delete(vertex1);
   }
 
-  min(root) {
-    if (!root.left) {
-      return root.value;
-    } else {
-      return this.min(root.left);
+  removeVertex(vertex) {
+    if (!this.adjacencyList[vertex]) {
+      return;
     }
+    for (let adjacentVertex of this.adjacencyList[vertex]) {
+      this.removeEdge(vertex, adjacentVertex);
+    }
+    delete this.adjacencyList[vertex];
   }
 
-  max(root) {
-    if (!root.right) {
-      return root.value;
-    } else {
-      return this.max(root.right);
+  hasEdge(vertex1, vertex2) {
+    return (
+      this.adjacencyList[vertex1].has(vertex2) &&
+      this.adjacencyList[vertex2].has(vertex1)
+    );
+  }
+
+  display() {
+    for (let vertex in this.adjacencyList) {
+      console.log(vertex + "---->" + [...this.adjacencyList[vertex]]);
     }
   }
 }
 
-const bst = new BinarySearchTree();
-console.log(bst.isEmpty());
-bst.insert(10);
-bst.insert(5);
-bst.insert(15);
-bst.insert(3);
-bst.insert(7);
-bst.insert(13);
-bst.insert(17);
-bst.insert(2);
-console.log(bst.search(bst.root, 10));
-console.log(bst.search(bst.root, 13));
+const graph = new Graph();
+
+graph.addVertex("A");
+graph.addVertex("B");
+graph.addVertex("C");
+
+graph.addEdge("A", "B");
+graph.addEdge("B", "C");
+
+graph.display();
+console.log("------------------");
+
+console.log(graph.hasEdge("A", "C"));
+console.log(graph.hasEdge("B", "C"));
+graph.removeEdge("A", "B");
+graph.display();
+console.log("------------------");
+graph.addEdge("A", "B");
+graph.display();
+console.log("------------------");
+graph.removeVertex("A");
+graph.display();
