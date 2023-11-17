@@ -25,6 +25,13 @@
 // checkers, and dictionary implementations, where efficient word lookup
 // and prefix-based searches are required.
 
+//* Tries:
+
+// Tries are like a tree where each node represents a single character of a word.
+// They are commonly used for handling and storing words or strings. Picture a family tree where each level
+//  represents a letter, and as you traverse down the tree, you spell out a word. Tries are efficient for tasks
+//  like searching for words that start with a certain prefix, similar to looking up a word in a dictionary.
+
 class TrieNode {
   constructor() {
     this.children = {}; // A mapping of characters to TrieNodes

@@ -4,6 +4,14 @@
 //  tree remains approximately balanced, providing efficient insertion, deletion,
 //  and search operations.
 
+//* Red-Black Trees:
+
+// Think of a red-black tree like a special type of binary search tree that's designed to stay balanced.
+// Each node in this tree is colored either red or black, and it follows some rules that help keep the tree
+// balanced during insertion and deletion operations. These rules ensure that the longest path from the root
+// to a leaf is not more than twice the length of the shortest path.
+// It's like arranging books on a shelf in a way that ensures the shelf stays balanced and not too lopsided.
+
 // Node class representing a node in the Red-Black Tree
 class Node {
   constructor(value, color) {

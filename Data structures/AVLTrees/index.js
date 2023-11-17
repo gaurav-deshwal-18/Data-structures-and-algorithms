@@ -4,6 +4,13 @@
 // balanced after insertions or deletions, aiming to guarantee efficient
 // search, insertion, and deletion operations.
 
+//* AVL Trees:
+
+// An AVL tree is another kind of balanced binary search tree. It ensures that the difference in heights
+// of the left and right subtrees of any node is not more than one. It's like a tree that automatically
+// adjusts itself to keep a balance, much like a seesaw trying to maintain equilibrium.
+// Whenever you add or remove an element, the tree rearranges itself to keep things in balance.
+
 class Node {
   constructor(value) {
     this.value = value;
