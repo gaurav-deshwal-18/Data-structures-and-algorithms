@@ -1,13 +1,18 @@
-//*  Object;
+// ===============================
+//* Object Overview
+// ===============================
+// An object in JavaScript represents an unordered collection of key-value pairs.
 
-// An object is an unordered collection of key-value pairs.
+// -------------------------------
+//* Object Key-Value Characteristics
+// -------------------------------
+// - Key Restrictions: Keys must be strings or symbols, while values can be of any data type.
+// - Accessing Values: Values are retrieved using corresponding keys, accessible through dot or bracket notation.
 
-// The key must either be a string or symbol data type where as the value can be of any data type
-
-// To retrieve a value, you can use the the corresponding key. This can be achieved using the dot notation
-// or bracket notation
-
-// An object is not an iterable. You cannot use it with a for of loop
+// -------------------------------
+//* Object Iterability
+// -------------------------------
+// - Non-Iterable: Objects cannot be directly used with 'for...of' loops due to their non-iterable nature.
 
 const obj = {
   name: "Heisenberg",

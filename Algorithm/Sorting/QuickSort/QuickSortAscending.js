@@ -1,6 +1,9 @@
-//* Merge Sort Ascending - Worst Time complexity -
-//* Worst Time complexity  - O(n^2) - if array is already sorted.
-//* Average Time complexity O(n log(n)) - if array is not sorted.
+// Quick Sort (Ascending)
+// - Worst Time: O(n^2) [Array sorted]
+// - Average Time: O(n log n) [Unsorted array]
+
+// Overview: Efficient divide-and-conquer sorting.
+// Details: Less efficient on sorted arrays due to pivot selection.
 
 const quickSort = (array) => {
   const length = array.length;

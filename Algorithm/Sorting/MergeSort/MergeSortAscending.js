@@ -1,10 +1,20 @@
-//* Quick Sort Ascending - Worst Time complexity -
-// Merge Sort is a stable and efficient comparison-based sorting
-// algorithm that has a consistent time complexity:
+// ===============================
+// * Merge Sort (Ascending Order)
+// ===============================
+// - Worst Time Complexity: O(n log n)
 
-//     Best Case: O(n log n)
-//     Average Case: O(n log n)
-//     Worst Case: O(n log n)
+// Overview:
+// Merge Sort is a stable and efficient comparison-based sorting algorithm known for
+// its consistent time complexity.
+
+// Time Complexities:
+// - Best Case: O(n log n)
+// - Average Case: O(n log n)
+// - Worst Case: O(n log n)
+
+// Details:
+// - Exhibits consistent time complexity across different scenarios.
+// - Well-suited for sorting large datasets efficiently due to its stable performance.
 
 function mergeSort(arr) {
   if (arr.length <= 1) {

@@ -1,6 +1,7 @@
-// A tree is a hierarchical data structure that consists of nodes connected by edges
-// A tree is a non-linear data structure, compared to arrays, linked lists, stacks
-// and queues which are linear data structures.
-// In linear data structures, the time required to search is proportional to the
-// size of the data set Trees however, owing to the nonlinear nature allow quicker
-// and easier access to the data
+// ===============================
+// * Tree Data Structure Overview
+// ===============================
+// A tree is a hierarchical, non-linear data structure comprising nodes connected by edges.
+// Unlike linear structures such as arrays, linked lists, stacks, and queues where search time
+// scales with dataset size, trees provide quicker and easier access to data due to their
+// non-linear nature.

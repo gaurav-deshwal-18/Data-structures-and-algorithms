@@ -1,3 +1,17 @@
+// ===============================
+// * Binary Search Queue
+// ===============================
+// A conceptual data structure combining aspects of a binary search with queue functionality.
+// This structure aims to incorporate the principles of a binary search algorithm into a queue,
+// potentially leveraging binary search properties for faster search and retrieval within a queue.
+
+// -------------------------------
+// * Implementation Considerations
+// -------------------------------
+// 1. Maintaining a sorted order within the queue.
+// 2. Utilizing binary search techniques for efficient element search and retrieval.
+// 3. Ensuring queue properties (FIFO) alongside binary search functionalities.
+
 class Node {
   constructor(value) {
     this.value = value;

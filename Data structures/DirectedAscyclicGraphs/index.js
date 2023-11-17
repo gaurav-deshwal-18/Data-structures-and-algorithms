@@ -1,13 +1,18 @@
-// A Directed Acyclic Graph (DAG) is a type of graph data structure where edges
-// between nodes have a specific direction and do not form any cycles.
-//  In other words, it's a graph with directed edges that never lead to a loop.
+// ========================
+//* Directed Acyclic Graph
+// ========================
+// A Directed Acyclic Graph (DAG) is a type of graph data structure
+// where edges between nodes have a specific direction and do not form any cycles.
+// It's a graph with directed edges that never lead to a loop.
 
-//* Directed Acyclic Graph (DAG):
-
-// A DAG is a collection of nodes connected by edges, where these connections only go one way and never form a cycle.
-//  Think of it like a flowchart for a task that shows the steps needed to complete it, but you can't go in circles
-//  or repeat steps. It's useful for representing dependencies or sequences where each step relies on the completion
-//  of some previous steps but doesn't create any loops.
+// -----------------------
+//* DAG Overview
+// -----------------------
+// A DAG is a collection of nodes connected by edges, where connections
+// only go one way and never form a cycle. Think of it like a flowchart
+// for a task that shows the steps needed to complete it without going
+// in circles or repeating steps. It's useful for representing dependencies
+// or sequences where each step relies on previous ones without creating loops.
 
 class DAGNode {
   constructor(value) {

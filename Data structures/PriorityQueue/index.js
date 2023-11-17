@@ -1,5 +1,22 @@
-// In programming, it's a data structure where each element has a priority.
-//  Elements with higher priority are handled or removed before those with lower priority.
+// ===============================
+//* Priority Queue Overview
+// ===============================
+// A priority queue is an abstract data type where elements are inserted with an associated priority,
+// and elements with higher priorities are served before elements with lower priorities.
+
+// -------------------------------
+//* Priority Queue Definition
+// -------------------------------
+// In computer science, a priority queue is a data structure that maintains a set of elements
+// along with their associated priorities. Elements with higher priorities are given precedence
+// over elements with lower priorities when served or processed.
+
+// -------------------------------
+//* Simple Explanation
+// -------------------------------
+// Imagine a priority queue like a line at an amusement park. Visitors (elements) enter the line
+// based on their ticket priority. Those with VIP tickets (higher priority) get to ride the attractions
+// before regular ticket holders (lower priority), regardless of their arrival order.
 
 class PriorityQueue {
   constructor() {

@@ -1,3 +1,24 @@
+// ===============================
+//* Hash Table Overview
+// ===============================
+// A hash table is a data structure that stores key-value pairs. It uses a hash function
+// to compute an index where an element can be stored or located quickly.
+
+// -------------------------------
+//* Hash Table Definition
+// -------------------------------
+// A hash table, also known as a hash map, is a data structure that organizes data using
+// hash functions. It maps keys to values by transforming keys into unique indices, allowing
+// efficient retrieval and storage of data.
+
+// -------------------------------
+//* Simple Explanation
+// -------------------------------
+// Imagine a hash table like a library index system. Books (data) are stored on shelves,
+// but instead of remembering the exact location of each book, you use the index (hash)
+// to quickly find where a specific book belongs. Similarly, a hash table uses keys to
+// compute unique indices, enabling rapid access to stored values based on their keys.
+
 class HashTable {
   constructor(size) {
     this.table = new Array(size);

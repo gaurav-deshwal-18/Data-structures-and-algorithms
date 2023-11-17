@@ -1,10 +1,22 @@
-// Set vs Array
+// ===============================
+// * Set vs Array Comparison
+// ===============================
+// Arrays and Sets differ in several aspects:
 
-// Arrays can contain duplicate values whereas Sets cannot
+// -------------------------------
+// * Duplicates
+// -------------------------------
+// Arrays allow duplicate values, whereas Sets automatically remove duplicates.
 
-// Insertion order is maintained in arrays but it is not the case with sets
+// -------------------------------
+// * Order
+// -------------------------------
+// Arrays maintain insertion order, whereas Sets do not guarantee any specific order.
 
-// Searching and deleting an element in the set is faster compared to arrays
+// -------------------------------
+// * Operations Efficiency
+// -------------------------------
+// Sets offer faster search and deletion operations compared to Arrays.
 
 const set = new Set([1, 2, 3]);
 set.add(4);

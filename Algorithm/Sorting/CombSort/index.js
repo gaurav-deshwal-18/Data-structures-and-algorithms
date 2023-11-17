@@ -1,9 +1,12 @@
-// CombSort  is a relatively efficient comparison-based sorting algorithm.
-// The time complexity of CombSort is as follows:
+// ===============================
+// * Comb Sort Algorithm
+// ===============================
+// - A relatively efficient comparison-based sorting algorithm.
 
-//     Best Case: O(n log n)
-//     Average Case: O(n^2)
-//     Worst Case: O(n^2)
+// Time Complexity:
+// - Best Case: O(n log n)
+// - Average Case: O(n^2)
+// - Worst Case: O(n^2)
 
 function combSort(arr) {
   const n = arr.length;

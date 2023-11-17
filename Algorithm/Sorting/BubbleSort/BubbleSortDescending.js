@@ -1,5 +1,3 @@
-//* Bubble Sort Descending - Worst Time complexity - Quadratic - O(n^2)
-
 const bubbleSort = (array) => {
   let swapped;
   do {

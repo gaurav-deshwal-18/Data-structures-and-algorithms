@@ -1,16 +1,26 @@
-// Circular Queue
-// The size of the queue is fixed and a single block of memory is used as if the first element is connected to the last element
-// Also referred to as circular buffer or ring buffer and follows the FIFO principle
-// A circular queue will reuse the empty block created during the dequeue operation When working with queues of fixed maximum size, a circular queue is a great implementation choice
-// The Circular Queue data structure supports two main operations
-// • Enqueue, which adds an element to the rear/tail of the collection
-// • Dequeue, which removes an element from the front/head of the collection
+// =========================
+//* Circular Queue Overview
+// =========================
+// Circular Queue, also known as a circular buffer or ring buffer, is a fixed-size
+// queue where a single block of memory behaves as if the first element is connected
+// to the last element. It adheres to the FIFO (First In, First Out) principle.
+//
+// It efficiently reuses empty blocks created during dequeue operations, making it
+// a favorable choice for working with queues of a fixed maximum size. This
+// implementation ensures optimal memory usage and effective management of elements.
+//
+// Two Primary Operations:
+// - Enqueue: Adds an element to the rear/tail of the collection.
+// - Dequeue: Removes an element from the front/head of the collection.
 
-// Applications
-
-// Clock
-// Traffic Lights
-// Streaming Data
+// ===============================
+//* Applications of Circular Queues
+// ===============================
+// Circular queues find applications in various real-world scenarios:
+// - Clock: Used in scheduling algorithms and simulations where time loops in a
+//   circular fashion.
+// - Traffic Lights: Managing the sequence and timing of lights at intersections efficiently.
+// - Streaming Data: Handling continuous data streams in circular buffers for efficient processing.
 
 class CircularQueue {
   constructor(capacity) {
@@ -68,7 +78,7 @@ class CircularQueue {
 
   print() {
     if (this.isEmpty()) {
-     } else {
+    } else {
       let i;
       let str = "";
       for (i = this.front; i !== this.rear; i = (i + 1) % this.capacity) {

@@ -1,20 +1,26 @@
-// Dijkstra's algorithm is used to find the shortest path from a starting node to all other
-// nodes in a graph with non-negative edge weights. It's like finding the shortest route on a
-// map where each road has a certain distance.
+// ===============================
+// * Dijkstra's Algorithm Overview
+// ===============================
+// Dijkstra's algorithm finds the shortest path from a starting node to all other nodes in a
+// graph with non-negative edge weights.
 
-// Here's a simplified explanation of Dijkstra's algorithm:
+// -------------------------------
+// * Algorithm Steps
+// -------------------------------
+// 1. Start at the Source Node:
+//    - Begin with the starting node, setting its distance from itself to 0.
+//    - Set distances of all other nodes to 'infinity' initially.
 
-//     Start at the Source Node: Begin with the starting node and set its distance from itself to 0.
-//     Set the distance of all other nodes to infinity (or a very large number) initially.
+// 2. Explore Neighbors:
+//    - Explore neighbors of the current node, updating their distances if a shorter path is found
+//     through the current node.
 
-//     Explore Neighbors: Explore the neighbors of the current node and update their distances if
-//     a shorter path is found through the current node.
+// 3. Choose the Closest Unvisited Node:
+//    - Among unvisited nodes, choose the one with the smallest distance and mark it as visited.
 
-//     Choose the Closest Unvisited Node: Among the unvisited nodes, choose the one with the smallest
-//     distance and mark it as visited.
-
-//     Repeat Until All Nodes are Visited: Keep repeating steps 2 and 3 until all nodes are visited or
-//     until you have found the shortest path to the desired nodes.
+// 4. Repeat Until All Nodes are Visited:
+//    - Repeat steps 2 and 3 until all nodes are visited or until the shortest path to desired
+//      nodes is found.
 
 function dijkstra(graph, start) {
   const numVertices = graph.length;

@@ -1,14 +1,19 @@
-//* Bubble Sort Ascending - Worst Time complexity - Quadratic - O(n^2)
-// Bubble Sort is a simple and inefficient sorting algorithm
-// with the following time complexity:
+// ===============================
+// * Bubble Sort (Ascending Order)
+// ===============================
+// - Worst Time Complexity: Quadratic - O(n^2)
 
-//     Best Case: O(n)
-//     Average Case: O(n^2)
-//     Worst Case: O(n^2)
+// Overview:
+// Bubble Sort is a simple yet inefficient sorting algorithm with varying time complexities:
 
-// The best-case time complexity occurs when the input data is already
-// sorted or nearly sorted, and Bubble Sort can detect that no
-// swaps are needed,resulting in a linear time complexity of O(n).
+// Time Complexities:
+// - Best Case: O(n) (when the input is already sorted)
+// - Average Case: O(n^2)
+// - Worst Case: O(n^2)
+
+// Details:
+// - Best-case time complexity occurs when input data is already sorted or nearly sorted.
+// - In such cases, Bubble Sort detects no swaps needed, resulting in linear time complexity (O(n)).
 
 const bubbleSort = (array) => {
   let swapped;

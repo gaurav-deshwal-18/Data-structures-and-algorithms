@@ -1,18 +1,27 @@
-//* Object vs Map
+// ===============================
+//* Object vs Map Comparison
+// ===============================
+// Objects and maps in JavaScript have distinct characteristics:
 
-// Objects are unordered whereas maps are ordered
+// -------------------------------
+//* Object Characteristics
+// -------------------------------
+// - Unordered: Objects lack a defined order for their properties.
+// - Key Restriction: Keys in objects are limited to strings or symbols.
+// - Prototype & Default Keys: Objects have a prototype and default keys that may conflict with user-defined keys.
+// - Non-Iterable: Objects are not inherently iterable.
+// - Manual Counting: The item count in an object requires manual calculation.
+// - Functionality Extension: Objects support attaching functionality along with storing data.
 
-// Keys in objects can only be string or symbol type whereas in maps, they can be of any type
-
-// An object has a prototype and may contain a few default keys which may collide with your own keys
-// if you're not careful. A map on the other hand does not contain any keys by default
-
-// Objects are not iterables where as maps are iterables
-
-// The number of items in an object must be determined manually where as it is readily available with
-// the size property in a map
-
-// Apart from storing data, you can attach functionality to an object whereas maps are restricted to just storing data
+// -------------------------------
+//* Map Characteristics
+// -------------------------------
+// - Ordered: Maps maintain insertion order for their entries.
+// - Key Variety: Maps accept keys of any data type.
+// - No Default Keys: Maps don't contain predefined keys.
+// - Iterable: Maps are iterable data structures.
+// - Size Property: Maps have a 'size' property providing the number of entries.
+// - Data Storage: Maps are primarily used for data storage, lacking support for added functionality.
 
 const map = new Map([
   ["john", 20],

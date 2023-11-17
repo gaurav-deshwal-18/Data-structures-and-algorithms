@@ -1,15 +1,19 @@
-//Binary Search - Binary search works on sorted array , if array is not sorted ,sort it first.
+// ===============================
+// * Binary Search
+// ===============================
+// Binary search operates on sorted arrays; if unsorted, sorting is required first.
+
+// -------------------------------------
+// Solution - Time Complexity: O(log(n))
+// -------------------------------------
+// STEPS:
+// - If the array is empty, return -1 (element not found).
+// - Find the middle element in the array.
+// - If the target matches the middle element, return its index.
+// - If the target is less than the middle element, binary search the left half.
+// - If the target is greater than the middle element, binary search the right half.
 
 const arr = [-5, 2, 4, 6, 10];
-
-//Solution one --- O(log(n))
-
-//STEPS
-// If the array is empty, return -1 as the element cannot be found.
-// If the array has elements, find the middle element in the array.
-//If target is equal to the middle element, return the middle element index.
-// If target is less than the middle element, binary search left half of the array.
-// If target is greater than middle element, binary search right half of the array.
 
 const binarySearch = (arr, target) => {
   let targetArray = [...arr];

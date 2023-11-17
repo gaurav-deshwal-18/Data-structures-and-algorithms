@@ -1,20 +1,26 @@
-// Floyd's algorithm is used to find the shortest paths between all pairs of vertices in a weighted graph.
-// It calculates the shortest distances between every pair of vertices in the graph.
+// ===============================
+// * Floyd's Algorithm Overview
+// ===============================
+// Floyd's algorithm computes the shortest paths between all pairs of vertices in a weighted
+// graph.
 
-// Here's a simplified explanation of Floyd's algorithm:
+// -------------------------------
+// * Algorithm Steps
+// -------------------------------
+// 1. Initialize the Distance Matrix:
+//    - Create a matrix representing shortest distances between vertices.
+//    - Set direct edge weights between connected vertices and 'infinity' for unconnected vertices.
 
-//     Initialize the Distance Matrix: Start by initializing a matrix that represents the shortest distances between every
-//     pair of vertices. Initially, the matrix contains direct
-//     edge weights between vertices, and for vertices that are not directly connected, the distance is set to infinity.
+// 2. Iterate Through Vertices:
+//    - Consider each vertex as an intermediate point to improve existing shortest paths.
 
-//     Iterate Through Vertices: Consider each vertex as an intermediate vertex and try to improve the shortest path
-//     between every pair of vertices using this intermediate vertex.
+// 3. Update the Distance Matrix:
+//    - Check if going through an intermediate vertex shortens the path between pairs.
+//    - Update the shortest distance accordingly.
 
-//     Update the Distance Matrix: For every pair of vertices i and j, check if going through an intermediate vertex
-//      k shortens the path between i and j. If it does, update the shortest distance between i and j through vertex k.
-
-//     Repeat Until All Paths are Checked: Keep iterating and updating the matrix until all vertices are considered
-//     as intermediate vertices, ensuring that you've found the shortest paths between all pairs of vertices.
+// 4. Repeat Until Paths Are Checked:
+//    - Iterate and update until all vertices are considered as intermediates.
+//    - Ensure shortest paths between all vertex pairs are found.
 
 function floydWarshall(graph) {
   const numVertices = graph.length;

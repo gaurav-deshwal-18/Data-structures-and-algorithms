@@ -1,11 +1,14 @@
+// ===============================
+// * Linear Search
+// ===============================
+// Solution - Time Complexity: O(n)
+
+// Steps:
+// - Loop through the array.
+// - If the target is found, return its index.
+// - If the entire array is looped and the element is not found, return -1.
+
 const arr = [-5, 2, 10, 4, 6];
-
-//Solution one --- O(n)
-
-//Loop through array
-// If target found return index
-// Else continue
-// if entire array is looped and element not found then return -1
 
 const linearSearch = (arr, target) => {
   const targetArray = [...arr];

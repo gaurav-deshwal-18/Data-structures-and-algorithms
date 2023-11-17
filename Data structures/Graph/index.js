@@ -1,3 +1,25 @@
+// ===============================
+//* Graph Overview
+// ===============================
+// A graph is a non-linear data structure consisting of a set of nodes (vertices)
+// and connections between them (edges). It's a versatile model used to represent
+// relationships between various entities.
+
+// -------------------------------
+//* Graph Definition
+// -------------------------------
+// In computer science, a graph is a collection of nodes (vertices) interconnected by
+// edges. Nodes represent entities, and edges depict relationships or connections
+// between these entities.
+
+// -------------------------------
+//* Simple Explanation
+// -------------------------------
+// Think of a graph as a network of cities connected by roads. The cities are nodes,
+// and roads between them are edges. It's like a map where cities are points, and roads
+// show how these points are linked. Graphs are used to model real-world networks,
+// relationships, social connections, and much more.
+
 class Graph {
   constructor() {
     this.adjacencyList = {};

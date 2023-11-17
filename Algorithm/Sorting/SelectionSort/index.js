@@ -1,7 +1,20 @@
-//* Selection Sort Ascending - Worst Time complexity -
-//* Worst Time complexity  - O(n^2) - if array is already sorted.
-//* Average Time complexity O(n^2) - if array is not sorted.
-//* Best Time complexity O(n^2) - if array is not sorted.
+// ===============================
+// * Selection Sort (Ascending Order)
+// ===============================
+// - Worst Time Complexity: O(n^2) [If array is already sorted]
+// - Average Time Complexity: O(n^2) [If array is not sorted]
+// - Best Time Complexity: O(n^2) [If array is not sorted]
+
+// Overview:
+// Selection Sort is a simple comparison-based sorting algorithm known for its simplicity but relatively inefficient performance on larger datasets.
+
+// Details:
+// - Worst Time Complexity: O(n^2) occurs when the array is already sorted,
+//   as it continues to perform unnecessary swaps.
+// - Average Time Complexity: O(n^2) showcases the algorithm's inefficiency in sorting
+//    unsorted arrays due to its basic selection approach.
+// - Best Time Complexity: O(n^2) occurs when the array is unsorted, yet the algorithm
+//   still performs multiple comparisons and swaps.
 
 function selectionSort(arr) {
   const n = arr.length;

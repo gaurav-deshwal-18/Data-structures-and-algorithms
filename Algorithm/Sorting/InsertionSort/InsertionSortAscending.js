@@ -1,15 +1,20 @@
-//* Insertion Sort Ascending - Worst Time complexity - O(n^2)
-// Insertion Sort is a simple and straightforward sorting algorithm
-// that works well for small datasets but becomes less efficient for
-// larger ones. Its time complexity is as follows:
+// ===============================
+// * Insertion Sort (Ascending Order)
+// ===============================
+// - Worst Time Complexity: O(n^2)
 
-//     Best Case: O(n)
-//     Average Case: O(n^2)
-//     Worst Case: O(n^2)
+// Overview:
+// Insertion Sort is a simple yet less efficient sorting algorithm suitable for small datasets
+//  but less so for larger ones.
 
-// Insertion Sort performs quite well when the input data is nearly sorted,
-// making the best-case time complexity linear (O(n)). In this case,
-// it only needs to make a few comparisons and shifts to sort the data.
+// Time Complexities:
+// - Best Case: O(n)
+// - Average Case: O(n^2)
+// - Worst Case: O(n^2)
+
+// Details:
+// - Performs well for nearly sorted input data, resulting in a linear best-case time complexity (O(n)).
+// - Requires few comparisons and shifts to sort nearly sorted data efficiently.
 
 const insertionSort = (array) => {
   for (let i = 1; i < array.length; i++) {

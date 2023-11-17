@@ -1,19 +1,29 @@
-// Prim's algorithm is another approach to find the minimum spanning tree (MST)
-// in a connected, weighted graph. Similar to Kruskal's algorithm, Prim's algorithm
-// constructs an MST but operates differently.
+// ===============================
+// * Prim's Algorithm Overview
+// ===============================
+// Prim's algorithm finds the minimum spanning tree (MST) in a connected, weighted graph,
+// employing a different approach than Kruskal's algorithm.
 
-// Here's a simple explanation of Prim's algorithm:
+// -------------------------------
+// * Algorithm Steps
+// -------------------------------
+// 1. Start with a Random Node:
+//    - Begin with an arbitrary node as the starting point for the MST.
 
-// Start with a Random Node: Begin with an arbitrary node as the starting point for the MST.
+// 2. Grow the MST:
+//    - Add the nearest edge from the included vertices to expand the MST.
 
-// Grow the MST: Grow the MST by adding the nearest edge from the already included vertices to the rest of the graph.
+// 3. Select the Smallest Edge:
+//    - Continuously choose the smallest edge connecting the MST to vertices outside it.
 
-// Select the Smallest Edge: Continuously choose the smallest edge that connects a vertex in the MST to a vertex outside the MST.
+// 4. Repeat until MST is Formed:
+//    - Keep adding edges until all vertices are included in the MST.
 
-// Repeat until MST is Formed: Keep adding edges until all vertices are included in the MST.
-
-// The core idea is to grow the MST from an initial vertex by always selecting the smallest edge that connects the existing
-//  MST to a new vertex.
+// -------------------------------
+// * Core Idea
+// -------------------------------
+// Grow the MST from an initial vertex by always selecting the smallest edge connecting the
+// existing MST to a new vertex.
 
 function primsMST(graph) {
   const numVertices = graph.length;

@@ -1,5 +1,3 @@
-//* Merge Sort Descending - Worst Time complexity -
-
 function mergesort(arr) {
   if (arr.length < 2) {
     return arr;

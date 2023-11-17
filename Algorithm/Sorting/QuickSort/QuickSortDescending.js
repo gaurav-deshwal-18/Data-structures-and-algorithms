@@ -1,7 +1,3 @@
-//* Quick Sort Descending -
-//* Worst Time complexity  - O(n^2) - if array is already sorted.
-//* Average Time complexity O(n log(n)) - if array is not sorted.
-
 const quickSort = (array) => {
   const length = array.length;
 

@@ -1,15 +1,17 @@
-// AVL trees are self-balancing binary search trees named after their inventors,
-// Adelson-Velsky and Landis.
-// They maintain a balance criterion to ensure that the tree remains relatively
-// balanced after insertions or deletions, aiming to guarantee efficient
-// search, insertion, and deletion operations.
+// ===============================
+//* AVL Tree Overview
+// ===============================
+// AVL trees, named after their inventors Adelson-Velsky and Landis, are self-balancing
+// binary search trees. They prioritize maintaining relative balance after insertions
+// or deletions, ensuring efficient search, insertion, and deletion operations.
 
-//* AVL Trees:
-
-// An AVL tree is another kind of balanced binary search tree. It ensures that the difference in heights
-// of the left and right subtrees of any node is not more than one. It's like a tree that automatically
-// adjusts itself to keep a balance, much like a seesaw trying to maintain equilibrium.
-// Whenever you add or remove an element, the tree rearranges itself to keep things in balance.
+// -------------------------------
+//* AVL Tree Characteristics
+// -------------------------------
+// An AVL tree is a type of balanced binary search tree where the difference in heights
+// of left and right subtrees for any node is at most one. This self-adjusting structure
+// resembles a seesaw aiming to sustain equilibrium, ensuring consistent balance
+// throughout the tree.
 
 class Node {
   constructor(value) {

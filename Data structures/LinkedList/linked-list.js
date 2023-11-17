@@ -1,3 +1,23 @@
+// ===============================
+//* Linked List Overview
+// ===============================
+// A linked list is a linear data structure where elements are stored in nodes,
+// each containing a value and a reference (pointer) to the next node.
+
+// -------------------------------
+//* Linked List Definition
+// -------------------------------
+// In computer science, a linked list is a collection of nodes, where each node
+// holds a value and a reference (pointer) to the next node in the sequence.
+// The last node typically points to null, indicating the end of the list.
+
+// -------------------------------
+//* Simple Explanation
+// -------------------------------
+// Picture a linked list like a chain of connected beads. Each bead (node) holds a value
+// and points to the next bead in the chain. The first bead (head) starts the sequence,
+// and the last bead's pointer is null, marking the end of the chain.
+
 class Node {
   constructor(value) {
     this.value = value;
@@ -96,7 +116,7 @@ class LinkedList {
         prev = prev.next;
       }
       if (prev.next) {
-       let removedNode = prev.next;
+        let removedNode = prev.next;
         prev.next = removedNode.next;
         this.size--;
         return value;

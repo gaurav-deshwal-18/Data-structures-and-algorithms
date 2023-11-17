@@ -1,38 +1,24 @@
-// Tree-Like Structure: Tries are a tree-like data structure used for
-// storing and retrieving a set of strings. Each node represents a single character.
+// ===============================
+// * Tries (Prefix Trees)
+// ===============================
+// Tries, also known as Prefix Trees, are tree-like data structures used for storing
+// and retrieving strings efficiently. They excel at handling dictionaries, search
+// engines, and autocomplete systems.
 
-// Character-Based Nodes: Nodes in a Trie represent characters.
-// Starting from the root node, each subsequent node corresponds to a character in a
-// string.
+// -------------------------------
+// * Definition
+// -------------------------------
+// A Trie is a tree-like structure made of nodes that represent characters.
+// Each path from the root to a node represents a sequence of characters.
+// It's commonly used to store and search for strings by their prefixes.
 
-// Path to Words: Traversing from the root to a specific node forms a path.
-// This path represents a sequence of characters that forms a word in the Trie.
-
-// Efficient for Prefix Searches: Tries excel at prefix-based operations.
-// They efficiently determine if a given sequence of characters forms the prefix
-// of any stored word.
-
-// Space Complexity: Tries can be memory-intensive, especially if there are
-// many nodes with only a few children. However, they offer quick search, insertion,
-// and deletion operations
-// for strings.
-
-// Fast Lookup: Searching for a word in a Trie typically takes time proportional
-//to the length of the word, making it faster compared to some other data
-//structures for string-related operations.
-
-// Use Cases: Tries are handy in scenarios like autocomplete features, spell
-// checkers, and dictionary implementations, where efficient word lookup
-// and prefix-based searches are required.
-
-//* Tries:
-
-// Tries are like a tree where each node represents a single character of a word.
-// They are commonly used for handling and storing words or strings. Picture a
-// family tree where each level represents a letter, and as you traverse down
-// the tree, you spell out a word. Tries are efficient for tasks
-// like searching for words that start with a certain prefix, similar to
-// looking up a word in a dictionary.
+// -------------------------------
+// * Simple Explanation
+// -------------------------------
+// Imagine a Trie like an organized directory structure. Each level represents
+// a character, and complete words are formed by traversing paths from the root
+// to specific nodes. This structure allows for quick lookup and retrieval of words
+// based on their prefixes.
 
 class TrieNode {
   constructor() {

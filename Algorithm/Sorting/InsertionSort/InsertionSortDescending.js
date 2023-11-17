@@ -1,5 +1,3 @@
-//* Insertion Sort Descending - Worst Time complexity - O(n^2)
-
 const insertionSort = (array) => {
   for (let i = 1; i < array.length; i++) {
     let numberToInsert = array[i];

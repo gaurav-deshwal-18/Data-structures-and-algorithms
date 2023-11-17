@@ -1,3 +1,25 @@
+// ===============================
+//* Doubly Linked List Overview
+// ===============================
+// A doubly linked list is a linear data structure consisting of nodes where each node
+// contains a value and references (pointers) to both the next and previous nodes.
+
+// -------------------------------
+//* Doubly Linked List Definition
+// -------------------------------
+// In computer science, a doubly linked list is a collection of nodes, where each node
+// holds a value and contains references (pointers) to both the next and previous nodes.
+// Unlike a singly linked list, a doubly linked list allows traversal in both forward
+// and backward directions.
+
+// -------------------------------
+//* Simple Explanation
+// -------------------------------
+// Think of a doubly linked list like a train where each carriage (node) has a door at
+// both ends. Passengers (values) are inside the carriages, and each carriage is connected
+// to the one before and after it. This bidirectional connection allows movement forward
+// and backward along the train, unlike a single-track railway (singly linked list).
+
 class Node {
   constructor(value) {
     this.value = value;

@@ -1,18 +1,26 @@
-// Red-Black Trees are a type of self-balancing binary search tree,
-//  where nodes have an extra attribute, typically called "color," that helps
-//  maintain the tree's balance by following certain rules. They ensure that the
-//  tree remains approximately balanced, providing efficient insertion, deletion,
-//  and search operations.
+// ===============================
+// * Red-Black Trees Overview
+// ===============================
+// Red-Black Trees are self-balancing binary search trees. Nodes in this structure
+// possess an extra attribute, often termed "color," maintaining balance through
+// specific rules. They ensure the tree remains approximately balanced, enabling
+// efficient insertion, deletion, and search operations.
 
-//* Red-Black Trees:
+// -------------------------------
+// * Red-Black Trees Details
+// -------------------------------
+// Red-Black Trees act as specialized binary search trees designed for balance.
+// Each node is marked red or black, adhering to rules that preserve balance during
+// insertion and deletion. These rules guarantee that the longest root-to-leaf path
+// is at most twice the length of the shortest path—a mechanism akin to arranging
+// books on a shelf to maintain overall balance.
 
-// Think of a red-black tree like a special type of binary search tree that's designed to stay balanced.
-// Each node in this tree is colored either red or black, and it follows some rules that help keep the tree
-// balanced during insertion and deletion operations. These rules ensure that the longest path from the root
-// to a leaf is not more than twice the length of the shortest path.
-// It's like arranging books on a shelf in a way that ensures the shelf stays balanced and not too lopsided.
+// ===============================
+// Node Class for Red-Black Trees
+// ===============================
+// Define the node class responsible for representing individual nodes within
+// the Red-Black Tree structure.
 
-// Node class representing a node in the Red-Black Tree
 class Node {
   constructor(value, color) {
     this.value = value;
