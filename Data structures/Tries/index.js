@@ -114,6 +114,22 @@ class Trie {
     }
     return true;
   }
+
+  commonPrefix() {
+    let node = this.root;
+    let result = "";
+    let hasEnded = false;
+    while (!hasEnded) {
+      if (node.children.size === 1 && !node.isEndOfWord) {
+        const char = [...node.children.keys()][0];
+        result += char;
+        node = node.children.get(char);
+      } else {
+        hasEnded = true;
+      }
+    }
+    return result;
+  }
 }
 
 const trie = new Trie();
@@ -123,3 +139,4 @@ console.log(trie.search("apple")); // Output: true
 console.log(trie.search("app")); // Output: true
 console.log(trie.search("ap")); // Output: false
 console.log(trie.startsWith("ap")); // Output: true
+console.log(trie.commonPrefix());

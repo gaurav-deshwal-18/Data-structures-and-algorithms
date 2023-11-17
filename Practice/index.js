@@ -46,6 +46,39 @@ class Trie {
     return true;
   }
 
+  delete(word) {
+    this._deleteHelper(this.root, word, 0);
+  }
+
+  _deleteHelper(current, word, index) {
+    if (index === word.length) {
+      if (current.isLastChild) {
+        current.isLastChild = false;
+      }
+
+      return current.childCount === 0;
+    }
+    let char = word[index];
+
+    if (!current.children[char]) {
+      return false;
+    }
+
+    let shouldDeleteNode = this._deleteHelper(
+      current.children[char],
+      word,
+      index + 1
+    );
+
+    if (shouldDeleteNode) {
+      delete current.children[char];
+      current.childCount--;
+      return current.childCount === 0;
+    }
+
+    return false;
+  }
+
   commonPrefix() {
     let current = this.root;
     let result = "";
