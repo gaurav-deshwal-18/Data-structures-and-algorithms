@@ -116,7 +116,6 @@ class Trie {
   }
 }
 
-// Example Usage:
 const trie = new Trie();
 trie.insert("apple");
 trie.insert("app");
