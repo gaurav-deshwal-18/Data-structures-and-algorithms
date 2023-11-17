@@ -1,75 +1,73 @@
-class Graph {
+class TrieNode {
   constructor() {
-    this.adjacencyList = {};
-  }
-
-  addVertex(vertex) {
-    if (!this.adjacencyList[vertex]) {
-      this.adjacencyList[vertex] = new Set();
-    }
-  }
-
-  addEdge(vertex1, vertex2) {
-    if (!this.adjacencyList[vertex1]) {
-      this.addVertex[vertex1];
-    }
-
-    if (!this.adjacencyList[vertex2]) {
-      this.addVertex[vertex2];
-    }
-
-    this.adjacencyList[vertex1].add(vertex2);
-    this.adjacencyList[vertex2].add(vertex1);
-  }
-
-  removeEdge(vertex1, vertex2) {
-    this.adjacencyList[vertex1].delete(vertex2);
-    this.adjacencyList[vertex2].delete(vertex1);
-  }
-
-  removeVertex(vertex) {
-    if (!this.adjacencyList[vertex]) {
-      return;
-    }
-    for (let adjacentVertex of this.adjacencyList[vertex]) {
-      this.removeEdge(vertex, adjacentVertex);
-    }
-    delete this.adjacencyList[vertex];
-  }
-
-  hasEdge(vertex1, vertex2) {
-    return (
-      this.adjacencyList[vertex1].has(vertex2) &&
-      this.adjacencyList[vertex2].has(vertex1)
-    );
-  }
-
-  display() {
-    for (let vertex in this.adjacencyList) {
-      console.log(vertex + "---->" + [...this.adjacencyList[vertex]]);
-    }
+    this.children = {};
+    this.isLastChild = false;
+    this.childCount = 0;
   }
 }
 
-const graph = new Graph();
+class Trie {
+  constructor() {
+    this.root = new TrieNode();
+  }
 
-graph.addVertex("A");
-graph.addVertex("B");
-graph.addVertex("C");
+  insert(word) {
+    let current = this.root;
 
-graph.addEdge("A", "B");
-graph.addEdge("B", "C");
+    for (let char of word) {
+      if (!current.children[char]) {
+        current.children[char] = new TrieNode();
+        current.childCount++;
+      }
+      current = current.children[char];
+    }
+    current.isLastChild = true;
+  }
 
-graph.display();
-console.log("------------------");
+  search(word) {
+    let current = this.root;
+    for (let char of word) {
+      if (!current.children[char]) {
+        return false;
+      }
+      current = current.children[char];
+    }
+    return current.isLastChild;
+  }
 
-console.log(graph.hasEdge("A", "C"));
-console.log(graph.hasEdge("B", "C"));
-graph.removeEdge("A", "B");
-graph.display();
-console.log("------------------");
-graph.addEdge("A", "B");
-graph.display();
-console.log("------------------");
-graph.removeVertex("A");
-graph.display();
+  startsWith(word) {
+    let current = this.root;
+    for (let char of word) {
+      if (!current.children[char]) {
+        return false;
+      }
+      current = current.children[char];
+    }
+    return true;
+  }
+
+  commonPrefix() {
+    let current = this.root;
+    let result = "";
+    let hasEnded = false;
+    while (!hasEnded) {
+      if (current.childCount === 1 && !current.isLastChild) {
+        const char = Object.keys(current.children)[0];
+        result += char;
+        current = current.children[char];
+      } else {
+        hasEnded = true;
+      }
+    }
+    return result;
+  }
+}
+
+const trie = new Trie();
+
+trie.insert("lover");
+trie.insert("love");
+trie.insert("loving");
+
+console.log(trie.startsWith("max"));
+console.log(trie.commonPrefix());

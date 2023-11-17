@@ -28,13 +28,15 @@
 //* Tries:
 
 // Tries are like a tree where each node represents a single character of a word.
-// They are commonly used for handling and storing words or strings. Picture a family tree where each level
-//  represents a letter, and as you traverse down the tree, you spell out a word. Tries are efficient for tasks
-//  like searching for words that start with a certain prefix, similar to looking up a word in a dictionary.
+// They are commonly used for handling and storing words or strings. Picture a
+// family tree where each level represents a letter, and as you traverse down
+// the tree, you spell out a word. Tries are efficient for tasks
+// like searching for words that start with a certain prefix, similar to
+// looking up a word in a dictionary.
 
 class TrieNode {
   constructor() {
-    this.children = {}; // A mapping of characters to TrieNodes
+    this.children = new Map(); // A map of characters to TrieNodes
     this.isEndOfWord = false; // Indicates if the node represents the end of a word
   }
 }
@@ -47,48 +49,69 @@ class Trie {
   // Insert a word into the Trie
   insert(word) {
     let node = this.root;
-    // Traverse each character in the word
-    for (let char of word) {
-      // If the character doesn't exist in the Trie, create a new node
-      if (!node.children[char]) {
-        node.children[char] = new TrieNode();
+    for (const char of word) {
+      if (!node.children.has(char)) {
+        node.children.set(char, new TrieNode());
       }
-      // Move to the next node
-      node = node.children[char];
+      node = node.children.get(char);
     }
-    // Mark the end of the word by setting isEndOfWord to true
     node.isEndOfWord = true;
   }
 
   // Search for a word in the Trie
   search(word) {
     let node = this.root;
-    // Traverse each character in the word
-    for (let char of word) {
-      // If the character doesn't exist in the Trie, the word is not present
-      if (!node.children[char]) {
+    for (const char of word) {
+      if (!node.children.has(char)) {
         return false;
       }
-      // Move to the next node
-      node = node.children[char];
+      node = node.children.get(char);
     }
-    // Return true if the last node represents the end of the word
     return node.isEndOfWord;
+  }
+
+  // Delete a word from the Trie
+  delete(word) {
+    this._deleteHelper(this.root, word, 0);
+  }
+
+  _deleteHelper(current, word, index) {
+    if (index === word.length) {
+      if (current.isEndOfWord) {
+        current.isEndOfWord = false;
+      }
+      return current.children.size === 0;
+    }
+
+    const char = word[index];
+    if (!current.children.has(char)) {
+      return false;
+    }
+
+    const nextNode = current.children.get(char);
+    const shouldDeleteCurrentNode = this._deleteHelper(
+      nextNode,
+      word,
+      index + 1
+    );
+
+    if (shouldDeleteCurrentNode) {
+      current.children.delete(char);
+      return current.children.size === 0;
+    }
+
+    return false;
   }
 
   // Check if the Trie contains words with a given prefix
   startsWith(prefix) {
     let node = this.root;
-    // Traverse each character in the prefix
-    for (let char of prefix) {
-      // If the character doesn't exist in the Trie, the prefix is not present
-      if (!node.children[char]) {
+    for (const char of prefix) {
+      if (!node.children.has(char)) {
         return false;
       }
-      // Move to the next node
-      node = node.children[char];
+      node = node.children.get(char);
     }
-    // Return true since the Trie contains words with the given prefix
     return true;
   }
 }
