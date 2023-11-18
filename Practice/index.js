@@ -1,8 +1,7 @@
 class TrieNode {
   constructor() {
-    this.children = {};
-    this.isLastChild = false;
-    this.childCount = 0;
+    this.children = new Map();
+    this.isEndOfWord = false;
   }
 }
 
@@ -12,82 +11,47 @@ class Trie {
   }
 
   insert(word) {
-    let current = this.root;
-
+    let currentNode = this.root;
     for (let char of word) {
-      if (!current.children[char]) {
-        current.children[char] = new TrieNode();
-        current.childCount++;
+      if (!currentNode.children.has(char)) {
+        currentNode.children.set(char, new TrieNode());
       }
-      current = current.children[char];
+      currentNode = currentNode.children.get(char);
     }
-    current.isLastChild = true;
+    currentNode.isEndOfWord = true;
   }
 
   search(word) {
-    let current = this.root;
+    let currentNode = this.root;
     for (let char of word) {
-      if (!current.children[char]) {
+      if (!currentNode.children.has(char)) {
         return false;
       }
-      current = current.children[char];
+      currentNode = currentNode.children.get(char);
     }
-    return current.isLastChild;
+    return currentNode.isEndOfWord;
   }
 
-  startsWith(word) {
-    let current = this.root;
-    for (let char of word) {
-      if (!current.children[char]) {
+  startsWith(prefix) {
+    let currentNode = this.root;
+    for (let char of prefix) {
+      if (!currentNode.children.has(char)) {
         return false;
       }
-      current = current.children[char];
+      currentNode = currentNode.children.get(char);
     }
     return true;
   }
 
-  delete(word) {
-    this._deleteHelper(this.root, word, 0);
-  }
-
-  _deleteHelper(current, word, index) {
-    if (index === word.length) {
-      if (current.isLastChild) {
-        current.isLastChild = false;
-      }
-
-      return current.childCount === 0;
-    }
-    let char = word[index];
-
-    if (!current.children[char]) {
-      return false;
-    }
-
-    let shouldDeleteNode = this._deleteHelper(
-      current.children[char],
-      word,
-      index + 1
-    );
-
-    if (shouldDeleteNode) {
-      delete current.children[char];
-      current.childCount--;
-      return current.childCount === 0;
-    }
-
-    return false;
-  }
-
   commonPrefix() {
-    let current = this.root;
+    let node = this.root;
     let result = "";
     let hasEnded = false;
     while (!hasEnded) {
-      if (current.childCount === 1 && !current.isLastChild) {
-        const char = Object.keys(current.children)[0];
+      if (node.children.size === 1 && !node.isEndOfWord) {
+        const char = [...node.children.keys()][0];
         result += char;
-        current = current.children[char];
+        node = node.children.get(char);
       } else {
         hasEnded = true;
       }
@@ -95,12 +59,13 @@ class Trie {
     return result;
   }
 }
-
 const trie = new Trie();
+trie.insert("apple");
+trie.insert("app");
+trie.insert("egg");
 
-trie.insert("lover");
-trie.insert("love");
-trie.insert("loving");
-
-console.log(trie.startsWith("max"));
+console.log(trie.search("apple")); // Output: true
+console.log(trie.search("app")); // Output: true
+console.log(trie.search("ap")); // Output: false
+console.log(trie.startsWith("ap")); // Output: true
 console.log(trie.commonPrefix());
