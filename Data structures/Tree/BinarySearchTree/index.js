@@ -11,6 +11,8 @@
 // 1. Maintaining a sorted order within the queue.
 // 2. Utilizing binary search techniques for efficient element search and retrieval.
 // 3. Ensuring queue properties (FIFO) alongside binary search functionalities.
+// 4. File Systems
+// 5. Databases and Indexing
 
 class Node {
   constructor(value) {

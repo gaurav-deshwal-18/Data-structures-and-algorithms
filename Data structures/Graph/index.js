@@ -20,6 +20,10 @@
 // show how these points are linked. Graphs are used to model real-world networks,
 // relationships, social connections, and much more.
 
+//* Implementation
+//  1. Navigation Systems (Maps)
+//  2. Social Network Analysis
+
 class Graph {
   constructor() {
     this.adjacencyList = {};

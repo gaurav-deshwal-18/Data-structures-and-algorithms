@@ -91,14 +91,41 @@ class Trie {
     }
     return result;
   }
+
+  searchWords(prefix) {
+    let node = this.root;
+    for (let char of prefix) {
+      if (!node.children[char]) {
+        return [];
+      }
+      node = node.children[char];
+    }
+    return this.getAllWords(node, prefix);
+  }
+
+  getAllWords(node, prefix) {
+    let result = [];
+    if (node.isEndOfWord) {
+      result.push(prefix);
+    }
+    for (let char in node.children) {
+      result = result.concat(
+        this.getAllWords(node.children[char], prefix + char)
+      );
+    }
+    return result;
+  }
 }
 
 // Example Usage:
 const trie = new Trie();
 trie.insert("apple");
 trie.insert("app");
+trie.insert("application");
+
 console.log(trie.search("apple")); // Output: true
 console.log(trie.search("app")); // Output: true
 console.log(trie.search("ap")); // Output: false
 console.log(trie.startsWith("ap")); // Output: true
 console.log(trie.commonPrefix());
+// console.log(trie.searchWords("app"));

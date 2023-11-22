@@ -20,59 +20,66 @@
 
 class PriorityQueue {
   constructor() {
-    this.queue = [];
+    this.queue = {};
   }
 
-  enqueue(item, priority) {
-    const queueElement = { item, priority };
-    let added = false;
-
-    for (let i = 0; i < this.queue.length; i++) {
-      if (this.queue[i].priority > priority) {
-        this.queue.splice(i, 0, queueElement);
-        added = true;
-        break;
-      }
+  enqueue(element, priority) {
+    if (!this.queue[priority]) {
+      this.queue[priority] = [];
     }
-
-    if (!added) {
-      this.queue.push(queueElement);
-    }
+    this.queue[priority].push(element);
   }
 
   dequeue() {
-    return this.queue.shift();
-  }
+    const priorities = Object.keys(this.queue);
+    if (priorities.length === 0) {
+      return null;
+    }
 
-  front() {
-    return this.queue[0];
+    const highestPriority = Math.min(...priorities);
+    const removedElement = this.queue[highestPriority].shift();
+
+    if (this.queue[highestPriority].length === 0) {
+      delete this.queue[highestPriority];
+    }
+
+    return removedElement;
   }
 
   isEmpty() {
-    return this.queue.length === 0;
+    return Object.keys(this.queue).length === 0;
+  }
+
+  peek() {
+    if (this.isEmpty()) {
+      return null;
+    }
+
+    const priorities = Object.keys(this.queue);
+    const highestPriority = Math.min(...priorities);
+
+    return this.queue[highestPriority][0];
   }
 
   print() {
-    console.log(
-      this.queue.map((item) => `${item.item} - ${item.priority}`).join("\n")
-    );
+    const priorities = Object.keys(this.queue).sort((a, b) => a - b);
+    for (const priority of priorities) {
+      console.log(`Priority ${priority}: ${this.queue[priority].join(", ")}`);
+    }
   }
 }
 
 // Example usage:
 const priorityQueue = new PriorityQueue();
+
 priorityQueue.enqueue("Task 1", 2);
+priorityQueue.enqueue("Task 4", 1);
+
 priorityQueue.enqueue("Task 2", 1);
 priorityQueue.enqueue("Task 3", 3);
 
 priorityQueue.print();
 // Output:
-// Task 2 - 1
-// Task 1 - 2
-// Task 3 - 3
-
-priorityQueue.dequeue();
-priorityQueue.print();
-// Output after dequeuing:
-// Task 1 - 2
-// Task 3 - 3
+// Priority 1: Task 2
+// Priority 2: Task 1
+// Priority 3: Task 3

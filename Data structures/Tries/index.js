@@ -20,6 +20,10 @@
 // to specific nodes. This structure allows for quick lookup and retrieval of words
 // based on their prefixes.
 
+//* Implementation
+// 1. Dictionary and Spell Checkers
+// 2. Auto-Completion and Search Engines
+
 class TrieNode {
   constructor() {
     this.children = new Map(); // A map of characters to TrieNodes
@@ -121,6 +125,7 @@ class Trie {
 const trie = new Trie();
 trie.insert("apple");
 trie.insert("app");
+
 console.log(trie.search("apple")); // Output: true
 console.log(trie.search("app")); // Output: true
 console.log(trie.search("ap")); // Output: false
