@@ -18,6 +18,15 @@
 // based on their ticket priority. Those with VIP tickets (higher priority) get to ride the attractions
 // before regular ticket holders (lower priority), regardless of their arrival order.
 
+//* Application
+
+//Operating Systems: Priority queues are used in scheduling processes.
+// For instance, in a multi-tasking environment,
+// the CPU might execute processes based on their priority levels.
+
+// Job Scheduling: In systems where jobs or tasks are assigned priorities,
+// priority queues are used to manage the order of execution.
+
 class PriorityQueue {
   constructor() {
     this.queue = {};
