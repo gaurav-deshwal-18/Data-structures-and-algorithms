@@ -78,6 +78,7 @@ class CircularQueue {
 
   print() {
     if (this.isEmpty()) {
+      return null;
     } else {
       let i;
       let str = "";
