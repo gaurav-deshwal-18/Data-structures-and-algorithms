@@ -54,7 +54,6 @@ class LinkedList {
       this.head = null;
       this.tail = null;
     } else {
-      const value = this.head.value;
       this.head = this.head.next;
     }
     this.size--;

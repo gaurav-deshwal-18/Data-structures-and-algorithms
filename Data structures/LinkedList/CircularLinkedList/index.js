@@ -19,12 +19,12 @@
 // -------------------------------
 //* Practical Use Cases
 // -------------------------------
-// Valuable for continuous element access or cycling through items without a defined start
-// or end.
+// Circular Buffers
+// Music Playlist
 
 class Node {
-  constructor(data) {
-    this.data = data;
+  constructor(value) {
+    this.value = value;
     this.next = null;
   }
 }
@@ -33,53 +33,97 @@ class CircularLinkedList {
   constructor() {
     this.head = null;
     this.tail = null;
+    this.size = 0;
   }
 
-  // Insert node at the beginning of the list
-  insertAtBeginning(data) {
-    const newNode = new Node(data);
-    if (!this.head) {
-      this.head = newNode;
-      this.tail = newNode;
-      newNode.next = this.head; // Point back to itself to form the circular link
+  isEmpty() {
+    return this.size === 0;
+  }
+
+  append(value) {
+    const node = new Node(value);
+
+    if (this.isEmpty()) {
+      this.head = node;
+      this.tail = node;
+      node.next = this.head;
     } else {
-      newNode.next = this.head;
-      this.head = newNode;
-      this.tail.next = this.head; // Update tail's next to the new head
+      this.tail.next = node;
+      this.tail = node;
+      node.next = this.head;
     }
+    this.size++;
   }
 
-  // Insert node at the end of the list
-  insertAtEnd(data) {
-    const newNode = new Node(data);
-    if (!this.head) {
-      this.head = newNode;
-      this.tail = newNode;
-      newNode.next = this.head; // Point back to itself to form the circular link
+  prepend(value) {
+    const node = new Node(value);
+
+    if (this.isEmpty()) {
+      this.head = node;
+      this.tail = node;
+      node.next = this.head;
     } else {
-      this.tail.next = newNode;
-      newNode.next = this.head;
-      this.tail = newNode;
+      node.next = this.head;
+      this.head = node;
+      this.tail.next = this.head;
     }
+    this.size++;
   }
 
-  // Traverse and display the circular linked list
+  removeFromFront() {
+    if (this.isEmpty()) {
+      return null;
+    }
+    let removedValue = this.head;
+    if (this.size === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.head = this.head.next;
+      this.tail.next = this.head;
+    }
+    this.size--;
+    return removedValue.value;
+  }
+
+  removeFromEnd() {
+    if (this.isEmpty()) {
+      return null;
+    }
+    let removedValue = this.tail;
+    if (this.size === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      let current = this.head;
+      while (current.next !== this.tail) {
+        current = current.next;
+      }
+      current.next = null;
+      this.tail = current;
+      this.tail.next = this.head;
+    }
+    this.size--;
+    return removedValue.value;
+  }
   display() {
-    let current = this.head;
-    if (!this.head) {
-      console.log("Circular linked list is empty.");
-      return;
+    if (this.isEmpty()) {
+      console.log("List is empty");
+    } else {
+      let current = this.head;
+      let result = "";
+      do {
+        result += current.value + "---->";
+        current = current.next;
+      } while (current !== this.head);
+      console.log(result);
     }
-    do {
-      console.log(current.data);
-      current = current.next;
-    } while (current !== this.head);
   }
 }
 
-// Example Usage:
 const circularList = new CircularLinkedList();
-circularList.insertAtBeginning(10);
-circularList.insertAtEnd(20);
-circularList.insertAtEnd(30);
+circularList.prepend(10);
+circularList.append(20);
+circularList.append(30);
+circularList.removeFromFront();
 circularList.display(); // Output: 10, 20, 30
