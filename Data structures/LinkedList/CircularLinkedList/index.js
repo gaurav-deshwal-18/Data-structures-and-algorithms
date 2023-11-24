@@ -41,31 +41,30 @@ class CircularLinkedList {
   }
 
   append(value) {
-    const node = new Node(value);
+    const newNode = new Node(value);
 
     if (this.isEmpty()) {
-      this.head = node;
-      this.tail = node;
-      node.next = this.head;
+      this.head = newNode;
     } else {
-      this.tail.next = node;
-      this.tail = node;
-      node.next = this.head;
+      this.tail.next = newNode;
     }
+
+    newNode.next = this.head;
+    this.tail = newNode;
     this.size++;
   }
 
   prepend(value) {
-    const node = new Node(value);
+    const newNode = new Node(value);
 
     if (this.isEmpty()) {
-      this.head = node;
-      this.tail = node;
-      node.next = this.head;
+      this.head = newNode;
+      newNode.next = this.head;
+      this.tail = newNode;
     } else {
-      node.next = this.head;
-      this.head = node;
-      this.tail.next = this.head;
+      newNode.next = this.head;
+      this.head = newNode;
+      this.tail.next = newNode;
     }
     this.size++;
   }
@@ -74,23 +73,28 @@ class CircularLinkedList {
     if (this.isEmpty()) {
       return null;
     }
-    let removedValue = this.head;
+
+    const removedNode = this.head;
+
     if (this.size === 1) {
       this.head = null;
       this.tail = null;
     } else {
-      this.head = this.head.next;
+      this.head = removedNode.next;
       this.tail.next = this.head;
     }
+
     this.size--;
-    return removedValue.value;
+    return removedNode.value;
   }
 
   removeFromEnd() {
     if (this.isEmpty()) {
       return null;
     }
-    let removedValue = this.tail;
+
+    const removedNode = this.tail;
+
     if (this.size === 1) {
       this.head = null;
       this.tail = null;
@@ -99,13 +103,14 @@ class CircularLinkedList {
       while (current.next !== this.tail) {
         current = current.next;
       }
-      current.next = null;
+      current.next = this.head;
       this.tail = current;
-      this.tail.next = this.head;
     }
+
     this.size--;
-    return removedValue.value;
+    return removedNode.value;
   }
+
   display() {
     if (this.isEmpty()) {
       console.log("List is empty");
@@ -113,10 +118,10 @@ class CircularLinkedList {
       let current = this.head;
       let result = "";
       do {
-        result += current.value + "---->";
+        result += current.value + " -> ";
         current = current.next;
       } while (current !== this.head);
-      console.log(result);
+      console.log(result.substring(0, result.length - 4)); // Remove the extra ' -> '
     }
   }
 }
@@ -126,4 +131,4 @@ circularList.prepend(10);
 circularList.append(20);
 circularList.append(30);
 circularList.removeFromFront();
-circularList.display(); // Output: 10, 20, 30
+circularList.display(); // Output: 10 -> 20 -> 30
