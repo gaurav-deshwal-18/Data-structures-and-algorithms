@@ -21,7 +21,6 @@ class Node {
     this.right = null;
   }
 }
-
 class BinarySearchTree {
   constructor() {
     this.root = null;
@@ -162,31 +161,6 @@ class BinarySearchTree {
       return Math.max(leftHeight, rightHeight) + 1;
     }
   }
-
-  printLevel(node, level) {
-    if (!node) {
-      return;
-    }
-    if (level === 1) {
-      console.log(`${node.element} `);
-    } else if (level > 1) {
-      this.printLevel(node.left, level - 1);
-      this.printLevel(node.right, level - 1);
-    }
-  }
-
-  isBST(node, min, max) {
-    if (!node) {
-      return true;
-    }
-    if (node.value < min || node.value > max) {
-      return false;
-    }
-    return (
-      this.isBST(node.left, min, node.value) &&
-      this.isBST(node.right, node.value, max)
-    );
-  }
 }
 
 // TODO level order and delete
@@ -207,7 +181,6 @@ bst.inOrder();
 bst.preOrder();
 bst.postOrder();
 bst.levelOrder();
-bst.printLevel(bst.root, 3);
 console.log(bst.min());
 console.log(bst.max());
 console.log(bst.height(bst.root));

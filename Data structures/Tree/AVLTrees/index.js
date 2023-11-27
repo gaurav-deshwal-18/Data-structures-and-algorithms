@@ -21,7 +21,6 @@ class Node {
     this.height = 1;
   }
 }
-
 class AVLTree {
   constructor() {
     this.root = null;

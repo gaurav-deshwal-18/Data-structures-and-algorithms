@@ -40,9 +40,10 @@ class MinHeap {
   }
 
   swap(index1, index2) {
-    const temp = this.heap[index1];
-    this.heap[index1] = this.heap[index2];
-    this.heap[index2] = temp;
+    [this.heap[index1], this.heap[index2]] = [
+      this.heap[index2],
+      this.heap[index1],
+    ];
   }
 
   peek() {
@@ -56,8 +57,10 @@ class MinHeap {
     if (this.heap.length === 0) {
       return null;
     }
+
     const item = this.heap[0];
-    this.heap[0] = this.heap.pop();
+    this.heap[0] = this.heap[this.heap.length - 1];
+    this.heap.pop();
     this.heapifyDown();
     return item;
   }
@@ -96,12 +99,56 @@ class MinHeap {
   }
 }
 
+function heapSort(arr) {
+  const minHeap = new MinHeap();
+
+  // Add all elements from the array to the heap
+  for (let i = 0; i < arr.length; i++) {
+    minHeap.add(arr[i]);
+  }
+
+  const sortedArray = [];
+  // Poll elements from the heap to get them in sorted order
+  while (minHeap.peek() !== null) {
+    sortedArray.push(minHeap.poll());
+  }
+
+  return sortedArray;
+}
+
 // Example usage:
-const minHeap = new MinHeap();
-minHeap.add(10);
-minHeap.add(5);
-minHeap.add(15);
-minHeap.add(8);
-console.log(minHeap.peek()); // Output: 5
-console.log(minHeap.poll()); // Output: 5
-console.log(minHeap.peek()); // Output: 8
+const arrayToSort = [12, 3, 5, 7, 19];
+console.log("Original Array: ", arrayToSort);
+const sortedArray = heapSort(arrayToSort);
+console.log("Sorted Array: ", sortedArray);
+
+function sortKSortedArray(arr, k) {
+  const minHeap = new MinHeap();
+
+  // Insert the first k+1 elements into the min heap
+  for (let i = 0; i <= k && i < arr.length; i++) {
+    minHeap.add(arr[i]);
+  }
+
+  const sortedArray = [];
+  let index = 0;
+
+  // Process the remaining elements in the array
+  for (let i = k + 1; i < arr.length; i++) {
+    sortedArray[index++] = minHeap.poll(); // Extract the minimum element
+    minHeap.add(arr[i]); // Insert the next element from the array
+  }
+
+  // Extract the remaining elements from the heap
+  while (minHeap.peek() !== null) {
+    sortedArray[index++] = minHeap.poll();
+  }
+
+  return sortedArray;
+}
+
+// Example usage:
+const array = [6, 5, 3, 2, 8, 10, 9];
+const kValue = 3;
+const sorted = sortKSortedArray(array, kValue);
+console.log("Sorted Array:", sorted);

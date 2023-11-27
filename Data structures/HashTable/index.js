@@ -19,7 +19,7 @@
 // to quickly find where a specific book belongs. Similarly, a hash table uses keys to
 // compute unique indices, enabling rapid access to stored values based on their keys.
 
-class HashTable {
+export class HashTable {
   constructor(size) {
     this.table = new Array(size);
     this.size = size;
