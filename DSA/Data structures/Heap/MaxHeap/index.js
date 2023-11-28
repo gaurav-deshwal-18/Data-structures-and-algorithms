@@ -89,7 +89,7 @@ class MaxHeap {
     }
   }
 }
-
+module.exports = MaxHeap;
 // Example usage for MaxHeap:
 const maxHeap = new MaxHeap();
 maxHeap.add(10);

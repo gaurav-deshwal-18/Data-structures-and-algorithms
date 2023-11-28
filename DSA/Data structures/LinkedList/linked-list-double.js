@@ -124,7 +124,7 @@ class DoublyLinkedList {
     }
   }
 }
-
+module.exports = DoublyLinkedList;
 const list = new DoublyLinkedList();
 list.append(1);
 list.append(2);

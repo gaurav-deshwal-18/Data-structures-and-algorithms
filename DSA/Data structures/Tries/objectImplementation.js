@@ -59,6 +59,7 @@ class Trie {
 
     if (shouldDeleteCurrentNode) {
       delete current.children[char];
+      node.childCount--;
       return Object.keys(current.children).length === 0;
     }
 
@@ -92,7 +93,7 @@ class Trie {
     return result;
   }
 }
-
+module.exports = Trie;
 // Example Usage:
 const trie = new Trie();
 trie.insert("apple");

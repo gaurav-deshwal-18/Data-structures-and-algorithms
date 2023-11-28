@@ -5,6 +5,8 @@
 // This structure aims to incorporate the principles of a binary search algorithm into a queue,
 // potentially leveraging binary search properties for faster search and retrieval within a queue.
 
+const Queue = require("../../Queue/objectImplementaion");
+
 // -------------------------------
 // * Implementation Considerations
 // -------------------------------
@@ -13,8 +15,6 @@
 // 3. Ensuring queue properties (FIFO) alongside binary search functionalities.
 // 4. File Systems
 // 5. Databases and Indexing
-
-const Queue = require("../Data structures/Queue/objectImplementaion");
 
 class Node {
   constructor(value) {
@@ -201,6 +201,7 @@ class BST {
     return root;
   }
 }
+module.exports = BST;
 
 const bst = new BST();
 bst.insert(5);

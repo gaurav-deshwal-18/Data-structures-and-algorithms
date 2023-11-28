@@ -41,6 +41,8 @@ class Stack {
   }
 }
 
+module.exports = Stack;
+
 const stack = new Stack();
 console.log(stack.isEmpty());
 stack.push(20);

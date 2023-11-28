@@ -93,6 +93,7 @@ class MinHeap {
     }
   }
 }
+module.exports = MinHeap;
 
 // Example usage:
 const minHeap = new MinHeap();

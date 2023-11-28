@@ -102,3 +102,5 @@ myDAG.addEdge(task4, task5);
 const topologicalOrder2 = myDAG.topologicalSort();
 
 console.log("Topological Order:", topologicalOrder2); // Output: ["A", "C", "B", "D"]
+
+module.exports = DAG;

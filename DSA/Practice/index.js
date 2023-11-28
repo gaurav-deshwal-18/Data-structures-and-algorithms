@@ -1,214 +1,115 @@
-const Queue = require("../Data structures/Queue/objectImplementaion");
-
-class Node {
-  constructor(value) {
-    this.value = value;
-    this.left = null;
-    this.right = null;
+class TrieNode {
+  constructor() {
+    this.children = {};
+    this.isEndOfWord = false;
+    this.childrenCount = 0;
   }
 }
 
-class BST {
+class Trie {
   constructor() {
-    this.root = null;
+    this.root = new TrieNode();
   }
 
-  isEmpty() {
-    return this.root === null;
-  }
-
-  insert(value) {
-    const newNode = new Node(value);
-    if (this.isEmpty()) {
-      this.root = newNode;
-    } else {
-      this._insertNode(this.root, newNode);
-    }
-  }
-
-  _insertNode(root, newNode) {
-    if (newNode.value < root.value) {
-      if (root.left === null) {
-        root.left = newNode;
-      } else {
-        this._insertNode(root.left, newNode);
+  insert(word) {
+    let currentNode = this.root;
+    for (let i = 0; i < word.length; i++) {
+      const char = word[i];
+      if (!currentNode.children[char]) {
+        currentNode.children[char] = new TrieNode();
+        currentNode.childrenCount++;
       }
-    } else {
-      if (root.right === null) {
-        root.right = newNode;
-      } else {
-        this._insertNode(root.right, newNode);
+      currentNode = currentNode.children[char];
+    }
+    currentNode.isEndOfWord = true;
+  }
+
+  search(word) {
+    let currentNode = this.root;
+
+    for (let i = 0; i < word.length; i++) {
+      const char = word[i];
+      if (!currentNode.children[char]) {
+        return false;
       }
+      currentNode = currentNode.children[char];
     }
+    return currentNode.isEndOfWord;
   }
 
-  search(value) {
-    if (this.isEmpty()) {
-      return null;
-    } else {
-      return this._searchNode(this.root, value);
+  startsWith(word) {
+    let currentNode = this.root;
+
+    for (let i = 0; i < word.length; i++) {
+      const char = word[i];
+      if (!currentNode.children[char]) {
+        return false;
+      }
+      currentNode = currentNode.children[char];
     }
+    return true;
   }
 
-  _searchNode(root, value) {
-    if (root === null) {
+  delete(word) {
+    this._deleteNode(this.root, word, 0);
+  }
+
+  _deleteNode(root, word, index) {
+    if (index === word.length) {
+      if (root.isEndOfWord === true) {
+        root.isEndOfWord = false;
+      }
+      return Object.keys(root.children).length === 0;
+    }
+    const char = word[index];
+
+    if (!root.children[char]) {
       return false;
     }
 
-    if (root.value === value) {
-      return true;
-    } else if (value < root.value) {
-      return this._searchNode(root.left, value);
-    } else {
-      return this._searchNode(root.right, value);
+    const shouldDeleteNode = this._deleteNode(
+      root.children[char],
+      word,
+      index + 1
+    );
+
+    if (shouldDeleteNode) {
+      delete root.children[char];
+      root.childrenCount--;
+      return Object.keys(root.children).length === 0;
     }
+
+    return false;
   }
 
-  min(root) {
-    if (this.isEmpty()) {
-      return null;
-    } else {
-      return this._minValue(root);
-    }
-  }
+  prefix() {
+    let currentNode = this.root;
+    let result = "";
 
-  _minValue(root) {
-    if (!root.left) {
-      return root.value;
-    } else {
-      return this._minValue(root.left);
-    }
-  }
+    let hasEnded = false;
 
-  max(root) {
-    if (this.isEmpty()) {
-      return null;
-    } else {
-      return this._maxValue(root);
-    }
-  }
+    while (!hasEnded) {
+      if (
+        currentNode.childrenCount === 1 &&
+        currentNode.isEndOfWord === false
+      ) {
+        const char = Object.keys(currentNode.children)[0];
+        result += char;
 
-  _maxValue(root) {
-    if (!root.right) {
-      return root.value;
-    } else {
-      return this._maxValue(root.right);
-    }
-  }
-
-  preOrder(root) {
-    if (root) {
-      console.log(root.value);
-      this.preOrder(root.left);
-      this.preOrder(root.right);
-    }
-  }
-
-  inOrder(root) {
-    if (root) {
-      this.inOrder(root.left);
-      console.log(root.value);
-      this.inOrder(root.right);
-    }
-  }
-
-  postOrder(root) {
-    if (root) {
-      this.postOrder(root.left);
-      this.postOrder(root.right);
-      console.log(root.value);
-    }
-  }
-
-  levelOrder() {
-    if (this.root) {
-      const queue = new Queue();
-      queue.enqueue(this.root);
-
-      while (queue.size()) {
-        const item = queue.dequeue();
-        console.log(item.value);
-        if (item.left) {
-          queue.enqueue(item.left);
-        }
-        if (item.right) {
-          queue.enqueue(item.right);
-        }
+        currentNode = currentNode.children[char];
+      } else {
+        hasEnded = true;
       }
     }
-  }
-
-  height(root) {
-    if (!root) {
-      return 0;
-    } else {
-      const leftHeight = this.height(root.left);
-      const rightHeight = this.height(root.right);
-      const height = Math.max(leftHeight, rightHeight) + 1;
-      return height;
-    }
-  }
-
-  delete(value) {
-    if (this.isEmpty()) {
-      return null;
-    } else {
-      this._deleteNode(this.root, value);
-    }
-  }
-
-  _deleteNode(root, value) {
-    if (root === null) {
-      return root;
-    }
-
-    if (value < root.value) {
-      root.left = this._deleteNode(root.left, value);
-    } else if (value > root.value) {
-      root.right = this._deleteNode(root.right, value);
-    } else {
-      if (!root.left && !root.right) {
-        return null;
-      }
-
-      if (!root.left) {
-        return root.right;
-      }
-
-      if (!root.right) {
-        return root.left;
-      }
-
-      root.value = this.min(root.right);
-      root.right = this._deleteNode(root.right, root.value);
-    }
-    return root;
+    return result;
   }
 }
 
-const bst = new BST();
-bst.insert(5);
-bst.insert(7);
-bst.insert(3);
-bst.insert(2);
-bst.insert(10);
-bst.insert(1);
+const trie = new Trie();
 
-console.log(bst.search(1));
-console.log(bst.min(bst.root));
-console.log(bst.max(bst.root));
-console.log("----Pre Order-----");
-bst.preOrder(bst.root);
-console.log("----In Order-----");
-bst.inOrder(bst.root);
-console.log("----Post Order-----");
-bst.postOrder(bst.root);
-console.log("----Level Order-----");
+trie.insert("miss");
+trie.insert("misuse");
+trie.delete("miss");
+console.log(trie.startsWith("name"));
 
-bst.levelOrder();
-console.log("----Height----");
-console.log(bst.height(bst.root));
-bst.delete(5);
-console.log("----Level Order-----");
-
-bst.levelOrder();
+console.log(trie.prefix());

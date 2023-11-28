@@ -90,3 +90,4 @@ table.set("name", "Diana");
 console.log(table.get("mane"));
 table.remove("name");
 table.display();
+module.exports = HashTable;

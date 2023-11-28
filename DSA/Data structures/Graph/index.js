@@ -74,7 +74,7 @@ class Graph {
     }
   }
 }
-
+module.exports = Graph;
 const graph = new Graph();
 graph.addVertex("A");
 graph.addVertex("B");
@@ -87,3 +87,4 @@ graph.removeEdge("A", "B");
 graph.display();
 graph.removeVertex("A");
 graph.display();
+module.exports = Graph;

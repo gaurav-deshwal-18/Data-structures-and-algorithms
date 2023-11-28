@@ -90,7 +90,7 @@ class CircularQueue {
     }
   }
 }
-
+module.exports = CircularQueue;
 const queue = new CircularQueue(5);
 console.log(queue.isEmpty());
 queue.enqueue(10);
