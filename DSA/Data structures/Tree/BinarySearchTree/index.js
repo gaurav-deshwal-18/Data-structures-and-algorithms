@@ -14,6 +14,8 @@
 // 4. File Systems
 // 5. Databases and Indexing
 
+const Queue = require("../Data structures/Queue/objectImplementaion");
+
 class Node {
   constructor(value) {
     this.value = value;
@@ -21,7 +23,8 @@ class Node {
     this.right = null;
   }
 }
-class BinarySearchTree {
+
+class BST {
   constructor() {
     this.root = null;
   }
@@ -35,87 +38,77 @@ class BinarySearchTree {
     if (this.isEmpty()) {
       this.root = newNode;
     } else {
-      this.insertNode(this.root, newNode);
+      this._insertNode(this.root, newNode);
     }
   }
 
-  insertNode(root, newNode) {
+  _insertNode(root, newNode) {
     if (newNode.value < root.value) {
       if (root.left === null) {
         root.left = newNode;
       } else {
-        this.insertNode(root.left, newNode);
+        this._insertNode(root.left, newNode);
       }
     } else {
       if (root.right === null) {
         root.right = newNode;
       } else {
-        this.insertNode(root.right, newNode);
+        this._insertNode(root.right, newNode);
       }
     }
   }
 
-  search(root, value) {
-    if (!root) {
+  search(value) {
+    if (this.isEmpty()) {
+      return null;
+    } else {
+      return this._searchNode(this.root, value);
+    }
+  }
+
+  _searchNode(root, value) {
+    if (root === null) {
       return false;
     }
+
     if (root.value === value) {
       return true;
     } else if (value < root.value) {
-      return this.search(root.left, value);
+      return this._searchNode(root.left, value);
     } else {
-      return this.search(root.right, value);
+      return this._searchNode(root.right, value);
     }
   }
 
   min(root) {
+    if (this.isEmpty()) {
+      return null;
+    } else {
+      return this._minValue(root);
+    }
+  }
+
+  _minValue(root) {
     if (!root.left) {
       return root.value;
     } else {
-      return this.min(root.left);
+      return this._minValue(root.left);
     }
   }
 
   max(root) {
+    if (this.isEmpty()) {
+      return null;
+    } else {
+      return this._maxValue(root);
+    }
+  }
+
+  _maxValue(root) {
     if (!root.right) {
       return root.value;
     } else {
-      return this.max(root.right);
-    }
-  }
-
-  delete(value) {
-    this.root = this.deleteNode(this.root, value);
-  }
-
-  deleteNode(root, value) {
-    if (root === null) {
-      return root;
-    }
-    if (value < root.value) {
-      root.left = this.deleteNode(root.left, value);
-    } else if (value > root.value) {
-      root.right = this.deleteNode(root.right, value);
-    } else {
-      if (!root.left && !root.right) {
-        return null;
-      }
-      if (!root.left) {
-        return root.right;
-      } else if (!root.right) {
-        return root.left;
-      }
-      root.value = this.min(root.right);
-      root.right = this.deleteNode(root.right, root.value);
-    }
-    return root;
-  }
-
-  inOrder(root) {
-    if (root) {
-      this.inOrder(root.left);
-      console.log(root.value);
-      this.inOrder(root.right);
+      return this._maxValue(root.right);
     }
   }
 
@@ -124,6 +117,14 @@ class BinarySearchTree {
       console.log(root.value);
       this.preOrder(root.left);
       this.preOrder(root.right);
+    }
+  }
+
+  inOrder(root) {
+    if (root) {
+      this.inOrder(root.left);
+      console.log(root.value);
+      this.inOrder(root.right);
     }
   }
 
@@ -136,51 +137,94 @@ class BinarySearchTree {
   }
 
   levelOrder() {
-    /** Use the optimised queue enqueue and dequeue from queue-object.js instead.
-     * I've used an array for simplicity. */
-    const queue = [];
-    queue.push(this.root);
-    while (queue.length) {
-      let curr = queue.shift();
-      console.log(curr.value);
-      if (curr.left) {
-        queue.push(curr.left);
-      }
-      if (curr.right) {
-        queue.push(curr.right);
+    if (this.root) {
+      const queue = new Queue();
+      queue.enqueue(this.root);
+
+      while (queue.size()) {
+        const item = queue.dequeue();
+        console.log(item.value);
+        if (item.left) {
+          queue.enqueue(item.left);
+        }
+        if (item.right) {
+          queue.enqueue(item.right);
+        }
       }
     }
   }
 
-  height(node) {
-    if (!node) {
+  height(root) {
+    if (!root) {
       return 0;
     } else {
-      const leftHeight = this.height(node.left);
-      const rightHeight = this.height(node.right);
-      return Math.max(leftHeight, rightHeight) + 1;
+      const leftHeight = this.height(root.left);
+      const rightHeight = this.height(root.right);
+      const height = Math.max(leftHeight, rightHeight) + 1;
+      return height;
     }
+  }
+
+  delete(value) {
+    if (this.isEmpty()) {
+      return null;
+    } else {
+      this._deleteNode(this.root, value);
+    }
+  }
+
+  _deleteNode(root, value) {
+    if (root === null) {
+      return root;
+    }
+
+    if (value < root.value) {
+      root.left = this._deleteNode(root.left, value);
+    } else if (value > root.value) {
+      root.right = this._deleteNode(root.right, value);
+    } else {
+      if (!root.left && !root.right) {
+        return null;
+      }
+
+      if (!root.left) {
+        return root.right;
+      }
+
+      if (!root.right) {
+        return root.left;
+      }
+
+      root.value = this.min(root.right);
+      root.right = this._deleteNode(root.right, root.value);
+    }
+    return root;
   }
 }
 
-// TODO level order and delete
-
-const bst = new BinarySearchTree();
-console.log(bst.isEmpty());
-bst.insert(10);
+const bst = new BST();
 bst.insert(5);
-bst.insert(15);
-bst.insert(3);
 bst.insert(7);
-bst.insert(13);
-bst.insert(17);
+bst.insert(3);
 bst.insert(2);
-console.log(bst.search(bst.root, 10));
-console.log(bst.search(bst.root, 7));
-bst.inOrder();
-bst.preOrder();
-bst.postOrder();
+bst.insert(10);
+bst.insert(1);
+
+console.log(bst.search(1));
+console.log(bst.min(bst.root));
+console.log(bst.max(bst.root));
+console.log("----Pre Order-----");
+bst.preOrder(bst.root);
+console.log("----In Order-----");
+bst.inOrder(bst.root);
+console.log("----Post Order-----");
+bst.postOrder(bst.root);
+console.log("----Level Order-----");
+
 bst.levelOrder();
-console.log(bst.min());
-console.log(bst.max());
+console.log("----Height----");
 console.log(bst.height(bst.root));
+bst.delete(5);
+console.log("----Level Order-----");
+
+bst.levelOrder();
