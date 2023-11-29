@@ -1,20 +1,20 @@
 //Fibonacci Sequence [0,1,1,2,3,5]
 
 // Solution one --- O(n)
-
 const fibonacci = (n) => {
   if (n < 0) {
     return "Invalid Input.";
   }
-  if (n < 2) {
-    return [0];
-  } else {
-    let result = [0, 1];
-    for (let i = 2; i < n; i++) {
-      result[i] = result[i - 1] + result[i - 2];
-    }
-    return result;
+
+  const result = [0, 1];
+  if (n <= 1) {
+    return result.slice(0, n + 1);
   }
+
+  for (let i = 2; i <= n; i++) {
+    result[i] = result[i - 1] + result[i - 2];
+  }
+  return result;
 };
 
 // solution Two --O(2^N)
@@ -43,4 +43,4 @@ const fibonacciThree = (num) => {
     return sequence;
   }
 };
-console.log(recursiveFibonacci(3))
+console.log(recursiveFibonacci(3));
