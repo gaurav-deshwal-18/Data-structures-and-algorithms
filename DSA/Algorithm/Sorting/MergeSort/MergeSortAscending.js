@@ -57,6 +57,6 @@ function merge(left, right) {
 }
 
 // Example usage:
-const unsortedArray = [5, 2, 9, 3, 6, 8, 1, 7];
+const unsortedArray = [2, -1, 3, 4, 0, 5, 9, -6];
 const sortedArray = mergeSort(unsortedArray);
 console.log(sortedArray);
