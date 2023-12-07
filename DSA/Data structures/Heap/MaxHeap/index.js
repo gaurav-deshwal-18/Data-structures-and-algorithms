@@ -3,6 +3,10 @@ class MaxHeap {
     this.heap = [];
   }
 
+  getLength() {
+    return this.heap.length;
+  }
+
   getLeftChildIndex(parentIndex) {
     return 2 * parentIndex + 1;
   }
@@ -96,6 +100,6 @@ maxHeap.add(10);
 maxHeap.add(5);
 maxHeap.add(15);
 maxHeap.add(8);
-console.log(maxHeap.peek()); // Output: 15
-console.log(maxHeap.poll()); // Output: 15
-console.log(maxHeap.peek()); // Output: 10
+// console.log(maxHeap.peek()); // Output: 15
+// console.log(maxHeap.poll()); // Output: 15
+// console.log(maxHeap.peek()); // Output: 10

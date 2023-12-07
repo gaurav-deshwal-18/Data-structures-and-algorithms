@@ -3,10 +3,6 @@ class MinHeap {
     this.heap = [];
   }
 
-  getLength() {
-    return this.heap.length;
-  }
-
   getLeftChildIndex(parentIndex) {
     return 2 * parentIndex + 1;
   }
@@ -44,9 +40,10 @@ class MinHeap {
   }
 
   swap(index1, index2) {
-    const temp = this.heap[index1];
-    this.heap[index1] = this.heap[index2];
-    this.heap[index2] = temp;
+    [this.heap[index1], this.heap[index2]] = [
+      this.heap[index2],
+      this.heap[index1],
+    ];
   }
 
   peek() {
@@ -65,7 +62,7 @@ class MinHeap {
     }
     const item = this.heap[0];
     this.heap[0] = this.heap.pop();
-    this.heapifyDown(0);
+    this.heapifyDown();
     return item;
   }
 
@@ -76,7 +73,10 @@ class MinHeap {
 
   heapifyUp() {
     let index = this.heap.length - 1;
-    while (this.hasParent(index) && this.parent(index) > this.heap[index]) {
+    while (
+      this.hasParent(index) &&
+      this.parent(index).distance > this.heap[index].distance
+    ) {
       this.swap(this.getParentIndex(index), index);
       index = this.getParentIndex(index);
     }
@@ -84,30 +84,67 @@ class MinHeap {
 
   heapifyDown() {
     let index = 0;
+    let smallerChildIndex;
     while (this.hasLeftChild(index)) {
-      let smallerChildIndex = this.getLeftChildIndex(index);
+      smallerChildIndex = this.getLeftChildIndex(index);
       if (
         this.hasRightChild(index) &&
-        this.rightChild(index) < this.leftChild(index)
+        this.rightChild(index).distance < this.leftChild(index).distance
       ) {
         smallerChildIndex = this.getRightChildIndex(index);
       }
 
-      if (this.heap[index] > this.heap[smallerChildIndex]) {
+      if (this.heap[index].distance > this.heap[smallerChildIndex].distance) {
         this.swap(index, smallerChildIndex);
       }
       index = smallerChildIndex;
     }
   }
 }
-module.exports = MinHeap;
+
+function dijkstra(graph, start) {
+  const vertices = Object.keys(graph);
+  const distances = {};
+  const visited = {};
+
+  vertices.forEach((vertex) => {
+    distances[vertex] = Infinity;
+    visited[vertex] = false;
+  });
+
+  distances[start] = 0;
+  const minHeap = new MinHeap();
+  minHeap.add({ vertex: start, distance: 0 });
+
+  while (minHeap.peek()) {
+    const { vertex: minVertex, distance: minDistance } = minHeap.poll();
+
+    if (!visited[minVertex]) {
+      visited[minVertex] = true;
+
+      const neighbors = graph[minVertex];
+
+      for (const neighbor in neighbors) {
+        const distance = minDistance + neighbors[neighbor];
+
+        if (distance < distances[neighbor]) {
+          distances[neighbor] = distance;
+          minHeap.add({ vertex: neighbor, distance });
+        }
+      }
+    }
+  }
+
+  return distances;
+}
 
 // Example usage:
-const minHeap = new MinHeap();
-minHeap.add(10);
-minHeap.add(5);
-minHeap.add(15);
-minHeap.add(8);
-// console.log(minHeap.peek()); // Output: 5
-// console.log(minHeap.poll()); // Output: 5
-// console.log(minHeap.peek()); // Output: 8
+const graph = {
+  A: { B: 4, C: 2 },
+  B: { A: 4, D: 3 },
+  C: { A: 2, D: 1 },
+  D: { B: 3, C: 1 },
+};
+
+const shortestPaths = dijkstra(graph, "A");
+console.log(shortestPaths);

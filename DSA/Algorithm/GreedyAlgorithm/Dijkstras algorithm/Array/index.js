@@ -28,7 +28,6 @@ function dijkstra(graph, start) {
   const visited = Array(numVertices).fill(false);
 
   distances[start] = 0;
-
   for (let i = 0; i < numVertices - 1; i++) {
     const minDistanceIndex = findMinDistance(distances, visited);
     visited[minDistanceIndex] = true;
@@ -61,19 +60,32 @@ function findMinDistance(distances, visited) {
 
   return minIndex;
 }
-
+const simpleGraph = [
+  [0, 3, 2, 0], // A
+  [3, 0, 0, 4], // B
+  [2, 0, 0, 1], // C
+  [0, 4, 1, 0], // D
+];
 // Example usage:
 const graph = [
-  [0, 4, 0, 0, 0, 0, 0, 8, 0],
-  [4, 0, 8, 0, 0, 0, 0, 11, 0],
-  [0, 8, 0, 7, 0, 4, 0, 0, 2],
-  [0, 0, 7, 0, 9, 14, 0, 0, 0],
-  [0, 0, 0, 9, 0, 10, 0, 0, 0],
-  [0, 0, 4, 14, 10, 0, 2, 0, 0],
-  [0, 0, 0, 0, 0, 2, 0, 1, 6],
-  [8, 11, 0, 0, 0, 0, 1, 0, 7],
-  [0, 0, 2, 0, 0, 0, 6, 7, 0],
+  [0, 4, 0, 0, 0, 0, 0, 8, 0], // Node A (0)
+  [4, 0, 8, 0, 0, 0, 0, 11, 0], // Node B (1)
+  [0, 8, 0, 7, 0, 4, 0, 0, 2], // Node C (2)
+  [0, 0, 7, 0, 9, 14, 0, 0, 0], // Node D (3)
+  [0, 0, 0, 9, 0, 10, 0, 0, 0], // Node E (4)
+  [0, 0, 4, 14, 10, 0, 2, 0, 0], // Node F (5)
+  [0, 0, 0, 0, 0, 2, 0, 1, 6], // Node G (6)
+  [8, 11, 0, 0, 0, 0, 1, 0, 7], // Node H (7)
+  [0, 0, 2, 0, 0, 0, 6, 7, 0], // Node I (8)
 ];
+// const shortestPaths = dijkstra(graph, 0);
 
-const shortestPaths = dijkstra(graph, 0);
-console.log(shortestPaths);
+// (A)---3---(B)
+// /         /
+// 2         4
+// /         /
+// (C)---1---(D)
+
+const shortestPathsSimpleGraph = dijkstra(graph, 0);
+
+console.log(shortestPathsSimpleGraph);

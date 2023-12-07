@@ -78,6 +78,7 @@ class PriorityQueue {
   }
 }
 
+module.exports = PriorityQueue;
 // Example usage:
 const priorityQueue = new PriorityQueue();
 
@@ -87,7 +88,7 @@ priorityQueue.enqueue("Task 4", 1);
 priorityQueue.enqueue("Task 2", 1);
 priorityQueue.enqueue("Task 3", 3);
 
-priorityQueue.print();
+// priorityQueue.print();
 // Output:
 // Priority 1: Task 2
 // Priority 2: Task 1
