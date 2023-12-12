@@ -1,31 +1,27 @@
 //* Minimum no. of Jumps to reach end of an array
 //* Time complexity O(N)
-const minJumpsToEnd = (nums) => {
-  if (nums.length <= 1) {
-    return 0; // If the array has 0 or 1 element, no jump is needed
-  }
+function minJumpsToEnd(nums) {
+  // Function definition that takes an array 'nums' as input
+  let jump = 0; // Initialize a variable 'jump' to track the number of jumps
+  let position = 0; // Initialize a variable 'position' to track the current position
+  let destination = 0; // Initialize a variable 'destination' to store the farthest
+  // reachable position
 
-  let jumps = 1; // Number of jumps to reach the current position
-  let maxReach = nums[0]; // Maximum reachable position from the current index
-  let steps = nums[0]; // Steps remaining at the current index
+  // Loop through the array 'nums' except for the last element
+  for (let i = 0; i < nums.length - 1; i++) {
+    // Determine the farthest position reachable from the current position
+    // and the value in the array
+    destination = Math.max(destination, nums[i] + i);
 
-  for (let i = 1; i < nums.length; i++) {
-    if (i === nums.length - 1) {
-      return jumps; // Reached the end of the array
-    }
-
-    maxReach = Math.max(maxReach, i + nums[i]); // Update the maximum reachable position
-
-    steps--; // Use a step
-
-    if (steps === 0) {
-      jumps++; // Jump to the position with the maximum reachable index
-      steps = maxReach - i; // Set steps as the difference between the maximum reachable index and the current index
+    // If the current position 'position' reaches the index 'i'
+    if (position === i) {
+      jump++; // Increment the number of jumps required
+      position = destination; // Update the current position to the farthest reachable position
     }
   }
 
-  return jumps;
-};
+  return jump; // Return the total number of jumps needed to reach the end
+}
 
 // Example usage:
 const array = [2, 3, 1, 1, 4];

@@ -1,5 +1,5 @@
 //* Minimise the maximum difference between heights [V.IMP]
-//* This is needed as value of k can be very large and cane be very smalls
+//* This is needed as value of k can be very large and can be very small.
 //* Time complexity --> O(n)
 function getMinDiff(arr, n, k) {
   arr.sort((a, b) => a - b);
@@ -12,11 +12,12 @@ function getMinDiff(arr, n, k) {
 
   for (let i = 0; i < n - 1; i++) {
     maxPossible = Math.max(largest, arr[i] + k);
-    minPossible = Math.min(smallest, arr[i + 1] - k);
 
-    if (minPossible >= 0 && maxPossible >= minPossible) {
-      ans = Math.min(ans, maxPossible - minPossible);
+    minPossible = Math.min(smallest, arr[i + 1] - k);
+    if (minPossible < 0) {
+      continue;
     }
+    ans = Math.min(ans, maxPossible - minPossible);
   }
   return ans;
 }
