@@ -5,7 +5,6 @@
 //* Extra positive or negative elements should be moved to end.
 
 //* Time complexity ---> O(n)
-
 function rearrangeArray(arr) {
   const n = arr.length;
   let negCount = 0;
@@ -18,11 +17,11 @@ function rearrangeArray(arr) {
     }
   }
 
-  // Rearrange the array with alternating positive and negative elements
+  // Rearrange with alternating positive and negative elements
   let posIndex = negCount;
   let negIndex = 1;
 
-  while (negIndex < negCount && posIndex < n && arr[negIndex] < 0) {
+  while (negIndex < n && posIndex < n && arr[negIndex] < 0) {
     [arr[negIndex], arr[posIndex]] = [arr[posIndex], arr[negIndex]];
     negIndex += 2;
     posIndex++;
