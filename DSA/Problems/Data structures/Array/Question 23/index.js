@@ -1,4 +1,4 @@
-//*find maximum product subarray
+//* find maximum product subarray
 
 //* Time complexity ---> O(N)
 

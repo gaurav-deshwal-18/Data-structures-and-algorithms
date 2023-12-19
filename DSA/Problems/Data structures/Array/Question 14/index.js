@@ -1,11 +1,11 @@
 //* Next Permutations
 
-const arr = [3, 1, 4, 2];
+const arr = [4, 2,1, 3];
 
 const nextPermutation = (nums) => {
   //Check for edge case
   let n = nums.length;
-  let k = n - 1;
+  let k = n - 2;
 
   if (nums.length === 0 || nums == null) {
     return;
@@ -15,9 +15,10 @@ const nextPermutation = (nums) => {
   for (let i = n - 1; i > 0; i--) {
     if (nums[i] < nums[i - 1]) {
       k--;
+    } else {
+      break;
     }
   }
-
   //if k = -1 ,reverse and return
   if (k === -1) {
     reverse(nums, 0, nums.length - 1);
@@ -27,8 +28,8 @@ const nextPermutation = (nums) => {
         [nums[i], nums[k]] = [nums[k], nums[i]];
         break;
       }
-      reverse(nums, k + 1, nums.length - 1);
     }
+    reverse(nums, k + 1, nums.length - 1);
 
     //reverse right after k
   }

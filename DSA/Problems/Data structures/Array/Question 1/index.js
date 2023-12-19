@@ -1,5 +1,7 @@
 //* Reverse an array
 
+//* Time complexity O(n)
+
 const arr = [5, 9, -2, 9, 11, 6];
 
 const reverse = (array) => {

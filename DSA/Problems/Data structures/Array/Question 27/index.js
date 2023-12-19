@@ -12,23 +12,33 @@
 function findMin(nums) {
   let left = 0;
   let right = nums.length - 1;
-  if (nums[left] < nums[right]) {
-    return nums[left];
-  }
-
-  while (left < right) {
-    const mid = Math.floor((left + right) / 2);
-    if (nums[mid] > nums[right]) {
-      // If the middle element is greater than the right element,
-      // the minimum must be in the right half.
-      left = mid + 1;
+  let answer = Infinity;
+  let index = -1;
+  while (left <= right) {
+    let middle = Math.floor(left + right / 2);
+    if (nums[left] <= nums[right]) {
+      if (nums[left] < answer) {
+        answer = nums[left];
+        index = left;
+        break;
+      }
+    }
+    if (nums[left] <= nums[middle]) {
+      if (nums[left] < answer) {
+        answer = nums[left];
+        index = left;
+      }
+      left = middle + 1;
     } else {
-      // If the middle element is less than or equal to the right element,
-      // the minimum must be in the left half or could be the middle element.
-      right = mid;
+      if (nums[middle] < answer) {
+        answer = nums[middle];
+        index = middle;
+      }
+      right = middle - 1;
     }
   }
-  return nums[left];
+
+  return answer;
 }
 
 // Example usage:

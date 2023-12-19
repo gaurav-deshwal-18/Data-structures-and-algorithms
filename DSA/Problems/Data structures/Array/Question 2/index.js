@@ -1,4 +1,5 @@
 //* Find the maximum and minimum element in an array
+//* Time complexity --- O(n)
 
 function findMaxMin(arr) {
   if (arr.length === 0) {
