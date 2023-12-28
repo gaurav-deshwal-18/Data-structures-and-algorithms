@@ -10,6 +10,8 @@
 // Output: 3
 // Explanation: Three palindromic strings: "a", "b", "c".
 
+//* Time complextity ---> O(n^2) + O(n^2) = 2 O(n^2) = O(n^2)
+
 const countSubstrings = (s) => {
   let result = 0;
 

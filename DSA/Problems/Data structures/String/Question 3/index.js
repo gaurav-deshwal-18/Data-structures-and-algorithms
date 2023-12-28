@@ -34,8 +34,10 @@ const isValid = function (s) {
 
   for (let char of s) {
     if (map[char]) {
-      if (map[char] !== stack.pop()) {
+      if (map[char] !== stack.peek()) {
         return false;
+      } else {
+        stack.pop();
       }
     } else {
       stack.push(char);
@@ -45,7 +47,7 @@ const isValid = function (s) {
   return stack.isEmpty();
 };
 
-const input = "[{}]";
+const input = "[{}]{";
 
 const result = isValid(input);
 console.log(result);

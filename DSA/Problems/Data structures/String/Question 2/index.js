@@ -1,5 +1,5 @@
 //* Longest Repeating character replacement
-//* Time complexity ---> O(n)
+//* Time complexity ---> O(n*26)
 
 function characterReplacement(s, k) {
   const charCount = {};

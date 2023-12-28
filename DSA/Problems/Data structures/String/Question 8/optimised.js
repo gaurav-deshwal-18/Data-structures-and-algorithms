@@ -6,7 +6,7 @@
 // Input: s = "ADOBECODEBANC", t = "ABC"
 // Output: "BANC"
 // Explanation: The minimum window substring "BANC" includes 'A', 'B', and 'C' from string t.
-//* Time Complexity O(n ^ 2)
+//* Time Complexity O(n+m)
 var minWindow = function (s, t) {
   if (s === "") {
     return "";
@@ -19,33 +19,36 @@ var minWindow = function (s, t) {
 
   let need = Object.keys(map).length;
 
-  let window;
-  let have;
+  let window = {};
+  let have = 0;
   let result = "";
   let resultLength = Infinity;
-  for (let i = 0; i < s.length; i++) {
-    have = 0;
-    window = {};
-    for (let j = i; j < s.length; j++) {
-      let char = s[j];
-      window[char] = (window[char] || 0) + 1;
+  let i = 0;
+  for (let j = 0; j < s.length; j++) {
+    let char = s[j];
+    window[char] = (window[char] || 0) + 1;
 
-      if (window[char] === map[char]) {
-        have++;
+    if (window[char] === map[char]) {
+      have++;
+    }
+
+    while (need === have) {
+      if (j - i + 1 < resultLength) {
+        resultLength = j - i + 1;
+        result = s.slice(i, j + 1);
       }
+      let startChar = s[i];
+      window[startChar] -= 1;
 
-      if (need === have) {
-        if (j - i + 1 < resultLength) {
-          resultLength = j - i + 1;
-          result = s.slice(i, j + 1);
-        }
-
-        break;
+      if (map[startChar] && window[startChar] < map[startChar]) {
+        have--;
       }
+      i += 1;
     }
   }
   return result;
 };
+
 const s = "cabwefgewcwaefgcf",
   t = "cae";
 
