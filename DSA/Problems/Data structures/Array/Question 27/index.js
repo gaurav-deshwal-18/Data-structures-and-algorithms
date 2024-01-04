@@ -13,7 +13,6 @@ function findMin(nums) {
   let left = 0;
   let right = nums.length - 1;
   let answer = Infinity;
-  let index = -1;
   while (left <= right) {
     let middle = Math.floor(left + right / 2);
     if (nums[left] <= nums[right]) {

@@ -1,6 +1,6 @@
 //* Next Permutations
 
-const arr = [4, 2,1, 3];
+const arr = [5, 1, 1];
 
 const nextPermutation = (nums) => {
   //Check for edge case
@@ -13,12 +13,13 @@ const nextPermutation = (nums) => {
 
   // find k
   for (let i = n - 1; i > 0; i--) {
-    if (nums[i] < nums[i - 1]) {
+    if (nums[i] <= nums[i - 1]) {
       k--;
     } else {
       break;
     }
   }
+  console.log(k);
   //if k = -1 ,reverse and return
   if (k === -1) {
     reverse(nums, 0, nums.length - 1);

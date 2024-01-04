@@ -1,7 +1,7 @@
 Timeline (Jan to April)
 
 1. Complete all data structure and algorithm Revision (25 Days)
-2. Do Top 75 DSA problems.(25 days)
+2. Do Top 75 DSA problems.(30 days)
 3. Regex(5 Days)
 4. Advanced JS (25 days)
 5. System Design Basics(15 Days)
