@@ -1,4 +1,4 @@
-//* Sum of Two Integers
+//* Sum of two integers
 var getSum = function (a, b) {
   while (b !== 0) {
     const carry = a & b;

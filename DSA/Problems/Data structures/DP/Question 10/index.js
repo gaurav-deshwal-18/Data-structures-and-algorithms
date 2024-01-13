@@ -1,4 +1,6 @@
 //* Word break Problem[ Very Imp]
+
+//* Time complexity ---> O(n*m)
 // Given a string s and a dictionary of strings wordDict,
 //  return true if s can be segmented into a space-separated
 //  sequence of one or more dictionary words.
@@ -20,7 +22,7 @@ const wordBreak = (string, wordDict) => {
     for (let word of wordDict) {
       if (
         i + word.length <= string.length &&
-        string.substring(i, i + word.length) === word
+        string.slice(i, i + word.length) === word
       ) {
         dp[i] = dp[i + word.length];
       }

@@ -1,4 +1,4 @@
-//*¸
+//* Counting 1 bits
 //* Time complexity ---> O(n)
 
 function hammingWeight(n) {
