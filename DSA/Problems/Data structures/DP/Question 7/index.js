@@ -32,6 +32,6 @@ function numDecodings(s) {
 }
 
 // Test case
-const s = "213";
+const s = "101";
 const result = numDecodings(s);
 console.log(`Number of ways to decode '${s}': ${result}`);
