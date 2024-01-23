@@ -37,6 +37,7 @@ const throttle = (cb, delay = 1000) => {
     }
     cb(...args);
     shouldWait = true;
+    waitingArgs = null;
     setTimeout(timeoutFunc, delay);
   };
 };
