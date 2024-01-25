@@ -59,3 +59,12 @@
 
 30. Implement a function to convert all the keys in an object to camel case.
 
+31 Create custom cookie (Medium)
+
+32 Fetch request and response interceptor (Medium)
+
+33 Aggregate array of objects on the given keys (Medium)
+
+34 Filter array of objects on index or value (Easy)
+
+35 Implement browser history (Medium)
