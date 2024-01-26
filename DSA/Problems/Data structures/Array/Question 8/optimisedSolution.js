@@ -1,19 +1,20 @@
 //* find Largest sum contiguous Subarray [V. IMP]
 //* Time complexity - O(n)
 //* Kadene's Algorithm
-const maxSubarraySum = (arr) => {
-  let maxSum = Number.NEGATIVE_INFINITY;
+const maxSubarraySum = (nums) => {
+  if (nums.length === 1) {
+    return nums[0];
+  }
+
+  let maxSum = -Infinity;
   let currentSum = 0;
 
-  for (let i = 0; i < arr.length; i++) {
-    currentSum += arr[i];
-
-    if (currentSum > maxSum) {
-      maxSum = currentSum;
-    }
+  for (let num of nums) {
     if (currentSum < 0) {
       currentSum = 0;
     }
+    currentSum += num;
+    maxSum = Math.max(currentSum, maxSum);
   }
 
   return maxSum;

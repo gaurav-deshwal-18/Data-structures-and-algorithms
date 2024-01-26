@@ -6,7 +6,7 @@
 // the function segregateElements() which takes the array arr[] and its size N
 // as inputs and store the answer in the array arr[] itself.
 
-function segregateElements(arr, n) {
+function segregateElements(arr) {
   let temp = [...arr];
   let left = 0;
   for (let i = 0; i < arr.length; i++) {

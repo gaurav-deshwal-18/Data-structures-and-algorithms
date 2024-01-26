@@ -9,36 +9,28 @@
 // Output: 1
 // Explanation: The original array was [1,2,3,4,5] rotated 3 times.
 
-function findMin(nums) {
+var findMin = function (nums) {
   let left = 0;
   let right = nums.length - 1;
-  let answer = Infinity;
+
+  if (nums[left] <= nums[right]) {
+    return nums[left];
+  }
+  let min = Infinity;
   while (left <= right) {
-    let middle = Math.floor(left + right / 2);
-    if (nums[left] <= nums[right]) {
-      if (nums[left] < answer) {
-        answer = nums[left];
-        index = left;
-        break;
-      }
-    }
-    if (nums[left] <= nums[middle]) {
-      if (nums[left] < answer) {
-        answer = nums[left];
-        index = left;
-      }
-      left = middle + 1;
+    let mid = Math.floor((left + right) / 2);
+
+    if (nums[left] <= nums[mid]) {
+      min = Math.min(nums[left], min);
+      left = mid + 1;
     } else {
-      if (nums[middle] < answer) {
-        answer = nums[middle];
-        index = middle;
-      }
-      right = middle - 1;
+      min = Math.min(nums[mid], min);
+      right = mid - 1;
     }
   }
 
-  return answer;
-}
+  return min;
+};
 
 // Example usage:
 const nums = [17, 11, 13, 15];
