@@ -86,6 +86,6 @@ const graph = [
 // /         /
 // (C)---1---(D)
 
-const shortestPathsSimpleGraph = dijkstra(graph, 0);
+const shortestPathsSimpleGraph = dijkstra(simpleGraph, 0);
 
 console.log(shortestPathsSimpleGraph);

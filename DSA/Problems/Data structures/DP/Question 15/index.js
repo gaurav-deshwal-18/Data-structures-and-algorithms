@@ -1,14 +1,8 @@
 /**
  * Shortest Distance in a Binary Maze
- * *Time: O(N)
- * *Space: O(N)
+ * *Time: O(N2)
  */
 
-/**
- * BFS
- * Time: O(N)
- * Space: O(N)
- */
 function shortestPathBinaryMatrix(grid) {
   const N = grid.length;
   const q = [[0, 0, 1]]; // [r, c, length]
@@ -26,8 +20,7 @@ function shortestPathBinaryMatrix(grid) {
 
   while (q.length) {
     const [r, c, length] = q.shift();
-
-    if (Math.min(r, c) < 0 || Math.max(r, c) >= N || grid[r][c]) {
+    if (Math.min(r, c) < 0 || Math.max(r, c) >= N || grid[r][c] === 1) {
       continue;
     }
 
