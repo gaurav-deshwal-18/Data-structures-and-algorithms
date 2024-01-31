@@ -15,7 +15,10 @@ function numDecodings(s) {
 
   const n = s.length;
   const dp = new Array(n + 1).fill(0);
+  //* base case for single digit except 0 like 1,2
   dp[0] = 1;
+
+  //* will always be 1 because any value for second digit 0-9 is ok (10-19)
   dp[1] = 1;
 
   for (let i = 2; i <= n; i++) {

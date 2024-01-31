@@ -1,3 +1,5 @@
+//* remove value from linked list
+
 class ListNode {
   constructor(val) {
     this.val = val;
