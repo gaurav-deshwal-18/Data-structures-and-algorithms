@@ -5,32 +5,29 @@
 
 //* Time complexity ---> O(N)
 
+//* y = y-k + k
 const subarraySum = (array, k) => {
   if (array.length === 0) {
     return 0;
   }
 
   let currentSum = 0;
-  let frequencyMap = {};
-  let result = 0;
+  let map = { 0: 1 };
+  let count = 0;
 
   for (let i = 0; i < array.length; i++) {
     currentSum += array[i];
 
-    if (currentSum === k) {
-      result++;
+    let diff = currentSum - k;
+
+    if (map[diff]) {
+      count += map[diff];
     }
 
-    const diff = currentSum - k;
-
-    if (frequencyMap[diff]) {
-      result += frequencyMap[diff];
-    }
-
-    frequencyMap[currentSum] = (frequencyMap[currentSum] || 0) + 1;
+    map[currentSum] = (map[currentSum] || 0) + 1;
   }
 
-  return result;
+  return count;
 };
 
 // Test cases

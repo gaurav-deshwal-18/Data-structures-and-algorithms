@@ -13,7 +13,6 @@ const findDuplicate = (array) => {
     }
     array[index] = -array[index];
   }
-  return array;
 };
 
 const result = findDuplicate(arr);

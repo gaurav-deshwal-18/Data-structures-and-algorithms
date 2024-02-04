@@ -8,9 +8,9 @@ const mergeTwoSortedArray = (array1, array2) => {
       let temp = array1[i];
       array1[i] = array2[j];
       array2[j] = temp;
-      i++;
       fixSecondArray(array2);
     }
+    i++;
   }
 
   return [array1, array2];
