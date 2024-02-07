@@ -6,7 +6,6 @@
 // Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.
 //* Time complexity ---> O(n)
 
-let input = [3, 2, 6, 5, 0, 3];
 function maxProfit(prices) {
   if (prices.length <= 1) {
     return 0;
