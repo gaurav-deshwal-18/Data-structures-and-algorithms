@@ -83,6 +83,7 @@ const Component = () => {
   }
 
   if (name !== "jack" && count === 2) {
+    setCount(3);
     setName("jack");
   }
 };
