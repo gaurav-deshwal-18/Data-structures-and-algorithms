@@ -18,7 +18,7 @@
 
 //* Unit Test
 
-// Focus on testing individual blocks of apllication suh as class or functions
+// Focus on testing individual blocks of apllication such as class or functions
 //each unit is tested individually,independent of other units.
 
 //* Integration test

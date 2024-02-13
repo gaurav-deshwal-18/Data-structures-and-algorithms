@@ -41,7 +41,6 @@ const ReactX = (() => {
   const useEffect = (callback, dependencyArray) => {
     let hasChanged = true;
     const oldDependencies = hooks[index];
-
     if (oldDependencies) {
       hasChanged = false;
 
