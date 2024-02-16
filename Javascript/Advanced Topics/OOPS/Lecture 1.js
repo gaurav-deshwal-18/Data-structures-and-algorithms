@@ -51,9 +51,14 @@ const Person = function (firstName, birthYear) {
   };
 };
 
-//* Right way
+//* Right way to declare instance method
 Person.prototype.calcAge = function () {
   console.log(2037 - this.birthYear);
+};
+
+//* Static Method
+Person.hey = function () {
+  console.log("Hey !");
 };
 
 // 1. New {} is created
