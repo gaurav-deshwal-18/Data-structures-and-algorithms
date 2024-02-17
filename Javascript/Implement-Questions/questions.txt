@@ -1,70 +1,69 @@
+    Implement a function that converts a JavaScript value into a JSON string.
 
-1. Implement a function that converts a Javascript value into a JSON string.
+    Implement a function that performs a deep copy of a value, but also handles circular references.
 
-2. Implement a function that performs a deep copy of a value, but also handles circular references.
+    Implement a function to construct a table of contents from an HTML document.
 
-3. Implement a function to construct a table of contents from an HTML document.
+    Implement a function to filter rows of data matching a specified requirement.
 
-4. Implement a function to filter rows of data matching a specified requirement.
+    Implement a function that performs insertion sort.
 
-5. Implement a function that performs insertion sort.
+    Implement a function that returns a memoized version of a function which accepts any number of arguments.
 
-6. Implement a function that returns a memoized version of a function which accepts any number of arguments.
+    Implement a function that acts like setInterval but returns a function to cancel the Interval.
 
-7. Implement a function that acts like setInterval but returns a function to cancel the Interval.
+    Implement a function that merges two objects together.
 
-8. Implement a function that merges two objects together
+    Implement a function to highlight text if searched terms appear within it.
 
-9. Implement a function to highlight text if searched terms appear within it.
+    Implement a function to recursively transform values.
 
-10. Implement a function to recursively transform values.
+    Implement a function that determines if two values are deep equal.
 
-11. Implement a function that determines if two values are deep equal.
+    Implement a function to highlight text if a searched term appears within it.
 
-12. Implement a function to highlight text if a searched term appears within it.
+    Implement a function that returns a new object after squashing the input object.
 
-13. Implement a function that returns a new object after squashing the input object.
+    Implement a function that creates a resumable interval object.
 
-14. Implement a function that creates a resumable interval object.
+    Implement the functionality behavior of Promise.any().
 
-15. Implement the functionality behaviour of Promise.any()
+    Implement the functionality behavior of Promise.allSettled().
 
-16. Implement the functionality behaviour of Promise.allSettled()
+    Implement a function that returns a memoized version of a function which accepts a single argument.
 
-17. Implement a function that returns a memoized version of a function which accepts a single argument.
+    Implement a function that formats a list of items into a single readable string.
 
-18. Implement a function that formats a list of items into a single readable string.
+    Implement a function that converts a JavaScript value into a JSON string.
 
-19. Implement a function that converts a JavaScript value into a JSON string.
+    Implement a class that can subscribe to and emit events that trigger attached callback functions.
 
-20. Implement a class that can subscribe to and emit events that trigger attached callback functions.
+    Implement a debounce function that comes with a cancel method to cancel delayed invocations.
 
-21. Implement a debounce function that comes with a cancel method to cancel delayed invocations.
+    Implement a function to merge rows of data from the same user.
 
-22. Implement a function to merge rows of data from the same user.
+    Implement a function that recursively flattens an array into a single level deep.
 
-23. Implement a function that recursively flattens an array into a single level deep.
+    Implement a function that returns an object with all falsey values removed.
 
-24. Implement a function that returns an object with all falsey values removed.
+    Implement a function to resolve a given value to a Promise.
 
-25. Implement a function to resolve a given value to a Promise.
+    Implement a Turtle class that moves a turtle on a 2D plane.
 
-26. Implement a Turtle class that moves a turtle on a 2D plane.
+    Implement a function to execute N async tasks in series.
 
-27. Implement a function to execute N async tasks in series.
+    Implement a promisify function that allows the original function to override the return value.
 
-28. Implement a promisify function that allows the original function to override the return value.
+    Implement a function to deserialize a JSON string.
 
-29. Implement a function to deserialize a JSON string.
+    Implement a function to convert all the keys in an object to camel case.
 
-30. Implement a function to convert all the keys in an object to camel case.
+    Create custom cookie (Medium).
 
-31 Create custom cookie (Medium)
+    Fetch request and response interceptor (Medium).
 
-32 Fetch request and response interceptor (Medium)
+    Aggregate array of objects on the given keys (Medium).
 
-33 Aggregate array of objects on the given keys (Medium)
+    Filter array of objects on index or value (Easy).
 
-34 Filter array of objects on index or value (Easy)
-
-35 Implement browser history (Medium)
+    Implement browser history (Medium).
