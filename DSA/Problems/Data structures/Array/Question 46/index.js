@@ -6,28 +6,35 @@
 
 // Input: strs = ["flower","flow","flight"]
 // Output: "fl"
-
-function longestCommonPrefix(strs) {
-  if (strs.length === 0) {
-    return "";
-  }
-
-  let firstWord = strs[0];
+const findPrefix = (str1, str2) => {
   let res = "";
 
-  for (let i = 0; i < firstWord.length; i++) {
-    for (let str of strs) {
-      if (i >= str.length || str[i] !== firstWord[i]) {
-        return res;
-      }
+  let i = 0;
+  let j = 0;
+
+  while (i < str1.length && j < str2.length) {
+    if (str1[i] === str2[j]) {
+      res += str1[i];
+      i++;
+      j++;
+    } else {
+      break;
     }
-
-    res += firstWord[i];
   }
+
   return res;
-}
+};
+var longestCommonPrefix = function (strs) {
+  let res = null;
 
-let input = ["flower", "flow", "flight"];
+  for (let i = 0; i < strs.length; i++) {
+    if (res === null) {
+      res = findPrefix(strs[i], strs[i + 1]);
+    } else {
+      res = findPrefix(strs[i], res);
+    }
+  }
 
-const result = longestCommonPrefix(input);
-console.log(result);
+  return res;
+};
+console.log(longestCommonPrefix(["flower", "flow", "flight"]));

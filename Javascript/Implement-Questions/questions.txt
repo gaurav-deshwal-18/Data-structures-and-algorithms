@@ -34,8 +34,6 @@
 
     Implement a function that formats a list of items into a single readable string.
 
-    Implement a function that converts a JavaScript value into a JSON string.
-
     Implement a class that can subscribe to and emit events that trigger attached callback functions.
 
     Implement a debounce function that comes with a cancel method to cancel delayed invocations.

@@ -27,7 +27,7 @@ const findCommonChar = (input) => {
     }
   }
 
-  return res;
+  return res.join("");
 };
 
 let input = ["hello", "cello", "fellow"];

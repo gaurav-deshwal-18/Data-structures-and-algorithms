@@ -1,25 +1,25 @@
 //* Merge Sorted Array
 
 function merge(nums1, m, nums2, n) {
-  let index1 = m - 1;
-  let index2 = n - 1;
-  let mergedIndex = m + n - 1;
-  while (index1 >= 0 && index2 >= 0) {
-    if (nums1[index1] > nums2[index2]) {
-      nums1[mergedIndex] = nums1[index1];
-      index1--;
+  let last = m + n - 1;
+  let i = m - 1;
+  let j = n - 1;
+
+  while (i >= 0 && j >= 0) {
+    if (nums1[i] > nums2[j]) {
+      nums1[last] = nums1[i];
+      i--;
     } else {
-      nums1[mergedIndex] = nums2[index2];
-      index2--;
+      nums1[last] = nums2[j];
+      j--;
     }
-    mergedIndex--;
+    last--;
   }
 
-  // If there are remaining elements in nums2, copy them to nums1
-  while (index2 >= 0) {
-    nums1[mergedIndex] = nums2[index2];
-    index2--;
-    mergedIndex--;
+  while (j >= 0) {
+    nums1[last] = nums2[j];
+    j--;
+    last--;
   }
 }
 
