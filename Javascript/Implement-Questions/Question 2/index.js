@@ -21,7 +21,7 @@ function mySetInterval(callback, interval) {
 
 // Example usage:
 const cancelInterval = mySetInterval(() => {
-  console.log("Interval callback executed.");
+  console.log("Interval callback executed ");
 }, 1000);
 
 // After some time, cancel the interval
