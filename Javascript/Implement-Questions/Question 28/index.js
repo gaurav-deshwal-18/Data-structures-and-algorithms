@@ -1,45 +1,45 @@
 //* Implement browser history (Medium).
-
 // History class to manage browser history
 class BrowserHistory {
   constructor() {
     this.historyStack = []; // Stack to store history states
     this.currentIndex = -1; // Index of the current state in the history stack
-    this.onPopState = this.onPopState.bind(this);
-    window.addEventListener("popstate", this.onPopState);
   }
 
   // Method to navigate to a new URL
   navigate(url) {
-    // Update the browser's address bar
-    history.pushState({}, "", url);
-
     // Add the new state to the history stack
     this.historyStack.push(url);
     this.currentIndex = this.historyStack.length - 1;
+
+    // Log the current URL
+    console.log("Current URL:", this.getCurrentUrl());
   }
 
-  // Method to handle popstate event
-  onPopState(event) {
-    // Update the currentIndex to reflect the current state
-    this.currentIndex = this.historyStack.indexOf(location.pathname);
-
-    // Perform any necessary actions based on the current state
-    // For example, update the UI to reflect the current state
-    console.log("Current URL:", location.pathname);
+  // Method to get the current URL
+  getCurrentUrl() {
+    if (
+      this.currentIndex >= 0 &&
+      this.currentIndex < this.historyStack.length
+    ) {
+      return this.historyStack[this.currentIndex];
+    }
+    return null;
   }
 
   // Method to navigate back to the previous state
   goBack() {
     if (this.currentIndex > 0) {
-      history.back();
+      this.currentIndex--;
+      console.log("Navigating back to:", this.getCurrentUrl());
     }
   }
 
   // Method to navigate forward to the next state
   goForward() {
     if (this.currentIndex < this.historyStack.length - 1) {
-      history.forward();
+      this.currentIndex++;
+      console.log("Navigating forward to:", this.getCurrentUrl());
     }
   }
 }

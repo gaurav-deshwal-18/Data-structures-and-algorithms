@@ -1,66 +1,91 @@
 //* Implement a class that can subscribe to and emit events that
 //*  trigger attached callback functions.
-
 class EventEmitter {
   constructor() {
-    this.events = {};
+    this.listeners = {};
   }
 
-  /**
-   * Subscribe to an event.
-   * @param {string} eventName - The name of the event to subscribe to.
-   * @param {function} callback - The callback function to be triggered when the event occurs.
-   */
-  subscribe(eventName, callback) {
-    if (!this.events[eventName]) {
-      this.events[eventName] = [];
+  addListener(eventName, fn) {
+    this.listeners[eventName] = this.listeners[eventName] || [];
+    this.listeners[eventName].push(fn);
+    return this;
+  }
+
+  on(eventName, fn) {
+    return this.addListener(eventName, fn);
+  }
+
+  once(eventName, fn) {
+    const onceWrapper = (...args) => {
+      fn(...args);
+      this.off(eventName, onceWrapper);
+    };
+    this.listeners[eventName] = this.listeners[eventName] || [];
+    this.listeners[eventName].push(onceWrapper);
+    return this;
+  }
+
+  off(eventName, fn) {
+    return this.removeListener(eventName, fn);
+  }
+
+  removeListener(eventName, fn) {
+    const listeners = this.listeners[eventName];
+    if (!listeners) return this;
+    const index = listeners.indexOf(fn);
+    if (index !== -1) {
+      listeners.splice(index, 1);
     }
-    this.events[eventName].push(callback);
+    return this;
   }
 
-  /**
-   * Emit an event, triggering all attached callback functions.
-   * @param {string} eventName - The name of the event to emit.
-   * @param  {...any} args - Arguments to pass to the callback functions.
-   */
   emit(eventName, ...args) {
-    const eventCallbacks = this.events[eventName];
-    if (eventCallbacks) {
-      eventCallbacks.forEach((callback) => {
-        callback(...args);
-      });
-    }
+    const listeners = this.listeners[eventName];
+    if (!listeners) return false;
+    listeners.forEach((fn) => {
+      fn(...args);
+    });
+    return true;
   }
 
-  /**
-   * Unsubscribe from an event.
-   * @param {string} eventName - The name of the event to unsubscribe from.
-   * @param {function} callback - The callback function to be removed.
-   */
-  unsubscribe(eventName, callback) {
-    const eventCallbacks = this.events[eventName];
-    if (eventCallbacks) {
-      this.events[eventName] = eventCallbacks.filter((cb) => cb !== callback);
-    }
+  listenerCount(eventName) {
+    const listeners = this.listeners[eventName] || [];
+    return listeners.length;
+  }
+
+  rawListeners(eventName) {
+    return this.listeners[eventName];
   }
 }
 
-// Example usage:
+// Example of usage
 const emitter = new EventEmitter();
 
-// Subscribe to an event
-emitter.subscribe("message", (data) => {
-  console.log("Message received:", data);
+// Registering a listener
+emitter.on("event", (arg1, arg2) => {
+  console.log("Listener 1:", arg1, arg2);
 });
 
-// Emit an event
-emitter.emit("message", "Hello, world!");
-
-// Unsubscribe from an event
-const callback = () => {
-  console.log("This should not be called.");
+// Registering another listener
+const listener2 = (arg1, arg2) => {
+  console.log("Listener 2:", arg1, arg2);
 };
-emitter.subscribe("test", callback);
-emitter.emit("test");
-emitter.unsubscribe("test", callback);
-emitter.emit("test"); // This should not trigger the callback
+emitter.addListener("event", listener2);
+
+// Emitting the event
+emitter.emit("event", "Hello", "World");
+
+// Test case for number of listeners
+console.log('Number of listeners for "event":', emitter.listenerCount("event")); // Should print 2
+
+// Removing a listener
+emitter.off("event", listener2);
+
+// Emitting the event again
+emitter.emit("event", "Goodbye", "World");
+
+// Test case for number of listeners after removing one
+console.log(
+  'Number of listeners for "event" after removing one:',
+  emitter.listenerCount("event")
+); // Should print 1

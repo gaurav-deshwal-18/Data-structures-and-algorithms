@@ -1,25 +1,22 @@
-//* Implement a function that creates a resumable interval object.
-
 function createResumableInterval(callback, interval) {
-  let timerId;
+  let timerId = setInterval(callback, interval);
   let paused = false;
 
   function resume() {
-    if (!paused) return;
-    paused = false;
+    if (paused === false) return;
+    pause = false;
     timerId = setInterval(callback, interval);
   }
 
   function pause() {
-    if (paused) return;
+    if (paused === true) {
+      return;
+    }
     paused = true;
     clearInterval(timerId);
+    timerId = null;
   }
 
-  // Start the interval
-  resume();
-
-  // Return the resumable interval object
   return {
     resume,
     pause,

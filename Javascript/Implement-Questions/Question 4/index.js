@@ -1,76 +1,74 @@
-//* Promise Polyfill
-function MyPromise(executer) {
-  let onResolve;
-  let onReject;
+class MyPromise {
+  constructor(executor) {
+    this.onResolve = null;
+    this.onReject = null;
+    this.isFullFilled = false;
+    this.isRejected = false;
+    this.isCalled = false;
+    this.value = undefined;
 
-  let isFullFilled = false;
-  let isRejected = false;
+    const resolve = (val) => {
+      this.isFullFilled = true;
+      this.value = val;
+      if (typeof this.onResolve === "function") {
+        this.onResolve(val);
+        this.isCalled = true;
+      }
+    };
 
-  let isCalled = false;
-  let value;
+    const reject = (val) => {
+      this.isRejected = true;
+      this.value = val;
+      if (typeof this.onReject === "function") {
+        this.onReject(val);
+        this.isCalled = true;
+      }
+    };
 
-  function resolve(val) {
-    isFullFilled = true;
-    value = val;
-    if (typeof onResolve === "function") {
-      onResolve(val);
-      isCalled = true;
+    try {
+      executor(resolve, reject);
+    } catch (error) {
+      reject(error);
     }
   }
 
-  function reject(val) {
-    isRejected = true;
-    value = val;
-    if (typeof onReject === "function") {
-      onReject(val);
-      isCalled = true;
+  then(callback) {
+    this.onResolve = callback;
+    if (this.isFullFilled && !this.isCalled) {
+      this.onResolve(this.value);
+      this.isCalled = true;
     }
+    return this;
   }
 
-  this.then = function (callback) {
-    onResolve = callback;
-
-    if (isFullFilled && !isCalled) {
-      onResolve(value);
-      isCalled = true;
+  catch(callback) {
+    this.onReject = callback;
+    if (this.isRejected && !this.isCalled) {
+      this.onReject(this.value);
+      this.isCalled = true;
     }
     return this;
-  };
+  }
 
-  this.catch = function (callback) {
-    onReject = callback;
-    if (isRejected && !isCalled) {
-      onReject(value);
-      isCalled = true;
-    }
-    return this;
-  };
+  static resolve(val) {
+    return new MyPromise(function executer(resolve) {
+      resolve(val);
+    });
+  }
 
-  try {
-    executer(resolve, reject);
-  } catch (error) {
-    reject(error);
+  static reject(val) {
+    return new MyPromise(function executer(_, reject) {
+      reject(val);
+    });
   }
 }
 
-MyPromise.resolve = (val) => {
-  new MyPromise(function executer(resolve, reject) {
-    resolve(val);
-  });
-};
-
-MyPromise.reject = (val) => {
-  new MyPromise(function executer(resolve, reject) {
-    reject(val);
-  });
-};
-
 const promise = new MyPromise((resolve, reject) => {
   let lottery = Math.random();
-  if (lottery) {
-    resolve("Yeah you won a lottery 🎁");
+  if (lottery > 0.5) {
+    setTimeout(() => resolve("Yeah you won a lottery 🎁"), 1000);
   } else {
-    reject("Sorry! you lost 😞 ");
+    setTimeout(() => reject("Sorry! you lost 😞 "), 1000);
   }
 });
 

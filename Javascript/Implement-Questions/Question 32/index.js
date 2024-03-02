@@ -1,0 +1,1 @@
+//* implement object.assign custom

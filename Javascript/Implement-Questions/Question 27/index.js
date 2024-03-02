@@ -7,7 +7,7 @@ function aggregateArrayObjects(arr, keys) {
 
     // Initialize an empty object in the accumulator if it doesn't exist
     acc[key] = acc[key] || {};
-
+    console.log(obj, acc[key]);
     // Merge the current object into the accumulator object
     Object.assign(acc[key], obj);
 

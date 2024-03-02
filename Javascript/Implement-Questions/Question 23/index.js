@@ -1,11 +1,7 @@
 //*     Implement a function to highlight text if a searched term appears within it.
 
 function highlightText(text, searchTerm, highlightClass = "") {
-  if (!searchTerm.trim()) {
-    return text;
-  }
-
-  const regex = new RegExp(searchTerm, "gi");
+  const regex = new RegExp(searchTerm, "g");
   const highlightedText = text.replace(
     regex,
     (match) => `<span class="${highlightClass}">${match}</span>`
@@ -16,7 +12,7 @@ function highlightText(text, searchTerm, highlightClass = "") {
 
 // Example usage:
 const text =
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do ipsum eiusmod tempor incididunt ut labore et dolore magna aliqua.";
 const searchTerm = "ipsum";
 const highlightedText = highlightText(text, searchTerm, "highlight");
 console.log(highlightedText);
