@@ -1,74 +1,11 @@
-// 1. Custom typeof operator implementation - Medium
-//    - Asked in: TikTok, Amazon, Quizizz, MindTickle
-
-// 2. Custom lodash _get() implementation - Medium
-//    - Asked in: TikTok, Amazon, Quizizz, MindTickle
-
-// 3. Custom lodash _set() implementation - Medium
-//    - Asked in: TikTok, Amazon, Quizizz, MindTickle
-
-// 4. Custom lodash _omit() implementation - Medium
-
-// 5. Custom String Tokenizer implementation - Medium
-
-// 6. Custom setTimeout implementation - Medium
-//    - Asked in: Swiggy, Disney+ Hotstar
-
-// 7. Custom setInterval implementation - Medium
-//    - Asked in: Meta, TikTok, Swiggy
-
-// 8. Custom clearAllTimers implementation - Easy
-//    - Asked in: Meta
-
-// 9. Custom Event Emitter implementation - Medium
-//    - Asked in: Meta, Flipkart, Adobe, Jio, Tekion
-
-// 10. Custom Browser History implementation - Medium
-
-// 11. Custom lodash _chunk() implementation - Medium
-
-// 12. Custom Deep Clone implementation - Medium
-//     - Asked in: Adobe, Tekion, Navi
-
-// 13. Promisify the Async Callbacks - Easy
-
-// 14. Implement 'N' async tasks in Series - Hard
-//     - Asked in: Jio, MakeMyTrip, Tekion
-
-// 15. Implement 'N' async tasks in Parallel - Medium
-//     - Asked in: Zepto, Paytm, BookMyShow
-
-// 16. Implement 'N' async tasks in Race - Easy
-
-// 17. Implement Custom Object.is() method - Easy
-
-// 18. Implement Custom lodash _partial() - Medium
-
-// 19. Implement Custom lodash _once() - Medium
-
-// 20. Implement Custom trim() operation - Medium
-
-// 21. Implement Custom reduce() method - Medium
-//     - Asked in: Amazon, Apple, Expedia, Paytm, ByteLearn
-
-// 22. Implement Custom lodash _memoize() - Medium
-//     - Asked in: Meta, Intuit, Gameskraft
-
-// 23. Implement Custom memoizeLast() method - Medium
-
-// 24. Implement Custom React "classnames" library - Medium
-//     - Asked in: Meta
-
-// 25. Implement Custom Redux used "Immer" library - Medium
-
-// 26. Implement Custom Virtual DOM - I (Serialize) - Hard
-//     - Asked in: Meta
-
-// 27. Implement Custom Virtual DOM - II (Deserialize) - Medium
-//     - Asked in: Mera
-
-// 28. Implement Memoize/Cache identical API calls - Hard
-
-// 29.  Negative indexing in arrays
-// 30 implement auto retry promises
-// 31 implement promise finally
+1. Custom lodash _get() implementation
+2. Custom lodash _set() implementation
+3. Custom lodash _omit() implementation
+4. Custom String Tokenizer implementation
+5. Custom lodash _chunk() implementation
+6. Promisify the Async Callbacks
+7. Implement Custom React "classnames" library
+8. Implement Custom Redux used "Immer" library
+9. Implement Custom Virtual DOM - I (Serialize)
+10. Implement Custom Virtual DOM - II (Deserialize)
+11. Implement Memoize/Cache identical API calls

@@ -1,0 +1,1 @@
+//* Custom typeof operator implementatio
