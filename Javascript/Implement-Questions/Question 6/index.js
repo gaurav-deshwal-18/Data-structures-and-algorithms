@@ -14,10 +14,10 @@ function promiseRace(promises) {
 
 // Example usage:
 const promise1 = new Promise((resolve, reject) => {
-  setTimeout(resolve, 100, "one");
+  setTimeout(resolve, 1000, "one");
 });
 const promise2 = new Promise((resolve, reject) => {
-  setTimeout(resolve, 200, "two");
+  setTimeout(resolve, 2000, "two");
 });
 
 promiseRace([promise1, promise2])

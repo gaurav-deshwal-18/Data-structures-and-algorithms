@@ -3,7 +3,6 @@ function customTypeOf(value) {
   if (value === null) {
     return "null";
   }
-
   // Use constructors to determine the type
   const type = Object.prototype.toString.call(value).slice(8, -1).toLowerCase();
 

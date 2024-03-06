@@ -22,4 +22,3 @@ console.log(curriedAdd(1)(2)(3)); // Output: 6
 console.log(curriedAdd(1, 2)(3)); // Output: 6
 console.log(curriedAdd(1)(2, 3)); // Output: 6
 console.log(curriedAdd(1, 2, 3)); // Output: 6
-

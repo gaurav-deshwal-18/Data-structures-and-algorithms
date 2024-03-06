@@ -35,7 +35,3 @@ const onceFunc = _once(() => {
 
 onceFunc(); // Output: "This function will be called only once"
 onceFunc(); // No output (function not called again)
-
-
-
-//* Implement Custom memoizeLast() method

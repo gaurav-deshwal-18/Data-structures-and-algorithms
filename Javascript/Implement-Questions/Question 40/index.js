@@ -1,27 +1,33 @@
-//* implement promise finally
-Promise.prototype.finally = function (callback) {
-  const promise = this.constructor;
-
-  return this.then(
-    (value) => promise.resolve(callback()).then(() => value),
-    (reason) =>
-      promise.resolve(callback()).then(() => {
-        throw reason;
-      })
+//* implement cutsom promise finally
+function customFinally(promise, callback) {
+  return promise.then(
+    (value) => {
+      callback();
+      return value;
+    },
+    (reason) => {
+      callback();
+      throw reason;
+    }
   );
-};
+}
 
 // Example usage:
 const myPromise = new Promise((resolve, reject) => {
+  // Simulate an asynchronous operation
   setTimeout(() => {
-    resolve("Success");
+    // Resolve the promise
+    resolve("Success!");
   }, 1000);
 });
 
-myPromise
-  .then((result) => {
-    console.log(result); // Output: "Success"
-  })
-  .finally(() => {
-    console.log("Promise has been resolved, regardless of success or failure.");
-  });
+customFinally(myPromise, () => {
+  console.log("Promise has been settled.");
+}).then(
+  (result) => {
+    console.log("Promise resolved with result:", result);
+  },
+  (error) => {
+    console.error("Promise rejected with error:", error);
+  }
+);
