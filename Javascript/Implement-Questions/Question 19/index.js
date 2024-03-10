@@ -1,17 +1,16 @@
 //* Implement a function that returns a new object after squashing the input object.
 
 function squashObject(obj, prefix = "") {
-  const squashedObj = {};
+  let squashedObj = {};
 
   for (let key in obj) {
+    let newKey = prefix ? `${prefix}.${key}` : key;
+
     if (typeof obj[key] === "object" && obj[key] !== null) {
-      const nestedObj = squashObject(
-        obj[key],
-        prefix ? `${prefix}.${key}` : key
-      );
-      Object.assign(squashedObj, nestedObj);
+      const nestedObj = squashObject(obj[key], newKey);
+      squashedObj = { ...squashedObj, ...nestedObj };
     } else {
-      squashedObj[prefix ? `${prefix}.${key}` : key] = obj[key];
+      squashedObj[newKey] = obj[key];
     }
   }
 
