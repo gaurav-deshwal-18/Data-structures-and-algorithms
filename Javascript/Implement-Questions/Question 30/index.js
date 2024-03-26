@@ -4,7 +4,7 @@ function deepFlattenI(arr) {
   return arr.reduce(
     (acc, val) =>
       Array.isArray(val) ? acc.concat(deepFlattenI(val)) : acc.concat(val),
-    []
+    [],
   );
 }
 

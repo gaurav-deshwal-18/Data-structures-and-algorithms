@@ -1,33 +1,36 @@
-//* Longest Repeating character replacement
-//* Time complexity ---> O(n*26)
+//* finding the common characters among multiple strings
 
-function characterReplacement(s, k) {
-  const charCount = {};
-  let maxCount = 0;
-  let maxLength = 0;
-  let start = 0;
-
-  for (let end = 0; end < s.length; end++) {
-    const currentChar = s[end];
-    charCount[currentChar] = (charCount[currentChar] || 0) + 1;
-    maxCount = Math.max(...Object.values(charCount));
-
-    if (end - start + 1 - maxCount > k) {
-      charCount[s[start]]--;
-      start++;
-    }
-
-    maxLength = Math.max(maxLength, end - start + 1);
+const common = (str1, str2) => {
+  let map = {};
+  for (let char of str1) {
+    map[char] = (map[char] || 0) + 1;
   }
 
-  return maxLength;
-}
+  let res = [];
+  for (let char of str2) {
+    if (map[char]) {
+      res.push(char);
+      map[char]--;
+    }
+  }
 
-// Example usage:
-const inputString = "AABABBA";
-const k = 1;
-const longestLength = characterReplacement(inputString, k);
-console.log(
-  "Length of the longest substring with at most k replacements:",
-  longestLength
-);
+  return res;
+};
+const findCommonChar = (input) => {
+  let res;
+
+  for (let i = 0; i < input.length; i++) {
+    if (res === undefined) {
+      res = common(input[i], input[i + 1]);
+    } else {
+      res = common(res, input[i]);
+    }
+  }
+
+  return res.join("");
+};
+
+let input = ["hellow", "cellw", "fellow"];
+
+const result = findCommonChar(input);
+console.log(result);

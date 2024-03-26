@@ -1,36 +1,36 @@
-//* finding the common characters among multiple strings
+//* Roman To Integer
+//* Time complexity - O(n)
 
-const common = (str1, str2) => {
-  let map = {};
-  for (let char of str1) {
-    map[char] = (map[char] || 0) + 1;
-  }
+//* Example:
 
-  let res = [];
-  for (let char of str2) {
-    if (map[char]) {
-      res.push(char);
-      map[char]--;
+// Input: s = "LVIII"
+// Output: 58
+// Explanation: L = 50, V= 5, III = 3.
+
+var romanToInt = function (s) {
+  const map = {
+    I: 1,
+    V: 5,
+    X: 10,
+    L: 50,
+    C: 100,
+    D: 500,
+    M: 1000,
+  };
+  let res = 0;
+
+  for (let i = 0; i < s.length; i++) {
+    let curr = map[s[i]];
+    let next = map[s[i + 1]] || 0;
+
+    if (curr < next) {
+      res -= curr;
+    } else {
+      res += curr;
     }
   }
 
   return res;
 };
-const findCommonChar = (input) => {
-  let res;
-
-  for (let i = 0; i < input.length; i++) {
-    if (res === undefined) {
-      res = common(input[i], input[i + 1]);
-    } else {
-      res = common(res, input[i]);
-    }
-  }
-
-  return res.join("");
-};
-
-let input = ["hellow", "cellw", "fellow"];
-
-const result = findCommonChar(input);
+const result = romanToInt("LVIII");
 console.log(result);

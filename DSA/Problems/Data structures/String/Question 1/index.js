@@ -1,32 +1,34 @@
-//* Longest substring without reapeating characters
-//* Time complexity ---> O(n)
-function longestSubstringWithoutRepeatingCharacters(s) {
-  const n = s.length;
-  let maxLength = 0;
-  let start = 0;
-  let end = 0;
-  const charSet = new Set();
+//* Encode and decode strings
 
-  while (end < n) {
-    const currentChar = s[end];
-
-    if (!charSet.has(currentChar)) {
-      charSet.add(currentChar);
-      maxLength = Math.max(maxLength, end - start + 1);
-      end++;
-    } else {
-      charSet.delete(s[start]);
-      start++;
-    }
+const encode = (input) => {
+  let result = "";
+  for (let string of input) {
+    let length = string.length;
+    result += `${length}#`;
+    result += string;
   }
 
-  return maxLength;
-}
+  return result;
+};
 
-// Example usage:
-const inputString = "abcabcbb";
-const longestLength = longestSubstringWithoutRepeatingCharacters(inputString);
-console.log(
-  "Length of the longest substring without repeating characters:",
-  longestLength
-);
+const decode = (string) => {
+  let result = [];
+
+  let i = 0;
+
+  while (i < string.length) {
+    let j = i;
+    while (string[j] !== "#") {
+      j = j + 1;
+    }
+    let len = Number(string[j - 1]);
+    let str = string.slice(j + 1, j + 1 + len);
+    result.push(str);
+    i = j + 1 + len;
+  }
+  return result;
+};
+const input = ["leet", "code", "max"];
+const encodeInput = encode(input);
+const decodeOutput = decode(encodeInput);
+console.log(decodeOutput);

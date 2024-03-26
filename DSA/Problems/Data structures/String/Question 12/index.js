@@ -1,29 +1,26 @@
-//* Maximum Number of Vowels in a Substring of Given Length
-//* Time complexity - O(n)
-var maxVowels = function (s, k) {
-  let vowels = ["a", "e", "i", "o", "u"];
-  let maxCount = 0;
-  let count = 0;
-  let left = 0;
-  let right = 0;
+//* find the index of first occurence in string
 
-  while (right < s.length) {
-    if (vowels.includes(s[right])) {
-      count += 1;
+//* Given two strings needle and haystack, return the index of the first
+//* occurrence of needle in haystack, or -1 if needle is not part of haystack.
+
+//* Time complexity -> O(n*m)
+
+// Example 1:
+
+// Input: haystack = "sadbutsad", needle = "sad"
+// Output: 0
+// Explanation: "sad" occurs at index 0 and 6.
+// The first occurrence is at index 0, so we return 0.
+
+var strStr = function (haystack, needle) {
+  for (let i = 0; i < haystack.length; i++) {
+    if (haystack.slice(i, i + needle.length) === needle) {
+      return i;
     }
-
-    if (right - left + 1 > k) {
-      if (vowels.includes(s[left])) {
-        count -= 1;
-      }
-      left++;
-    }
-
-    maxCount = Math.max(maxCount, count);
-    right++;
   }
 
-  return maxCount;
+  return -1;
 };
-let result = maxVowels("abciiidef", 3);
+
+const result = strStr("sadbutsad", "sad");
 console.log(result);
