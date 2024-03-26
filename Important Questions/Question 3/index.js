@@ -1,5 +1,6 @@
 //* CORS in details along with preflight
-
+//* https://medium.com/iocscan/cross-origin-resource-sharing-cors-65b536b361ae
+//*  https://medium.com/@reemshakes/how-does-cors-work-f7488acf09f4
 /*
 CORS (Cross-Origin Resource Sharing) in Detail:
 

@@ -25,5 +25,5 @@ var maxVowels = function (s, k) {
 
   return maxCount;
 };
-let result = maxVowels("abciiidef");
+let result = maxVowels("abciiidef", 3);
 console.log(result);

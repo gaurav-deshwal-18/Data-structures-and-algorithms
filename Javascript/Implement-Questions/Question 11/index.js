@@ -12,7 +12,7 @@ function mergeObjects(obj1, obj2) {
       typeof obj2[key] === "object" &&
       !Array.isArray(obj2[key])
     ) {
-      mergedObj[key] = mergeObjects(mergedObj[key], obj2[key]);
+      mergedObj[key] = { ...mergedObj[key], ...obj2[key] };
     } else {
       mergedObj[key] = obj2[key];
     }

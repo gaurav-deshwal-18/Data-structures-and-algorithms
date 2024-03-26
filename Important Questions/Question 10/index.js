@@ -1,4 +1,6 @@
 /*
+https://medium.com/from-the-scratch/cookies-visualized-everything-you-ever-need-to-know-about-web-cookies-c5f3b403dc65
+https://medium.com/@yadav-ajay/using-httponly-and-secure-cookies-on-web-servers-how-to-do-it-52ccf0eabfb4
 Cookie and Local Storage in Detail:
 
 1. Cookie:

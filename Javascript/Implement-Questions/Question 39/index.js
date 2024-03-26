@@ -5,8 +5,8 @@ function autoRetryPromise(promiseFunction, maxRetries, delayBetweenRetries) {
       promiseFunction()
         .then(resolve)
         .catch((error) => {
-          if (attempt < maxRetries) {
-            console.log(`Retry attempt ${attempt + 1}/${maxRetries}`);
+          if (attempt <= maxRetries) {
+            console.log(`Retry attempt ${attempt}/${maxRetries}`);
             setTimeout(() => retryAttempt(attempt + 1), delayBetweenRetries);
           } else {
             reject(error);
@@ -15,7 +15,7 @@ function autoRetryPromise(promiseFunction, maxRetries, delayBetweenRetries) {
     }
 
     // Start the first attempt
-    retryAttempt(0);
+    retryAttempt(1);
   });
 }
 

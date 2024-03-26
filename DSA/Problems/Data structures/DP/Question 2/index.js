@@ -25,6 +25,7 @@ function coinChange(coins, amount) {
       }
     }
   }
+  console.log(dp);
 
   return dp[amount] !== Infinity ? dp[amount] : -1;
 }

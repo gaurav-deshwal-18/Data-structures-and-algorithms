@@ -30,7 +30,7 @@ const findCommonChar = (input) => {
   return res.join("");
 };
 
-let input = ["hello", "cello", "fellow"];
+let input = ["hellow", "cellw", "fellow"];
 
 const result = findCommonChar(input);
 console.log(result);

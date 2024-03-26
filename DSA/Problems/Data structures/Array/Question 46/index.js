@@ -6,17 +6,12 @@
 
 // Input: strs = ["flower","flow","flight"]
 // Output: "fl"
-const findPrefix = (str1, str2) => {
+const findPrefix = (str1 = "", str2 = "") => {
   let res = "";
 
-  let i = 0;
-  let j = 0;
-
-  while (i < str1.length && j < str2.length) {
-    if (str1[i] === str2[j]) {
+  for (let i = 0; i < str1.length && i < str2.length; i++) {
+    if (str1[i] === str2[i]) {
       res += str1[i];
-      i++;
-      j++;
     } else {
       break;
     }
@@ -26,6 +21,9 @@ const findPrefix = (str1, str2) => {
 };
 var longestCommonPrefix = function (strs) {
   let res = null;
+  if (strs.length === 1) {
+    return strs[0];
+  }
 
   for (let i = 0; i < strs.length; i++) {
     if (res === null) {

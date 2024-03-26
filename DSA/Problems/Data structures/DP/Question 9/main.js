@@ -2,16 +2,23 @@
 
 var jumpGame = function (nums) {
   let destination = 0;
-  let position = 0;
-  let count = 0;
+  let minJumps = 0;
+  let coverage = 0;
+
   for (let i = 0; i < nums.length - 1; i++) {
-    destination = Math.max(destination, i + nums[i]);
-    if (i === position) {
-      position = destination;
-      count++;
+    coverage = Math.max(coverage, i + nums[i]);
+
+    if (destination === i) {
+      minJumps++;
+      destination = coverage;
+    }
+
+    if (destination >= nums.length - 1) {
+      break;
     }
   }
-  return count;
+
+  return minJumps;
 };
 
 let input = [2, 3, 1, 1, 4];

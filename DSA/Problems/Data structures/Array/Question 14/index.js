@@ -19,7 +19,6 @@ const nextPermutation = (nums) => {
       break;
     }
   }
-  console.log(k);
   //if k = -1 ,reverse and return
   if (k === -1) {
     reverse(nums, 0, nums.length - 1);

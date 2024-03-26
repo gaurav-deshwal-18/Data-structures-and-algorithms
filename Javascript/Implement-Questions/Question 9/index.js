@@ -8,7 +8,7 @@ const debounce = (cb, delay = 1000) => {
   return (...args) => {
     clearTimeout(timer);
     timer = setTimeout(() => {
-      cb(...args);
+      return cb(...args);
     }, delay);
   };
 };
@@ -25,6 +25,6 @@ const throttle = (cb, delay = 100) => {
       return;
     }
     lastTime = now;
-    cb(...args);
+    return cb(...args);
   };
 };

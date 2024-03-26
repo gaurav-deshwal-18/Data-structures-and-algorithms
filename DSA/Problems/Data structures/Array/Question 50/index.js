@@ -6,26 +6,26 @@
 // It does not matter what you leave beyond the returned k
 
 function removeDuplicates(nums) {
-  let r = 0;
-  let i = 0;
+  let right = 0;
+  let left = 0;
   let n = nums.length;
-  while (r < n) {
+  while (right < n) {
     let count = 1;
 
-    while (r + 1 < n && nums[r] === nums[r + 1]) {
-      r++;
+    while (right + 1 < n && nums[right] === nums[right + 1]) {
+      right++;
       count++;
     }
 
     for (let j = 0; j < Math.min(2, count); j++) {
-      nums[i] = nums[r];
-      i++;
+      nums[left] = nums[right];
+      left++;
     }
 
-    r++;
+    right++;
   }
 
-  return i;
+  return left;
 }
 
 // Test case
