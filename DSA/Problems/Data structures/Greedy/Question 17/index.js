@@ -1,20 +1,30 @@
-//* Last Stone Weight
+//* Maximum Sum Circular Subarray
 
-var lastStoneWeight = function (stones) {
-  stones.sort((a, b) => b - a);
-
-  while (stones.length > 1) {
-    let stone1 = stones[0];
-    let stone2 = stones[1];
-    let diff = Math.abs(stone1 - stone2);
-    if (diff > 0) {
-      stones.push(diff);
+var maxSubarraySumCircular = function (nums) {
+  let curMin = 0,
+    curMax = 0,
+    total = 0,
+    minSum = nums[0],
+    maxSum = nums[0];
+  for (let num of nums) {
+    if (curMax < 0) {
+      curMax = 0;
     }
 
-    stones.shift();
-    stones.shift();
-    stones.sort((a, b) => b - a);
+    if (curMin > 0) {
+      curMin = 0;
+    }
+
+    curMax += num;
+
+    curMin += num;
+
+    maxSum = Math.max(curMax, maxSum);
+
+    minSum = Math.min(curMin, minSum);
+
+    total += num;
   }
 
-  return stones.length ? stones[0] : 0;
+  return total === minSum ? maxSum : Math.max(total - minSum, maxSum);
 };
