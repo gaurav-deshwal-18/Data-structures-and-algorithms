@@ -14,6 +14,7 @@ Advanced FE Topics
     WebRTC
     HTTP/2
     QUIC
+    Waterfall debugging
 
 3/ Media
 
@@ -44,6 +45,11 @@ Advanced FE Topics
     Web Workers
     Web Vitals
     Memory Profiling
+    Worker Threads
+    Web Assembly
+    Animation Frame rate
+    Critical rendering path
+    Memory Heap snapshots
 
 7/ Graphics
 
@@ -67,8 +73,19 @@ Advanced FE Topics
 
 10/ Asset
 
+
+    Client hints
+    Adaptive Media loading
     Prefetch, Preload
     Compression Techniques
     Dynamic Image Loading
     Lossy and Lossless Conversions
     Pixel Density and PPI
+
+11/ Delivery Performance
+
+    Script Load techniques
+    Lazy Loading
+    Prefetch, Preload, Preconnect
+    Progressive Images
+    Service Workers caching
