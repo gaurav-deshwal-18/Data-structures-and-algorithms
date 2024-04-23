@@ -1,7 +1,7 @@
 // 	Balanced Binary Tree
 const height = (node) => {
   if (node === null) {
-    return -1;
+    return 0;
   }
   return 1 + Math.max(height(node.left), height(node.right));
 };
