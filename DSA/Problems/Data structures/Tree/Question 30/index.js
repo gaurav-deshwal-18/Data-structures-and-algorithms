@@ -1,24 +1,21 @@
-//* 	Find Duplicate Subtrees
-var findDuplicateSubtrees = function (root) {
-  const result = [];
+//* Binary Tree Maximum Path Sum
 
-  let map = {};
-  const preOrder = (node) => {
-    if (node === null) {
-      return null;
-    }
+var maxPathSum = function (root) {
+  let max = -Infinity;
+  function dfs(node) {
+    if (!node) return 0;
 
-    let s = [node.val, preOrder(node.left), preOrder(node.right)].join(",");
+    const left = dfs(node.left);
+    const right = dfs(node.right);
 
-    if (map[s] === 1) {
-      result.push(node);
-    }
+    const maxValPath = Math.max(node.val, node.val + left, node.val + right);
 
-    map[s] = (map[s] || 0) + 1;
-    return s;
-  };
+    max = Math.max(max, left + right + node.val, maxValPath);
 
-  preOrder(root);
+    return maxValPath;
+  }
 
-  return result;
+  dfs(root);
+
+  return max;
 };
