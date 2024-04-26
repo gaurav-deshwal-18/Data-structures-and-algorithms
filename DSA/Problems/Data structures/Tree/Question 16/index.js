@@ -1,15 +1,17 @@
-// LCA of two nodes in BST
-var lowestCommonAncestor = function (root, p, q) {
-  let current = root;
-
-  while (current) {
-    let value = current.val;
-    if (p.val < value && q.val < value) {
-      current = current.left;
-    } else if (p.val > value && q.val > value) {
-      current = current.right;
-    } else {
-      return current;
+// House of robber 3
+var rob = function (root) {
+  function dfs(root) {
+    if (root === null) {
+      return [0, 0];
     }
+
+    let left = dfs(root.left);
+    let right = dfs(root.right);
+
+    let withRoot = root.val + left[1] + right[1];
+    let withoutRoot = Math.max(...left) + Math.max(...right);
+
+    return [withRoot, withoutRoot];
   }
+  return Math.max(...dfs(root));
 };
