@@ -28,7 +28,7 @@ var canFinish = function (numCourses, prerequisites) {
   }
 
   for (let crs = 0; crs < numCourses; crs++) {
-    if (!dfs(crs)) return false;
+    if (!visitSet.has(crs) && !dfs(crs)) return false;
   }
   return true;
 };

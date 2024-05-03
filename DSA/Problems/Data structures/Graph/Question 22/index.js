@@ -1,2 +1,2 @@
-//* Min Cost to Connect All Points 	
+//* Min Cost to Connect All Points 	- Prims Algorithm
 	

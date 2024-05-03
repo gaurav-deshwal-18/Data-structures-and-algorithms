@@ -1,1 +1,1 @@
-//* Minimum Fuel Cost to Report to the Capital
+//*  Redundant Connection - Union Find Algorithm
