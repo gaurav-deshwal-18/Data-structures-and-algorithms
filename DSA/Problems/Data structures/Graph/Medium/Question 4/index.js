@@ -1,30 +1,30 @@
 //* 	Number of Closed Islands
 var closedIsland = function (grid) {
-  const ROWS = grid.length;
-  const COLS = grid[0].length;
+  let ROWS = grid.length;
+  let COLS = grid[0].length;
 
-  const set = new Set();
+  let islands = 0;
+
   function dfs(r, c) {
-    if (r < 0 || c < 0 || r === ROWS || c === COLS) {
+    if (r < 0 || c < 0 || r >= ROWS || c >= COLS) {
       return 0;
     }
-    if (grid[r][c] === 1 || set.has(`${r}-${c}`)) {
+    if (grid[r][c] === 1) {
       return 1;
     }
-    set.add(`${r}-${c}`);
 
-    return Math.min(dfs(r + 1, c), dfs(r, c + 1), dfs(r - 1, c), dfs(r, c - 1));
+    grid[r][c] = 1;
+
+    return Math.min(dfs(r + 1, c), dfs(r - 1, c), dfs(r, c - 1), dfs(r, c + 1));
   }
-
-  let result = 0;
 
   for (let r = 0; r < ROWS; r++) {
     for (let c = 0; c < COLS; c++) {
-      if (grid[r][c] === 0 && !set.has(`${r}-${c}`)) {
-        result += dfs(r, c);
+      if (grid[r][c] === 0) {
+        islands += dfs(r, c);
       }
     }
   }
 
-  return result;
+  return islands;
 };

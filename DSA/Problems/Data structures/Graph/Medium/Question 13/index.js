@@ -1,26 +1,43 @@
-//*	Max Area of Island
-var maxAreaOfIsland = function (grid) {
-    const rows = grid.length;
-    const cols = grid[0].length;
-    let maxArea = 0;
-  
-    function dfs(r, c) {
-      if (r < 0 || c < 0 || r > rows - 1 || c > cols - 1 || grid[r][c] !== 1) {
-        return 0;
-      }
-      grid[r][c] = 0;
-      return dfs(r + 1, c) + dfs(r - 1, c) + dfs(r, c + 1) + dfs(r, c - 1) + 1;
+//* Graph Valid Tree
+class Solution {
+  constructor() {
+    this.adjacencyList = new Map();
+  }
+
+  validTree(n, edges) {
+    this.adjacencyList.clear();
+
+    if (n == 1) return edges.length == 0;
+
+    if (edges.length == 0) return false;
+
+    for (let edge of edges) {
+      let node1 = edge[0];
+      let node2 = edge[1];
+      if (!this.adjacencyList.has(node1)) this.adjacencyList.set(node1, []);
+      if (!this.adjacencyList.has(node2)) this.adjacencyList.set(node2, []);
+      this.adjacencyList.get(node1).push(node2);
+      this.adjacencyList.get(node2).push(node1);
     }
-  
-    for (let r = 0; r < rows; r++) {
-      for (let c = 0; c < cols; c++) {
-        if (grid[r][c] === 1) {
-          let area = dfs(r, c);
-          maxArea = Math.max(area, maxArea);
-        }
-      }
+
+    let visited = new Set();
+
+    let isNotCircular = this.depthFirstSearch(0, -1, visited);
+
+    return isNotCircular && visited.size === n;
+  }
+
+  depthFirstSearch(node, previous, visited) {
+    if (visited.has(node)) return false;
+
+    visited.add(node);
+
+    for (let neighbor of this.adjacencyList.get(node)) {
+      if (neighbor === previous) continue;
+
+      if (!this.depthFirstSearch(neighbor, node, visited)) return false;
     }
-  
-    return maxArea;
-  };
-  
+
+    return true;
+  }
+}
