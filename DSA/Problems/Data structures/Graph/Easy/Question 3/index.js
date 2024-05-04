@@ -1,30 +1,27 @@
 // Flood Fill
 
 var floodFill = function (image, sr, sc, color) {
-  const rows = image.length;
-  const cols = image[0].length;
-  const prevColor = image[sr][sc];
-  let newImage = [...image];
+  let ROWS = image.length;
+  let COLS = image[0].length;
+
+  let prevColor = image[sr][sc];
+
+  if (prevColor === color) {
+    return image;
+  }
 
   function dfs(r, c) {
-    if (
-      r < 0 ||
-      c < 0 ||
-      r >= rows ||
-      c >= cols ||
-      image[r][c] !== prevColor ||
-      newImage[r][c] === color
-    ) {
+    if (r < 0 || c < 0 || r >= ROWS || c >= COLS || image[r][c] !== prevColor) {
       return;
     }
-    newImage[r][c] = color;
+    image[r][c] = color;
+
     dfs(r + 1, c);
-    dfs(r - 1, c);
     dfs(r, c + 1);
+    dfs(r - 1, c);
     dfs(r, c - 1);
   }
 
   dfs(sr, sc);
-
-  return newImage;
+  return image;
 };
