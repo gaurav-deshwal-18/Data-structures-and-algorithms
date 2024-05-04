@@ -17,7 +17,6 @@ class Solution {
     ];
     const visited = new Set();
 
-    // Push all water cells to the queue initially
     for (let r = 0; r < N; r++) {
       for (let c = 0; c < M; c++) {
         if (grid[r][c] === 0) {
