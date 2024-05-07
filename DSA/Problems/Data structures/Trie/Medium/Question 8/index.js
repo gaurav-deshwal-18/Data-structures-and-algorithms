@@ -1,4 +1,10 @@
-//* Trie Implementation
+//* Word Search II
+/**
+ * @param {character[][]} board
+ * @param {string[]} words
+ * @return {string[]}
+ */
+
 class TrieNode {
   constructor() {
     this.children = {};
@@ -22,30 +28,6 @@ class Trie {
     }
 
     node.isEndOfWord = true;
-  }
-
-  search(word) {
-    let node = this.root;
-    for (let char of word) {
-      if (!node.children[char]) {
-        return false;
-      }
-      node = node.children[char];
-    }
-
-    return node.isEndOfWord;
-  }
-
-  startsWith(prefix) {
-    let node = this.root;
-    for (let char of prefix) {
-      if (!node.children[char]) {
-        return false;
-      }
-      node = node.children[char];
-    }
-
-    return true;
   }
 
   delete(word) {
@@ -78,29 +60,57 @@ class Trie {
 
     return false;
   }
-  commonPrefix() {
-    let prefix = "";
-
-    let node = this.root;
-
-    while (Object.keys(node.children).length === 1 && !node.isEndOfWord) {
-      let char = Object.keys(node.children)[0];
-
-      prefix += char;
-
-      node = node.children[char];
-    }
-
-    return prefix;
-  }
 }
 
-const trie = new Trie();
-trie.insert("apple");
-trie.insert("app");
-trie.insert("application");
-console.log(trie.search("apple")); // Output: true
-console.log(trie.search("app")); // Output: true
-console.log(trie.search("ap")); // Output: false
-console.log(trie.startsWith("ap")); // Output: true
-console.log(trie.commonPrefix());
+var findWords = function (board, words) {
+  let ROWS = board.length;
+  let COLS = board[0].length;
+
+  let visited = new Set();
+
+  const trie = new Trie();
+  const root = trie.root;
+  for (let word of words) {
+    trie.insert(word);
+  }
+
+  const result = new Set();
+
+  function dfs(r, c, node, word) {
+    if (
+      r < 0 ||
+      c < 0 ||
+      r >= ROWS ||
+      c >= COLS ||
+      visited.has(`${r}-${c}`) ||
+      !node.children[board[r][c]]
+    ) {
+      return;
+    }
+
+    word += board[r][c];
+    node = node.children[board[r][c]];
+
+    if (node.isEndOfWord) {
+      result.add(word);
+      trie.delete(word);
+    }
+
+    visited.add(`${r}-${c}`);
+
+    dfs(r + 1, c, node, word);
+    dfs(r - 1, c, node, word);
+    dfs(r, c + 1, node, word);
+    dfs(r, c - 1, node, word);
+
+    visited.delete(`${r}-${c}`);
+  }
+
+  for (let r = 0; r < ROWS; r++) {
+    for (let c = 0; c < COLS; c++) {
+      dfs(r, c, root, "");
+    }
+  }
+
+  return [...result];
+};
