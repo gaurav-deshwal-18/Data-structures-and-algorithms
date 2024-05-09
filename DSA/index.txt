@@ -1,5 +1,3 @@
 Timeline (Jan to April)
-1. Trie + Heap (5 days Practice plus 2 days revision )
-2. Math + Backtracking (5 days Practice plus 2 days revision )
-3. Stack + Interval (5 days Practice plus 2 days revision )
-4. DP (5 days Practice plus 2 days revision )
+1. Math + Backtracking (5 days Practice plus 2 days revision )
+2. Stack + Interval (5 days Practice plus 2 days revision )
