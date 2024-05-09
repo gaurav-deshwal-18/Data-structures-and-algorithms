@@ -1,1 +1,1 @@
-//* Word Search
+//* N Queens

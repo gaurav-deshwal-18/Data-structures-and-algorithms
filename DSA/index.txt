@@ -1,3 +1,18 @@
-Timeline (Jan to April)
-1. Math + Backtracking (5 days Practice plus 2 days revision )
-2. Stack + Interval (5 days Practice plus 2 days revision )
+Timeline (20 days)
+1. Stack  - 9
+2. Interval - 8
+3. Array - 13
+4. Math and Geometry - 10
+
+
+Revision
+Array
+Two Pointer
+Sliding Window
+Binary Search
+String 
+LinkedList
+Stack
+Tree
+Interval
+Math
