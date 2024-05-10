@@ -1,11 +1,12 @@
 Timeline (20 days)
 1. Stack  - 9
 2. Interval - 8
-3. Array - 13
+3. Array - 5
 4. Math and Geometry - 10
 
 
-Revision
+Revision :-
+
 Array
 Two Pointer
 Sliding Window
@@ -16,3 +17,6 @@ Stack
 Tree
 Interval
 Math
+
+System Design :-
+
