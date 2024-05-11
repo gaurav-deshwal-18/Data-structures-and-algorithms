@@ -1,32 +1,30 @@
 //  Generate Parentheses
+
 var generateParenthesis = function (n) {
-  const stack = [];
   const result = [];
 
-  function backtrack(open, close) {
+  function backtrack(open, close, res) {
     //* if n is equal to open and close push and return
     if (n === open && n === close) {
-      const bracket = stack.join("");
-      result.push(bracket);
+      result.push(res);
       return;
     }
 
     //* if open is less than n add open
     if (open < n) {
-      stack.push("(");
-      backtrack(open + 1, close);
-      stack.pop();
+      let newRes = res + "(";
+      backtrack(open + 1, close, newRes);
     }
 
     //* if close is less than open add close
     if (close < open) {
-      stack.push(")");
-      backtrack(open, close + 1);
-      stack.pop();
+      let newRes = res + ")";
+
+      backtrack(open, close + 1, newRes);
     }
   }
 
-  backtrack(0, 0);
+  backtrack(0, 0, "");
 
   return result;
 };
