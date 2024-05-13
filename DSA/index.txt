@@ -1,7 +1,6 @@
 Timeline (20 days)
-1. Stack  - 9
-2. Interval - 8
-3. Array - 5
+1. Interval - 8
+2. Array - 5
 
 
 Revision :-
