@@ -1,4 +1,4 @@
-//* Longest Common Prefix
+//* Longest Common Prefix -done
 // Function to find the longest common prefix among an array of strings
 function longestCommonPrefix(strs) {
   if (strs.length === 0) return "";

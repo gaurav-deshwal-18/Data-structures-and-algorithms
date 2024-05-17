@@ -1,4 +1,4 @@
-//* find all pairs on integer array whose sum is equal to given number
+//* find all pairs on integer array whose sum is equal to given number --->done
 //* Time complexity ---> O(n)
 function getPairsCount(arr, k) {
   let seen = {};

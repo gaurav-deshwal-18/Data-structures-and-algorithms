@@ -1,4 +1,4 @@
-//* Write a program to cyclically rotate an array by one.
+//* Write a program to cyclically rotate an array by one.  -done
 
 function cyclicallyRotate(arr) {
   const lastElement = arr[arr.length - 1];

@@ -1,4 +1,4 @@
-//* find common elements In 3 sorted arrays
+//* find common elements In 3 sorted arrays ---> done
 
 const input1 = [1, 5, 10, 20, 40, 80, 20];
 const input2 = [6, 7, 20, 80, 100, 20];

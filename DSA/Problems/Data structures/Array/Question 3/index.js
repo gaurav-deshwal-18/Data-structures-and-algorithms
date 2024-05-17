@@ -1,4 +1,4 @@
-//* Find the "Kth" max and min element of an array
+//* Find the "Kth" max and min element of an array -done
 
 function findKthMaxMin(arr, k) {
   if (arr.length === 0 || k < 1 || k > arr.length) {

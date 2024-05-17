@@ -1,5 +1,5 @@
 //* Merge 2 sorted arrays with using Extra space.
-//* Time complexity -- O(n+m) and space complexity -O(n)
+//* Time complexity -- O(n+m) and space complexity -O(n) -done
 
 const mergeTwoSortedArray = (array1, array2) => {
   let result = [];

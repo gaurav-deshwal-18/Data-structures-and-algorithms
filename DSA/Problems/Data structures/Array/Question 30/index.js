@@ -1,4 +1,4 @@
-//* Find whether an array is subset of another array
+//* Find whether an array is subset of another array ---done
 //* Time complexity ---> O(n)
 function isSubset(arr1, arr2) {
   const set = new Set(arr1);

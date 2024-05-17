@@ -1,4 +1,4 @@
-//* Find the Union and Intersection of the two sorted arrays.
+//* Find the Union and Intersection of the two sorted arrays. -done
 //* Time complexity -- O(n+m)
 const findUnionAndIntersection = (array1, array2) => {
   const union = new Set();

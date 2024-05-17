@@ -1,4 +1,4 @@
-//* 	Two Sum
+//* 	Two Sum -done
 function twoSum(nums, target) {
   const numObj = {};
   for (let i = 0; i < nums.length; i++) {

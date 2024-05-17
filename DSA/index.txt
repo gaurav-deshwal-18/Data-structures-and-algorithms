@@ -1,20 +1,23 @@
-Timeline (20 days)
-1. Interval - 8
-2. Array - 5
-
-
 Revision :-
 
-Array
-Two Pointer
-Sliding Window
-Binary Search
-String 
-LinkedList
-Stack
-Tree
-Interval
-Math
+Array - 50
 
-System Design :-
+Two Pointer - 13
+
+Sliding Window - 25
+
+Binary Search - 21
+
+String - 13
+
+LinkedList - 26
+
+Stack - 10
+
+Tree - 34
+
+Interval - 8
+
+Math - 8
+
 

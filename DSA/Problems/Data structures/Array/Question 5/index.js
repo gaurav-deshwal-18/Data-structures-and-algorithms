@@ -1,4 +1,4 @@
-//* Move all the negative elements to one side of the array
+//* Move all the negative elements to one side of the array -done
 
 const array = [-1, 2, 1, -3, -9, 0, -8];
 //* Time complexity -- O(n)

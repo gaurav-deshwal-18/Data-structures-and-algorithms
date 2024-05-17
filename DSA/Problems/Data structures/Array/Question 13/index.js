@@ -1,4 +1,4 @@
-//* Find duplicate in an array of N+1 Integers
+//* Find duplicate in an array of N+1 Integers -done
 //* Array will include numbers from 1 to N and length will always be N+1
 //* It means there is always one duplicate number
 
