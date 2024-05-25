@@ -1,4 +1,4 @@
-//*Factorial of large number using array
+//*Factorial of large number using array -done
 
 //* Time complexity ---> O(N)
 function factorial(n) {

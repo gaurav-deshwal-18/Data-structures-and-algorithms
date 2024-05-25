@@ -1,20 +1,16 @@
-//* Word Pattern
-var wordPattern = function (pattern, s) {
-  const map = {};
-  const p = pattern.split("");
-  const c = s.split(" ");
+//* Minimum Number of Swaps to Make The String Balanced ---done
+var minSwaps = function (s) {
+  let open = 0;
+  let max = 0;
 
-  if (p.length !== c.length) return false;
-
-  const pSet = [...new Set(p)];
-  const cSet = [...new Set(c)];
-
-  if (pSet.length !== cSet.length) return false;
-
-  for (let i = 0; i < c.length; ++i) {
-    if (map[p[i]] && map[p[i]] !== c[i]) return false;
-    map[p[i]] = c[i];
+  for (let bracket of s) {
+    if (bracket === "[") {
+      open--;
+    } else {
+      open++;
+    }
+    max = Math.max(max, open);
   }
 
-  return true;
+  return Math.ceil(max / 2);
 };

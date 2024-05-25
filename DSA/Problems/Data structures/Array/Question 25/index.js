@@ -1,4 +1,4 @@
-//* Find longest consecutive subsequence
+//* Find longest consecutive subsequence --done
 //* Time complexity o(n)
 
 function longestConsecutive(nums) {

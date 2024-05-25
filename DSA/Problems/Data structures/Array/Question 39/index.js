@@ -1,4 +1,4 @@
-//* sort a string alphabetically
+//* sort a string alphabetically --done
 function sortAlphabetically(input) {
   const key = new Array(26).fill(0);
   let result = "";

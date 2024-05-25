@@ -1,5 +1,5 @@
 //* Given Array of size n and a number k, find all elements that
-//* appear more than n/k times
+//* appear more than n/k times  ---done
 
 // Input: arr[] = {3, 1, 2, 2, 1, 2, 3, 3}, k = 4
 // Output: {2, 3}

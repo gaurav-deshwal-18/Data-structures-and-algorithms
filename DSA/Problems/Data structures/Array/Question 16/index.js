@@ -1,4 +1,4 @@
-//* Count Inversion
+//* Count Inversion -->Done
 
 const arr = [2, 4, 1, 3, 5];
 
@@ -12,7 +12,7 @@ class Solution {
     this.count = 0;
   }
 
-  inversionCount(array, N) {
+  inversionCount(array) {
     this.count = 0;
     this.mergeSort(array);
     return this.count;
@@ -66,8 +66,8 @@ class Solution {
 const solution = new Solution();
 
 // Test case 1
-const array1 = [1, 3, 5, 2, 4, 6];
-console.log(solution.inversionCount(array1)); // Output: 3
+const array1 = [5, 3, 2, 4, 1];
+console.log(solution.inversionCount(array1)); // Output: 8
 
 // Test case 2
 const array2 = [5, 4, 3, 2, 1];
@@ -75,4 +75,4 @@ console.log(solution.inversionCount(array2)); // Output: 10
 
 // Test case 3
 const array3 = [2, 4, 6, 8, 10, 1, 3, 5, 7, 9];
-console.log(solution.inversionCount(array3)); // Output: 9
+console.log(solution.inversionCount(array3)); // Output: 15

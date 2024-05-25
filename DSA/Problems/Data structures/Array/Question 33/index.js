@@ -1,5 +1,5 @@
 /**
- * Penality for a shop
+ * Penality for a shop --- Done
  *
  * Input: customers = "YYNY"
  * Output: 2
@@ -13,36 +13,37 @@
  */
 
 function bestClosingTime(customers) {
-  let length = customers.length;
-  let totalY = 0;
-  let totalN = 0;
-  let minValue = Infinity;
-  let minIndex = 0;
+  const n = customers.length;
 
-  for (let i = 0; i < length; i++) {
-    if (customers[i] === "Y") {
-      totalY++;
+  let prefix = new Array(n + 1).fill(0);
+
+  let postfix = new Array(n + 1).fill(0);
+
+  for (let i = 1; i <= n; i++) {
+    prefix[i] = prefix[i - 1];
+
+    if (customers[i - 1] === "N") {
+      prefix[i] += 1;
     }
   }
 
-  for (let i = 0; i <= length; i++) {
-    if (totalN + totalY < minValue) {
-      minValue = totalN + totalY;
+  for (let i = n - 1; i >= 0; i--) {
+    postfix[i] = postfix[i + 1];
+
+    if (customers[i] === "Y") {
+      postfix[i] += 1;
+    }
+  }
+
+  let minPenality = Infinity;
+  let minIndex = -1;
+
+  for (let i = 0; i <= n; i++) {
+    let penality = prefix[i] + postfix[i];
+
+    if (penality < minPenality) {
+      minPenality = penality;
       minIndex = i;
-    }
-
-    if (i >= length) {
-      break;
-    }
-
-    let char = customers[i];
-
-    if (char === "N") {
-      totalN++;
-    }
-
-    if (char === "Y") {
-      totalY--;
     }
   }
 

@@ -1,4 +1,4 @@
-//*	Sort Colors
+//*	Sort Colors --- Done
 
 // Example 1:
 
@@ -11,17 +11,22 @@
 // Output: [0,1,2]
 
 var sortColors = function (nums) {
-  let left = 0;
-  let right = nums.length - 1;
-  for (let i = 0; i <= right; i++) {
+  let start = 0;
+  let i = 0;
+  let end = nums.length - 1;
+
+  while (i <= end) {
     let num = nums[i];
+
     if (num === 0) {
-      [nums[left], nums[i]] = [nums[i], nums[left]];
-      left++;
-    } else if (num == 2) {
-      [nums[right], nums[i]] = [nums[i], nums[right]];
-      right--;
-      i--;
+      [nums[i], nums[start]] = [nums[start], nums[i]];
+      i++;
+      start++;
+    } else if (num === 1) {
+      i++;
+    } else {
+      [nums[i], nums[end]] = [nums[end], nums[i]];
+      end--;
     }
   }
 };

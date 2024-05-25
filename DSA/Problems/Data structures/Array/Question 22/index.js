@@ -1,4 +1,4 @@
-//* Subarray with 0 sum
+//* Subarray with 0 sum -done
 
 //* Given an array of positive and negative numbers, the task is to
 //* find if there is a subarray (of size at least one) with 0 sum.
