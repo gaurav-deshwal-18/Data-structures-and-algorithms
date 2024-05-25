@@ -1,9 +1,9 @@
 //* 	Non Decreasing Array
 var checkPossibility = function (nums) {
   let count = 0;
-  const length = nums.length;
+  const n = nums.length;
 
-  for (let i = 1; i < length; i++) {
+  for (let i = 1; i < n; i++) {
     if (nums[i] < nums[i - 1]) {
       count++;
       if (count > 1) return false;

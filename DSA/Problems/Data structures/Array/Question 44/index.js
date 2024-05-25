@@ -1,4 +1,4 @@
-// Title: Find Majority Element in an Array
+// Title: Find Majority Element in an Array ---done
 // Time Complexity: O(n)
 // Space Complexity: O(1)
 /**
