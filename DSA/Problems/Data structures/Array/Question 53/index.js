@@ -1,4 +1,4 @@
-// Title: Sum of Even Subsets in Contiguous Array
+// Title: Sum of Even Subsets in Contiguous Array --done
 
 // The task involves computing the sum of all even subsets in a contiguous array.
 // For example, given the array [1, 2, 3, 4], the subsets and their sums are as follows:

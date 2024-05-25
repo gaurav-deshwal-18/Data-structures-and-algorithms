@@ -1,4 +1,4 @@
-//* 	Repeated DNA Sequences
+//* 	Repeated DNA Sequences ---done
 
 // Example 1:
 
