@@ -1,4 +1,4 @@
-//* Merge Sorted Array
+//* Merge Sorted Array --done
 
 function merge(nums1, m, nums2, n) {
   let last = m + n - 1;
