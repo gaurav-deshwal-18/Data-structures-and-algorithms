@@ -1,4 +1,4 @@
-//*  Minimum Value to Get Positive Step by Step Sum
+//*  Minimum Value to Get Positive Step by Step Sum --done
 
 var minStartValue = function (nums) {
   let startValue = 1;

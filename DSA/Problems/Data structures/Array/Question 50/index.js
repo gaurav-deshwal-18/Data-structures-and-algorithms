@@ -1,4 +1,4 @@
-// Title: Remove Duplicates from Sorted Array II
+// Title: Remove Duplicates from Sorted Array II --done
 // Input: nums = [1,1,1,2,2,3]
 // Output: 5, nums = [1,1,2,2,3,_]
 // Explanation: Your function should return k = 5,
@@ -6,26 +6,15 @@
 // It does not matter what you leave beyond the returned k
 
 function removeDuplicates(nums) {
-  let right = 0;
-  let left = 0;
-  let n = nums.length;
-  while (right < n) {
-    let count = 1;
-
-    while (right + 1 < n && nums[right] === nums[right + 1]) {
-      right++;
-      count++;
+  let k = 0;
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] === nums[i + 1] && nums[i + 1] === nums[i + 2]) {
+      continue;
     }
-
-    for (let j = 0; j < Math.min(2, count); j++) {
-      nums[left] = nums[right];
-      left++;
-    }
-
-    right++;
+    nums[k] = nums[i];
+    k++;
   }
-
-  return left;
+  return k;
 }
 
 // Test case

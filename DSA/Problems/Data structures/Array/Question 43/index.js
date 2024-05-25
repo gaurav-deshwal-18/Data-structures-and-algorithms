@@ -8,14 +8,16 @@
 // (hence they are underscores).
 
 var removeDuplicates = function (nums) {
-  let prevValue = nums[0];
+  let prev = nums[0];
   let k = 1;
 
-  for (let item of nums) {
-    if (item !== prevValue) {
-      nums[k] = item;
+  for (let i = 1; i < nums.length; i++) {
+    let num = nums[i];
+
+    if (num !== prev) {
+      nums[k] = num;
+      prev = num;
       k++;
-      prevValue = item;
     }
   }
 
