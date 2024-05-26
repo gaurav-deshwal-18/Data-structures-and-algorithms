@@ -1,4 +1,4 @@
-//* Find minimum number of merge operations to make an array palindrome
+//* Find minimum number of merge operations to make an array palindrome --done
 //* Time complexity -- O(n) && Space complexity --- O(1)
 // Input : arr[] = {15, 4, 15}
 // Output : 0

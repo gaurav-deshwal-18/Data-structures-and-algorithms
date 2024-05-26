@@ -1,4 +1,4 @@
-//* Boats to Save People
+//* Boats to Save People --done
 
 var numRescueBoats = function (people, limit) {
   people.sort((a, b) => a - b);

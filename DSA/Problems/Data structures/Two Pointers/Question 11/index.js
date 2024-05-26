@@ -1,4 +1,4 @@
-//* Merge Strings Alternately
+//* Merge Strings Alternately --done
 
 // Example 1:
 

@@ -10,7 +10,7 @@ var rearrangeArray = function (nums) {
     array.push(nums[left]);
     left++;
 
-    if (left <= right) {
+    if (nums.length !== array.length) {
       array.push(nums[right]);
       right--;
     }

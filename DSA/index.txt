@@ -1,7 +1,5 @@
 Revision :-
 
-Array - 50
-
 Two Pointer - 13
 
 Sliding Window - 25
