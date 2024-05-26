@@ -1,4 +1,4 @@
-//* 	3Sum
+//* 	3Sum ---not done
 var threeSum = function (nums) {
   nums.sort((a, b) => a - b);
 
