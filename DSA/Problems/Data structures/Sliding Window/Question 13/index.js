@@ -1,5 +1,5 @@
 //* Maximum Number of Vowels in a Substring of Given Length
-//* Time complexity - O(n)
+//* Time complexity - O(n) ---done
 var maxVowels = function (s, k) {
   let vowels = ["a", "e", "i", "o", "u"];
   let maxCount = 0;

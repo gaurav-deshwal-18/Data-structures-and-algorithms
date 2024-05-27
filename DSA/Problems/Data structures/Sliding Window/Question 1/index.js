@@ -1,4 +1,4 @@
-//* Best time to buy and Sell stock
+//* Best time to buy and Sell stock ---done
 
 // Input: prices = [7,1,5,3,6,4]
 // Output: 5

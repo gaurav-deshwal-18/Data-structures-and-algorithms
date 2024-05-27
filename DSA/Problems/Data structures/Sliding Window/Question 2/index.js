@@ -1,4 +1,4 @@
-//* Longest Repeating character replacement
+//* Longest Repeating character replacement ---done
 //* Time complexity ---> O(n*26)
 
 function characterReplacement(s, k) {
@@ -29,5 +29,5 @@ const k = 1;
 const longestLength = characterReplacement(inputString, k);
 console.log(
   "Length of the longest substring with at most k replacements:",
-  longestLength
+  longestLength,
 );

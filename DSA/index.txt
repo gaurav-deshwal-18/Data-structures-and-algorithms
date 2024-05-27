@@ -1,6 +1,5 @@
 Revision :-
 
-Two Pointer - 13
 
 Sliding Window - 25
 
@@ -12,10 +11,10 @@ LinkedList - 26
 
 Stack - 10
 
-Tree - 34
-
 Interval - 8
 
 Math - 8
+
+
 
 
