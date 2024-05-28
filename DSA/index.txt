@@ -1,11 +1,12 @@
 Revision :-
 
+Sliding Window - 20
 
-Sliding Window - 25
+Binary Search - 20
 
-Binary Search - 21
+String - 15
 
-String - 13
+Math - 8
 
 LinkedList - 26
 
@@ -13,7 +14,6 @@ Stack - 10
 
 Interval - 8
 
-Math - 8
 
 
 

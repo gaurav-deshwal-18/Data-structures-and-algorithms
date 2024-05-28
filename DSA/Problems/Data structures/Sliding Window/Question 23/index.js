@@ -1,4 +1,4 @@
-//*  Maximum Points You Can Obtain from Cards
+//*  Maximum Points You Can Obtain from Cards ---done
 
 // Example 1:
 
@@ -10,35 +10,29 @@
 
 var maxScore = function (cardPoints, k) {
   let n = cardPoints.length;
-
-  let totalPoints = cardPoints.reduce((acc, num) => acc + num, 0);
-
-  let len = n - k;
-  if (len === 0) {
-    return totalPoints;
-  }
-
-  let min = Infinity;
-
   let left = 0;
   let right = 0;
 
-  let currentSum = 0;
+  let total = cardPoints.reduce((acc, num) => acc + num);
+  if (n === k) {
+    return total;
+  }
+  let result = 0;
 
   while (right < n) {
-    currentSum += cardPoints[right];
+    total -= cardPoints[right];
 
-    if (right - left + 1 === len) {
-      min = Math.min(min, currentSum);
-      currentSum -= cardPoints[left];
+    if (right - left + 1 > n - k) {
+      total += cardPoints[left];
       left++;
+    }
+
+    if (right - left + 1 === n - k) {
+      result = Math.max(result, total);
     }
 
     right++;
   }
 
-  return totalPoints - min;
+  return result;
 };
-
-const result = maxScore([1, 2, 3, 4, 5, 6, 1], 3);
-console.log(result);

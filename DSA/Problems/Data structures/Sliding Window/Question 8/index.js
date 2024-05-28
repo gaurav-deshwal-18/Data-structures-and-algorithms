@@ -1,4 +1,4 @@
-//* Fruits into Basket
+//* Fruits into Basket ---done
 const totalFruit = (fruits) => {
   let max = 0;
   let start = 0;

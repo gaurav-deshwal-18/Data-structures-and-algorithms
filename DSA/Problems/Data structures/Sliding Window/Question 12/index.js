@@ -1,4 +1,4 @@
-//* Minimum Operations to Reduce X to Zero
+//* Minimum Operations to Reduce X to Zero ---done
 
 // Example 1:
 
@@ -13,30 +13,30 @@
 
 var minOperations = function (nums, x) {
   let n = nums.length;
-
-  let target = nums.reduce((acc, num) => acc + num, 0) - x;
-  if (target === 0) return n;
-
   let left = 0;
   let right = 0;
-  let maxLen = 0;
-  let currSum = 0;
+
+  let total = nums.reduce((acc, num) => acc + num);
+  if (total < x) return -1;
+
+  let minMoves = Infinity;
 
   while (right < n) {
-    currSum += nums[right];
+    total -= nums[right];
 
-    while (left <= right && currSum > target) {
-      currSum -= nums[left];
+    while (total < x) {
+      total += nums[left];
       left++;
     }
 
-    if (target === currSum) {
-      maxLen = Math.max(maxLen, right - left + 1);
+    if (total === x) {
+      minMoves = Math.min(n - (right - left + 1), minMoves);
     }
+
     right++;
   }
 
-  return maxLen === 0 ? -1 : n - maxLen;
+  return minMoves === Infinity ? -1 : minMoves;
 };
 
 const result = minOperations([1, 1, 4, 2, 3], 5);

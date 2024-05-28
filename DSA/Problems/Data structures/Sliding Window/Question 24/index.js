@@ -1,4 +1,4 @@
-//* Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold
+//* Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold --done
 
 // Given an array of integers arr and two integers k and threshold,
 //  return the number of sub-arrays of size k and average greater than or equal to threshold.
@@ -10,29 +10,27 @@
 
 var numOfSubarrays = function (arr, k, threshold) {
   let n = arr.length;
+
+  let total = 0;
   let left = 0;
   let right = 0;
 
-  let total = 0;
-  let res = 0;
+  let result = 0;
 
   while (right < n) {
     total += arr[right];
-
-    if (right - left + 1 === k) {
-      let avg = total / k;
-      if (avg >= threshold) {
-        res++;
-      }
+    if (right - left + 1 > k) {
       total -= arr[left];
       left++;
     }
+
+    if (right - left + 1 === k && total / k >= threshold) {
+      result++;
+    }
     right++;
   }
-
-  return res;
+  return result;
 };
-
 const result = numOfSubarrays([2, 2, 2, 2, 5, 5, 5, 8], 3, 4);
 
 console.log(result);
