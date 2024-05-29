@@ -1,4 +1,4 @@
-//* Maximum Sum of Distinct Subarrays With Length K
+//* Maximum Sum of Distinct Subarrays With Length K ---done
 // Input: nums = [1,5,4,2,9,9,9], k = 3
 // Output: 15
 // Explanation: The subarrays of nums with length 3 are:
@@ -10,36 +10,29 @@
 // We return 15 because it is the maximum subarray sum of all the subarrays that meet the conditions
 
 var maximumSubarraySum = function (nums, k) {
+  let n = nums.length;
   let left = 0;
   let right = 0;
-  let n = nums.length;
-
-  let total = 0;
-  let max = 0;
-
   let set = new Set();
+  let result = 0;
+  let total = 0;
 
   while (right < n) {
-    while (set.has(nums[right]) && left <= right) {
+    let num = nums[right];
+    total += num;
+    while (set.has(num) || right - left + 1 > k) {
       total -= nums[left];
       set.delete(nums[left]);
       left++;
     }
-
-    if (!set.has(nums[right])) {
-      total += nums[right];
-    }
-    set.add(nums[right]);
+    set.add(num);
 
     if (right - left + 1 === k) {
-      max = Math.max(max, total);
-      total -= nums[left];
-      set.delete(nums[left]);
-      left++;
+      result = Math.max(result, total);
     }
     right++;
   }
-  return max;
+  return result;
 };
 
 const result = maximumSubarraySum([1, 5, 4, 2, 9, 9, 9], 3);

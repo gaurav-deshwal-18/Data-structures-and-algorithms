@@ -1,4 +1,4 @@
-//* Max Consecutive Ones III
+//* Max Consecutive Ones III --done
 
 // Example 1:
 
@@ -7,28 +7,29 @@
 // Explanation: [1,1,1,0,0,1,1,1,1,1,1]
 
 var longestOnes = function (nums, k) {
+  let n = nums.length;
   let left = 0;
   let right = 0;
-  let max = 0;
-  let n = nums.length;
-  let zeroCounter = 0;
+  let zeroCount = 0;
+  let total = 0;
 
   while (right < n) {
-    if (nums[right] === 0) {
-      zeroCounter++;
+    let num = nums[right];
+    if (num === 0) {
+      zeroCount++;
     }
-    if (zeroCounter > k) {
+
+    while (zeroCount > k) {
       if (nums[left] === 0) {
-        zeroCounter -= 1;
+        zeroCount--;
       }
       left++;
     }
+    total = Math.max(total, right - left + 1);
 
-    max = Math.max(right - left + 1, max);
     right++;
   }
-
-  return max;
+  return total;
 };
 let nums = [1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0];
 let k = 2;
