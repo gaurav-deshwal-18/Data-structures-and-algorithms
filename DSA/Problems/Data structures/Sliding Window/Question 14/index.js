@@ -1,4 +1,4 @@
-//* Minimum swaps required to bring all elements less than or equal to k together
+//* Minimum swaps required to bring all elements less than or equal to k together--done
 
 // Input:  arr[] = {2, 1, 5, 6, 3}, k = 3
 // Output: 1
