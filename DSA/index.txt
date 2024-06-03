@@ -1,7 +1,5 @@
 Revision :-
 
-Sliding Window - 20
-
 Binary Search - 20
 
 String - 15

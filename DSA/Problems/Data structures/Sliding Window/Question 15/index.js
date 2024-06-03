@@ -1,4 +1,4 @@
-//*  Sliding Window Maximum
+//*  Sliding Window Maximum --done
 
 var maxSlidingWindow = function (nums, k) {
   const res = [];
@@ -15,8 +15,8 @@ var maxSlidingWindow = function (nums, k) {
     if (left > q[0]) {
       q.shift();
     }
- 
-    if (right + 1 >= k) {
+
+    if (right - left + 1 === k) {
       res.push(nums[q[0]]);
       left++;
     }
