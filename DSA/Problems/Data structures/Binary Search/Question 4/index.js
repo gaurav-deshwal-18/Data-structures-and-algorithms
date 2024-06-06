@@ -1,4 +1,4 @@
-//* Time complexity O(m+n)
+//* Time complexity O(m+n) ---done
 //* Median of Two Sorted Arrays
 var findMedianSortedArrays = function (nums1, nums2) {
   let merged = [];

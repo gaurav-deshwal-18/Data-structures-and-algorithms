@@ -1,4 +1,4 @@
-//* Single Element in a Sorted Array
+//* Single Element in a Sorted Array -done
 
 var singleNonDuplicate = function (nums) {
   let n = nums.length;

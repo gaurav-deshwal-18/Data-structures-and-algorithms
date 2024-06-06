@@ -1,4 +1,4 @@
-//* Sqrt(x)
+//* Sqrt(x) ---done
 
 var mySqrt = function (x) {
   if (x < 2) return x;
