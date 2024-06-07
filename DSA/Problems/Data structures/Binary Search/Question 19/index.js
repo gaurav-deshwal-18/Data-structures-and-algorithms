@@ -1,35 +1,31 @@
-//* Find First And Last Position of Element In Sorted Array
+//* Find First And Last Position of Element In Sorted Array --done
 
-function binarySearch(nums, target, isSearchingLeft) {
+function binarySearch(nums, target, isLeft) {
   let left = 0;
   let right = nums.length - 1;
   let index = -1;
-
   while (left <= right) {
-    let middle = Math.floor((left + right) / 2);
+    const mid = Math.floor((left + right) / 2);
 
-    if (target < nums[middle]) {
-      right = middle - 1;
-    } else if (target > nums[middle]) {
-      left = middle + 1;
-    } else {
-      index = middle;
-      if (isSearchingLeft) {
-        right = middle - 1;
+    if (target === nums[mid]) {
+      index = mid;
+      if (isLeft) {
+        right = mid - 1;
       } else {
-        left = middle + 1;
+        left = mid + 1;
       }
+    } else if (nums[mid] > target) {
+      right = mid - 1;
+    } else {
+      left = mid + 1;
     }
   }
 
   return index;
 }
 var searchRange = function (nums, target) {
-  let left = binarySearch(nums, target, true);
-  let right = binarySearch(nums, target, false);
+  const leftIndex = binarySearch(nums, target, true);
+  const rightIndex = binarySearch(nums, target, false);
 
-  return [left, right];
+  return [leftIndex, rightIndex];
 };
-
-let result = searchRange([1, 2, 6, 6, 6, 6, 8, 9], 6);
-console.log(result);
