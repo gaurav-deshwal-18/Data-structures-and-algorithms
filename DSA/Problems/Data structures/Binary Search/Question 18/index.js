@@ -1,39 +1,44 @@
-//* Allocate Minimum Number of Pages from N books to M students
+//* Allocate Minimum Number of Pages from N books to M students --done
 
-function countStudents(arr, pages) {
-  var n = arr.length;
-  var students = 1;
-  var pagesStudent = 0;
-  for (var i = 0; i < n; i++) {
-    if (pagesStudent + arr[i] <= pages) {
-      pagesStudent += arr[i];
+function countStudents(arr, maxPagesPerStudent) {
+  let students = 1;
+  let pagesAllocated = 0;
+
+  for (const pages of arr) {
+    if (pagesAllocated + pages <= maxPagesPerStudent) {
+      pagesAllocated += pages;
     } else {
       students++;
-      pagesStudent = arr[i];
+      pagesAllocated = pages;
     }
   }
+
   return students;
 }
 
 function findPages(arr, n, m) {
   if (m > n) return -1;
 
-  var left = Math.max(...arr);
-  var right = arr.reduce((a, b) => a + b, 0);
+  let left = Math.max(...arr);
+  let right = arr.reduce((sum, pages) => sum + pages, 0);
+  let result = Infinity;
   while (left <= right) {
-    var mid = Math.floor((left + right) / 2);
-    var students = countStudents(arr, mid);
-    if (students > m) {
+    let mid = Math.floor((left + right) / 2);
+    let requiredStudents = countStudents(arr, mid);
+
+    if (requiredStudents > m) {
       left = mid + 1;
     } else {
+      result = Math.min(result, mid);
       right = mid - 1;
     }
   }
-  return left;
+
+  return result;
 }
 
-var arr = [25, 46, 28, 49, 24];
-var n = 5;
-var m = 4;
+var arr = [12, 34, 67, 90];
+var n = 4;
+var m = 2;
 var ans = findPages(arr, n, m);
 console.log("The answer is: " + ans);

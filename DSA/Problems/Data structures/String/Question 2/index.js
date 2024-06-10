@@ -1,36 +1,38 @@
-//* finding the common characters among multiple strings
+//* Longest Common Prefix
 
-const common = (str1, str2) => {
-  let map = {};
-  for (let char of str1) {
-    map[char] = (map[char] || 0) + 1;
-  }
+//* Write a function to find the longest common prefix string amongst an array of strings.
+//* Time complexity of O(n*m)
+// Example 1:
 
-  let res = [];
-  for (let char of str2) {
-    if (map[char]) {
-      res.push(char);
-      map[char]--;
+// Input: strs = ["flower","flow","flight"]
+// Output: "fl"
+const findPrefix = (str1 = "", str2 = "") => {
+  let res = "";
+
+  for (let i = 0; i < str1.length && i < str2.length; i++) {
+    if (str1[i] === str2[i]) {
+      res += str1[i];
+    } else {
+      break;
     }
   }
 
   return res;
 };
-const findCommonChar = (input) => {
-  let res;
+var longestCommonPrefix = function (strs) {
+  let res = null;
+  if (strs.length === 1) {
+    return strs[0];
+  }
 
-  for (let i = 0; i < input.length; i++) {
-    if (res === undefined) {
-      res = common(input[i], input[i + 1]);
+  for (let i = 0; i < strs.length; i++) {
+    if (res === null) {
+      res = findPrefix(strs[i], strs[i + 1]);
     } else {
-      res = common(res, input[i]);
+      res = findPrefix(strs[i], res);
     }
   }
 
-  return res.join("");
+  return res;
 };
-
-let input = ["hellow", "cellw", "fellow"];
-
-const result = findCommonChar(input);
-console.log(result);
+console.log(longestCommonPrefix(["flower", "flow", "flight"]));

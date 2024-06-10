@@ -1,20 +1,27 @@
 //*
 //* Word Pattern
 var wordPattern = function (pattern, s) {
-  const map = {};
-  const p = pattern.split("");
-  const c = s.split(" ");
+  const mapWord = new Map();
+  const mapChar = new Map();
+  const words = s.split(" ");
 
-  if (p.length !== c.length) return false;
+  if (words.length !== pattern.length) {
+    return false;
+  }
 
-  const pSet = [...new Set(p)];
-  const cSet = [...new Set(c)];
+  for (let i = 0; i < pattern.length; i++) {
+    const char = pattern[i];
+    const word = words[i];
 
-  if (pSet.length !== cSet.length) return false;
+    if (
+      (mapWord.has(char) && mapWord.get(char) !== word) ||
+      (mapChar.has(word) && mapChar.get(word) !== char)
+    ) {
+      return false;
+    }
 
-  for (let i = 0; i < c.length; ++i) {
-    if (map[p[i]] && map[p[i]] !== c[i]) return false;
-    map[p[i]] = c[i];
+    mapWord.set(char, word);
+    mapChar.set(word, char);
   }
 
   return true;

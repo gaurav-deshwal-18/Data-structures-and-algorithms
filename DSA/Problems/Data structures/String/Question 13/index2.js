@@ -24,20 +24,21 @@ var intToRoman = function (num) {
     ["M", 1000],
   ];
 
-  let str = "";
+  arr.reverse();
 
-  for (let i = arr.length - 1; i >= 0; i--) {
-    const [roman, value] = arr[i];
+  let result = "";
+
+  for (let [char, value] of arr) {
     let count = Math.floor(num / value);
 
     for (let i = 0; i < count; i++) {
-      str += roman;
+      result += char;
     }
+
     num = num % value;
   }
 
-  return str;
+  return result;
 };
-
 const result = intToRoman(2587);
 console.log(result);

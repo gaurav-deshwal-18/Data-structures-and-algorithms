@@ -1,16 +1,15 @@
 Revision :-
 
-Binary Search - 20
 
-String - 15
-
+ 
 Math - 8
+
+Interval - 8
 
 LinkedList - 26
 
 Stack - 10
 
-Interval - 8
 
 
 

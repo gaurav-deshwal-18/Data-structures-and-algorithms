@@ -1,39 +1,35 @@
 //* Split Array Largest Sum
-var splitArray = (arr, k) => {
-  let n = arr.length;
+var splitArray = function (nums, k) {
+  let left = Math.max(...nums);
+  let right = nums.reduce((acc, num) => acc + num);
 
-  let min = Infinity;
+  let result = Infinity;
 
-  let left = Math.max(...arr);
+  function isPossible(target) {
+    let currentSum = 0;
+    let pairs = 1;
+    for (let num of nums) {
+      if (currentSum + num <= target) {
+        currentSum += num;
+      } else {
+        pairs++;
+        currentSum = num;
+      }
+    }
 
-  let right = arr.reduce((acc, num) => acc + num, 0);
+    return pairs <= k;
+  }
 
   while (left <= right) {
-    let mid = Math.floor((left + right) / 2);
+    const mid = Math.floor((left + right) / 2);
 
-    let res = isPossible(arr, mid, n);
-
-    if (res<=k) {
-      min = Math.min(min, mid);
+    if (isPossible(mid)) {
+      result = Math.min(mid, result);
       right = mid - 1;
     } else {
       left = mid + 1;
     }
   }
 
-  return min;
+  return result;
 };
-
-function isPossible(arr, cap, n) {
-  let sum = 0;
-  let count = 1;
-  for (let i = 0; i < n; i++) {
-    if (sum + arr[i] <= cap) {
-      sum += arr[i];
-    } else {
-      sum = arr[i];
-      count++;
-    }
-  }
-  return count;
-}
