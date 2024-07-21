@@ -1,9 +1,5 @@
 Revision :-
 
-
- 
-Math - 8
-
 Interval - 8
 
 LinkedList - 26
